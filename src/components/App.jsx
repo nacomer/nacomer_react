@@ -5,12 +5,13 @@ import List from "./list/List"
 import Detail from "./detail/Detail"
 
 export default function App() {
-    const [viewMode, setViewMode] = useState("List");
+    const [viewMode, setViewMode] = useState("Detail");
+    const [hobbyId, setHobbyId] = useState();
     return (
         <div>
             <Header />
-            {viewMode === "List" && <List setViewMode={setViewMode} />}
-            {viewMode === "Detail" && <Detail />}
+            {viewMode === "List" && <List setViewMode={setViewMode} setHobbyId={setHobbyId}/>}
+            {viewMode === "Detail" && <Detail hobbyId={hobbyId}/>}
             <Footer />
         </div>
     );

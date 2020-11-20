@@ -1,5 +1,10 @@
 import React from "react";
 
-export default function Footer() {    
-    return <p>footer</p>
+export default function Footer() {
+  return (
+    <div>
+      <hr></hr>
+      <p>footerです。</p>
+    </div>
+  );
 }
