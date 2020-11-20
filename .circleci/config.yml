@@ -12,7 +12,7 @@ workflows:
           filters:
             tags:
               only: /v.*/
-            branchs:
+            branches:
               only: master
           account-url: ACCOUNT_URL
           repo: nacomer-react
