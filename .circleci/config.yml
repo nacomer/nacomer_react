@@ -4,11 +4,15 @@ orbs:
 workflows:
   build-and-deploy:
     jobs:
+      - build
       - aws-ecr/build_and_push_image:
           account-url: ACCOUNT_URL
           repo: nacomer-react
           region: AWS_DEFAULT_REGION
-          tag: "${CIRCLE_SHA1}"
+          tag: "${CIRCLE_TAG}"
+          filters:
+            tags:
+              only: /^v.*/ 
 jobs:
   build:
     docker:
@@ -31,7 +35,4 @@ jobs:
           command: yarn build
       - run:
           name: test
-          command: echo "test"
-      - run:
-          name: deploy
-          command: echo "deploy"
+          command: yarn test
