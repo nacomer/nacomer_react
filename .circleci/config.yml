@@ -6,7 +6,7 @@ workflows:
     jobs:
       - aws-ecr/build_and_push_image:
           account-url: ACCOUNT_URL
-          repo: AWS_RESOURCE_NAME_PREFIX
+          repo: nacomer-react
           region: AWS_DEFAULT_REGION
           tag: "${CIRCLE_SHA1}"
 jobs:
