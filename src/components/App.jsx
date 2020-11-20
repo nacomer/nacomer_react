@@ -5,7 +5,7 @@ import List from "./list/List"
 import Detail from "./detail/Detail"
 
 export default function App() {
-    const [viewMode, setViewMode] = useState("List");
+    const [viewMode, setViewMode] = useState("Detail");
     return (
         <div>
         <Header />
