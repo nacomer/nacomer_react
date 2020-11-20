@@ -9,8 +9,13 @@ export default function List() {
     return (
         <div>
             <font color="red">Filterd Period : {filterdPeriod}</font>
-            <ListFilter setFilteredPeriod={setFilteredPeriod} />
-            <ListView filterdPeriod={filterdPeriod} />
-        </div>
+            <ListFilter
+                filterdPeriod={filterdPeriod}
+                setFilteredPeriod={setFilteredPeriod}
+            />
+            <ListView
+                filterdPeriod={filterdPeriod}
+            />
+        </div >
     )
 }

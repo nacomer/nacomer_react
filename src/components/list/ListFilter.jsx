@@ -1,6 +1,6 @@
 import React from "react";
-
-export default function ListFilter() {
+import "../../styles/list.css"
+export default function ListFilter(props) {
 
     const periodItemList = [
         {
@@ -17,9 +17,18 @@ export default function ListFilter() {
         }
     ]
 
-    const setFilterValue = (value) => {
-        console.log(value)
+    const setFilterValue = (e) => {
 
+
+        if (props.filterdPeriod.includes(e.target.value)) {
+            props.setFilteredPeriod(
+                props.filterdPeriod.filter(item => item !== e.target.value)
+            );
+        } else {
+            props.setFilteredPeriod(
+                [...props.filterdPeriod, e.target.value].sort()
+            )
+        }
     };
 
 
@@ -27,22 +36,20 @@ export default function ListFilter() {
 
     const filterItem = (
         <>
-            <div>
+            <div className="filterItem">
                 所要時間
-            </div>
-            <div>
                 {periodItemList.map((element) => {
-                    return (
-                        <p key={element.periodId}>
-                            <input
-                                type="checkbox"
-                                name="15m"
-                                value={element.periodId}
-                                onClick={() => { setFilterValue(element.periodId) }}
-                            />
-                            {element.hours}時間
-                        </p>)
-                })}
+                return (
+                    <p key={element.periodId}>
+                        <input
+                            type="checkbox"
+                            name="period"
+                            value={element.periodId}
+                            onClick={setFilterValue}
+                        />
+                        {element.hours}時間
+                    </p>)
+            })}
             </div>
         </>
     );
