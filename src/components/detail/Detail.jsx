@@ -7,11 +7,19 @@ import { useEffect, useState } from "react";
 require("dotenv").config();
 
 export default function Detail(props) {
-  const [detaiJson, setDetailJson] = useState();
-
+  const initDataJson = {
+    name: "",
+    mainPicture: "",
+    description:"",
+    cost: undefined,
+    periodID: undefined,
+    Youtube: [],
+    subPicture: [],
+  };
+  const [detailJson, setDetailJson] = useState(initDataJson);
   const hobbyDetail = {
     name: "tennis",
-    mainPicture: "../../test_image/main_tennis.jpg",
+    mainPicture: "./main_tennis.jpg",
     description:
       "始めたばかりの頃はボールを打つこと自体も楽しいですし、上達してきたら習得した技術で作戦を立てて、相手の裏をかいたりボールをコントロールしたりするのも楽しいです。",
     cost: 10000,
@@ -32,10 +40,10 @@ export default function Detail(props) {
       setDetailJson(hobbyDetail);
     };
     getHobbyDetail();
-  });
+  },[]);
   return (
     <div>
-      <DetailHeader detailJson={detaiJson}/>
+      <DetailHeader detailJson={detailJson}/>
       <Tabs>
         <TabList>
           <Tab>review</Tab>
@@ -45,7 +53,7 @@ export default function Detail(props) {
           <DetailComment hobbyId={props.hobbyId}/>
         </TabPanel>
         <TabPanel>
-          <DetailIntro detailJson={detaiJson}/>
+          <DetailIntro detailJson={detailJson}/>
         </TabPanel>
       </Tabs>
     </div>
