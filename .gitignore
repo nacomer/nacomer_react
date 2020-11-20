@@ -108,3 +108,6 @@ dist
 
 #build
 build
+
+#image fot test
+test_image

@@ -1,5 +1,6 @@
 import React from "react";
 
-export default function DetailHeader() {    
-    return <p>DetailHeader</p>
+export default function DetailHeader(props) {    
+    
+    return <p></p>
 }
