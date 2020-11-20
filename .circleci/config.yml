@@ -5,7 +5,7 @@ workflows:
   build-and-deploy:
     jobs:
       - build: 
-        filters:
+          filters:
             tags:
               only: /^v.*/
       - aws-ecr/build_and_push_image:
