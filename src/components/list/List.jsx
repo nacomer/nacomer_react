@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ListFilter from "./ListFilter"
 import ListView from "./ListView"
 
-export default function List() {
+export default function List(props) {
     const [filterdPeriod, setFilteredPeriod] = useState([])
 
 
@@ -12,9 +12,12 @@ export default function List() {
             <ListFilter
                 filterdPeriod={filterdPeriod}
                 setFilteredPeriod={setFilteredPeriod}
+
             />
             <ListView
                 filterdPeriod={filterdPeriod}
+                setViewMode={props.setViewMode}
+                setHobbyId={props.setHobbyId}
             />
         </div >
     )
