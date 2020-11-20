@@ -6,13 +6,14 @@ workflows:
     jobs:
       - build
       - aws-ecr/build_and_push_image:
+          filters:
+            tags:
+              only: /^v.*/ 
           account-url: ACCOUNT_URL
           repo: nacomer-react
           region: AWS_DEFAULT_REGION
           tag: "${CIRCLE_TAG}"
-          filters:
-            tags:
-              only: /^v.*/ 
+          
 jobs:
   build:
     docker:
