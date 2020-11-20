@@ -22,7 +22,7 @@ export default function Detail(props) {
     const getHobbyDetail = async () => {
       const hobbyDetail = {
         name: "tennis",
-        mainPicture: "./main_tennis.jpg",
+        mainPicture: "./image/main_tennis.jpg",
         description:
           "始めたばかりの頃はボールを打つこと自体も楽しいですし、上達してきたら習得した技術で作戦を立てて、相手の裏をかいたりボールをコントロールしたりするのも楽しいです。",
         cost: 10000,
@@ -32,8 +32,8 @@ export default function Detail(props) {
           { youtubeURL: "https://www.youtube.com/embed/27eyrDivrz0" },
         ],
         subPicture: [
-          { subpictureURL: "../../test_image/img1.jpg" },
-          { subpictureURL: "../../test_image/img2.jpg" },
+          { subpictureURL: "./image/img1.jpg" },
+          { subpictureURL: "./image/img2.jpg" },
         ],
       };
       //const hobbyDetail = await fetch(process.env.URL + "/api/hobby/" + props.hobbyId)
