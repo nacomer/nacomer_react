@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header"
 import Footer from "./Footer"
 import List from "./list/List"
 import Detail from "./detail/Detail"
 
 export default function App() {
+    const [viewMode, setViewMode] = useState("List");
     return (
         <div>
         <Header />
-        <List />
-        <Detail />
+        {viewMode==="List" && <List />}
+        {viewMode==="Detail" &&<Detail />}
         <Footer />
         </div>
     );
