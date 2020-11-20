@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function DetailIntroYoutubeItem(props) {    
-    console.log("yputubeURL:" + props.url)
     return <iframe width="560" height="315" 
     src={props.url} 
     frameBorder="0" 
