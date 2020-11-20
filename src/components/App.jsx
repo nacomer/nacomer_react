@@ -9,10 +9,10 @@ export default function App() {
     const [hobbyId, setHobbyId] = useState();
     return (
         <div>
-        <Header />
-        {viewMode==="List" && <List />}
-        {viewMode==="Detail" &&<Detail hobbyId={hobbyId}/>}
-        <Footer />
+            <Header />
+            {viewMode === "List" && <List setViewMode={setViewMode} setHobbyId={setHobbyId}/>}
+            {viewMode === "Detail" && <Detail hobbyId={hobbyId}/>}
+            <Footer />
         </div>
     );
 }
