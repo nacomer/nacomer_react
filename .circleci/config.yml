@@ -4,10 +4,10 @@ orbs:
 workflows:
   build-and-deploy:
     jobs:
-      # - build:
-      #     filters:
-      #       tags:
-      #         only: /v.*/
+      - build:
+          filters:
+            tags:
+              only: /v.*/
       - aws-ecr/build_and_push_image:
           filters:
             tags:
