@@ -8,10 +8,10 @@ export default function App() {
     const [viewMode, setViewMode] = useState("List");
     return (
         <div>
-        <Header />
-        {viewMode==="List" && <List />}
-        {viewMode==="Detail" &&<Detail />}
-        <Footer />
+            <Header />
+            {viewMode === "List" && <List setViewMode={setViewMode} />}
+            {viewMode === "Detail" && <Detail />}
+            <Footer />
         </div>
     );
 }

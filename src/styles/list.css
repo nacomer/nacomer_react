@@ -1,0 +1,12 @@
+.filterItem{
+  width: 20%;
+  float:left;
+    display: inline-block;
+
+}
+
+.listView{
+  width: 80%;
+  float:right;
+    display: inline-block;
+}
