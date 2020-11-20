@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { CommentService } from "../../../services/commentService";
 import DetailCommentItem from "./DetailCommentItem";
 import DetailCommentSend from "./DetailCommentSend";
-require("dotenv").config();
 
 export default function DetailComment(props) {
   const [ detailCommentJson, setDetailCommentJson] = useState([]);
