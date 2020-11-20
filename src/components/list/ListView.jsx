@@ -54,5 +54,6 @@ export default function ListView(props) {
                 })}
 
             <p>ListView</p>
-        </div>)
+        </div>
+    )
 }
