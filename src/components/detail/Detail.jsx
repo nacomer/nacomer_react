@@ -31,6 +31,7 @@ export default function Detail(props) {
       //const hobbyDetail = await fetch(process.env.URL + "/api/hobby/" + props.hobbyId)
       setDetailJson(hobbyDetail);
     };
+    getHobbyDetail();
   });
   return (
     <div>
