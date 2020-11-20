@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/list.css"
+//const history = window.history;
 
 export default function ListView(props) {
     const apiHobby = [
@@ -20,10 +21,23 @@ export default function ListView(props) {
             name: "swimming",
             picture: "./swimming.jpg",
             periodID: 3
+        },
+        {
+            hobbyid: 4,
+            name: "mountain",
+            picture: "./mountain.jpeg",
+            periodID: 2
+        },
+        {
+            hobbyid: 5,
+            name: "music",
+            picture: "./music.png",
+            periodID: 1
         }
     ]
 
     const hobbyClicked = (element) => {
+        // history.pushState(null, null, element.name)
         props.setViewMode("Detail");
         props.setHobbyId(element.hobbyid)
     }
@@ -39,21 +53,25 @@ export default function ListView(props) {
                 })
                 .map((element) => {
                     return (
-                        <div key={element.name}>
+                        <div
+                            key={element.name}
+                            className="listPicDiv"
+                            onClick={() => { hobbyClicked(element) }}
+                        >
                             <img
                                 src={element.picture}
                                 alt={element.name}
+                                className="listPic"
+                                loading="lazy"
                             ></img>
                             <button
                                 name={element.name}
-                                onClick={() => { hobbyClicked(element) }}
                             >
                                 {element.name}
                             </button>
                         </div>)
                 })}
 
-            <p>ListView</p>
-        </div>
+        </div >
     )
 }

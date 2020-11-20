@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import ListFilter from "./ListFilter"
 import ListView from "./ListView"
+import "../../styles/list.css"
 
 export default function List(props) {
     const [filterdPeriod, setFilteredPeriod] = useState([])
 
 
     return (
-        <div>
-            <font color="red">Filterd Period : {filterdPeriod}</font>
+        <div className="list">
             <ListFilter
                 filterdPeriod={filterdPeriod}
                 setFilteredPeriod={setFilteredPeriod}
