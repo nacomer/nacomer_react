@@ -111,3 +111,6 @@ build
 
 #image fot test
 test_image
+
+#for mac
+.DS_Store
