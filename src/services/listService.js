@@ -1,15 +1,11 @@
-//require("dotenv").config();
+import axios from 'axios';
 
 export default class ListService {
 
     getHobby = async () => {
-        const hobbyResponse =
-            await fetch(process.env.NACOMER_EXPRESS_URL + "/api/hobby")
-                .catch(err => {
-                    console.error("コメントの取得に失敗しました。");
-                });;
-        const ans = await hobbyResponse.json()
-        return ans;
+        const hobbyResponse = await axios.get(process.env.REACT_APP_URL + "/api/hobby")
+            .catch("コメントの取得に失敗しました。"); 
+        return hobbyResponse.data;
     };
 
 }

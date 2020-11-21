@@ -5,14 +5,14 @@ export class CommentService {
     }
 
     getCommentByHobby = async (hobbyId) => {
-        const detailCommentResponse = await fetch(process.env.NACOMER_EXPRESS_URL + "/api/hobby/" + hobbyId + "/comment").catch(err => {
+        const detailCommentResponse = await fetch(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment").catch(err => {
             console.error("コメントの取得に失敗しました。");
         });;
         return detailCommentResponse.json();
     };
 
     addComment = async (hobbyId, comment) => {
-        await fetch(process.env.NACOMER_EXPRESS_URL + "/api/hobby/" + hobbyId + "/comment/", {
+        await fetch(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -26,7 +26,7 @@ export class CommentService {
     };
 
     updateComment = async (hobbyId, commentId, commentText) => {
-        await fetch(process.env.NACOMER_EXPRESS_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
+        await fetch(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -40,7 +40,7 @@ export class CommentService {
     }
 
     deleteComment = async (hobbyId, commentId) => {
-        await fetch(process.env.NACOMER_EXPRESS_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
+        await fetch(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
             method: "DELETE"
         }).catch(err => {
             console.error("コメントの削除に失敗しました。");

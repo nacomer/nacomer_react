@@ -1,45 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/list.css"
-import HobbyService from "../../services/listService"
+import HobbyService from "../../services/listService";
 
 export default function ListView(props) {
-    // const apiHobby = [
-    //     {
-    //         hobbyid: 1,
-    //         name: "golf",
-    //         picture: "./golf.jpeg",
-    //         periodID: 1
-    //     },
-    //     {
-    //         hobbyid: 2,
-    //         name: "camp",
-    //         picture: "./camp.jpeg",
-    //         periodID: 2
-    //     },
-    //     {
-    //         hobbyid: 3,
-    //         name: "swimming",
-    //         picture: "./swimming.jpg",
-    //         periodID: 3
-    //     }
-    // ]
-
     const [apiHobby, setApiHobby] = useState([]);
 
     useEffect(() => {
         const hobbyService = new HobbyService();
-        const testGetApi = async () => {
-            const testhobby = await hobbyService.getHobby();
-            setApiHobby(testhobby)
+        const getHobby = async () => {
+            const hobbyData = await hobbyService.getHobby();
+            setApiHobby(hobbyData);
         }
-        testGetApi()
-
+        getHobby();
     }, [])
 
     const hobbyClicked = (element) => {
         // history.pushState(null, null, element.name)
         props.setViewMode("Detail");
-        props.setHobbyId(element.hobbyid)
+        props.setHobbyId(element.hobbyId)
     }
     return (
         <div className="listView">
@@ -47,8 +25,8 @@ export default function ListView(props) {
                 apiHobby
                     .filter((element) => {
                         return (
-                            (props.filterdPeriod.length === 0) ||
-                            (props.filterdPeriod.includes(element.period))
+                            (props.filteredPeriod.length === 0) ||
+                            (props.filteredPeriod.includes(element.period))
                         )
                     })
                     .map((element) => {
@@ -66,7 +44,6 @@ export default function ListView(props) {
                                 </button>
                             </div>)
                     })}
-
         </div>
     )
 }
