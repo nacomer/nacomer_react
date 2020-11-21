@@ -11,12 +11,13 @@ export default function List(props) {
 			<ListFilter
 				filteredPeriod={filteredPeriod}
 				setFilteredPeriod={setFilteredPeriod}
-
+				className="listFilter"
 			/>
 			<ListView
 				filteredPeriod={filteredPeriod}
 				setViewMode={props.setViewMode}
 				setHobbyId={props.setHobbyId}
+				className="listView"
 			/>
 		</div >
 	)

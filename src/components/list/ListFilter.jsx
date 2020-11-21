@@ -24,19 +24,20 @@ export default function ListFilter(props) {
 	const filterItem = (
 		<>
 			<div className="filterItem">
-				所要時間
-                {periodItemList.map((element) => {
-				return (
-					<p key={element.periodId}>
-						<input
-							type="checkbox"
-							name="period"
-							value={element.periodId}
-							onClick={setFilterValue}
-						/>
-						{element.hours}時間
-					</p>)
-			})}
+				<div className="search">所要時間で検索</div>
+				{periodItemList.map((element) => {
+					return (
+						<p key={element.periodId} className="searchCheckBox">
+							<input
+								type="checkbox"
+								name="period"
+								value={element.periodId}
+								onClick={setFilterValue}
+							/>
+							{element.hours}時間
+						</p>
+					)
+				})}
 			</div>
 		</>
 	);

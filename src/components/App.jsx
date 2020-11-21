@@ -10,8 +10,10 @@ export default function App() {
 	return (
 		<div>
 			<Header setViewMode={setViewMode} />
+			<br />
 			{viewMode === "List" && <List setViewMode={setViewMode} setHobbyId={setHobbyId} />}
 			{viewMode === "Detail" && <Detail hobbyId={hobbyId} />}
+			<br />
 			<Footer />
 		</div>
 	);

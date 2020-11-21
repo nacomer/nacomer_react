@@ -30,11 +30,13 @@ export default function ListView(props) {
 				})
 				.map((hobby) => {
 					return (
-						<div key={hobby.name}>
-							<img src={hobby.mainPicture} alt={hobby.name} />
-							<button id={hobby.id} onClick={hobbyClicked}>
-								{hobby.name}
-							</button>
+						<div key={hobby.name} className="hobbyDiv">
+							<img src={hobby.mainPicture} alt={hobby.name} className="hobbyImg" />
+							<div className="hobbyButtonDiv">
+								<button id={hobby.id} onClick={hobbyClicked} className="hobbyButton">
+									{hobby.name}
+								</button>
+							</div>
 						</div>
 					)
 				})

@@ -7,7 +7,8 @@
   width: 20%;
   float:left;
     display: inline-block;
-
+  background-color: antiquewhite;
+  margin-right: 10px;
 }
 
 .listView{
@@ -16,10 +17,22 @@
   flex-flow: row wrap;
   justify-content:left;
   align-items: baseline;
-
 }
 
+.search {
+  font-weight: bold;
+  padding: 0.5em 1em;
+  margin: 10px;
+  background:orange;
+  border-bottom: solid 4px #FFF5E5;
+  border-radius: 9px;
+  width: 80%
+}
 
+.searchCheckBox {
+  margin: 10px 0 10px 10px;
+  font-weight: bold;
+}
 
 .listPicDiv{
     display:flex;
@@ -62,4 +75,25 @@ button:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
   background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
+}
+
+.hobbyDiv {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.hobbyImg {
+  width: 270px;
+  height: 250px;
+  position: relative;
+  top: 0;
+  object-fit: cover;
+}
+
+.hobbyButton{
+  width: 90%;
+}
+
+.hobbyButtonDiv {
+  margin-top: -5px;
 }
