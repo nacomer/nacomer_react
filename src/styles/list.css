@@ -1,3 +1,8 @@
+.list{
+     display: flex;
+     flex-direction: row;
+}
+
 .filterItem{
   width: 20%;
   float:left;
@@ -7,6 +12,54 @@
 
 .listView{
   width: 80%;
-  float:right;
-    display: inline-block;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:left;
+  align-items: baseline;
+
+}
+
+
+
+.listPicDiv{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-content:flex-end;
+    margin :5px;
+    width: clamp(100pt,25%,150pt);
+    height: auto;
+}
+
+.listPic{
+    width: 100%;
+    height: auto;
+}
+
+ .listPic:hover{
+    opacity: 0.6;
+  transition-duration: 0.3s; 
+
+}
+
+button{
+    width: 100%;
+　　height: auto;
+}
+
+button{
+    font-size:1.6rem;
+  border: 1px solid #ccc;
+  background: #f1e767;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(top, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+button:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
+  background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }

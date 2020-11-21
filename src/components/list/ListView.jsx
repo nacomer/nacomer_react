@@ -37,6 +37,7 @@ export default function ListView(props) {
     }, [])
 
     const hobbyClicked = (element) => {
+        // history.pushState(null, null, element.name)
         props.setViewMode("Detail");
         props.setHobbyId(element.hobbyid)
     }
