@@ -114,3 +114,4 @@ test_image
 
 #for mac
 .DS_Store
+src/.DS_Store

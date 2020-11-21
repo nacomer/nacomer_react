@@ -1,8 +1,6 @@
 //require("dotenv").config();
 
 export default class ListService {
-    constructor() {
-    }
 
     getHobby = async () => {
         const hobbyResponse =
@@ -10,7 +8,6 @@ export default class ListService {
                 .catch(err => {
                     console.error("コメントの取得に失敗しました。");
                 });;
-        //        const ans = await hobbyResponse.body.getReader().read();
         const ans = await hobbyResponse.json()
         return ans;
     };

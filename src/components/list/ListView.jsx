@@ -32,7 +32,6 @@ export default function ListView(props) {
             const testhobby = await hobbyService.getHobby();
             setApiHobby(testhobby)
         }
-
         testGetApi()
 
     }, [])
@@ -41,7 +40,6 @@ export default function ListView(props) {
         props.setViewMode("Detail");
         props.setHobbyId(element.hobbyid)
     }
-    console.log(apiHobby);
     return (
         <div className="listView">
             {
@@ -56,7 +54,7 @@ export default function ListView(props) {
                         return (
                             <div key={element.name}>
                                 <img
-                                    src={element.picture}
+                                    src={element.mainPicture}
                                     alt={element.name}
                                 ></img>
                                 <button
