@@ -9,8 +9,8 @@ export default function DetailCommentItem(props) {
 	const commentService = new CommentService();
 	
 	function updateClick() {
-		const comment = document.getElementById("comment");
-		comment.style.backgroundColor = "white";
+		//const comment = document.getElementById("comment");
+		//comment.style.backgroundColor = "white";
 		commentTextArea.current.focus();
 		setIsEdit(true);
 	}
@@ -21,6 +21,8 @@ export default function DetailCommentItem(props) {
 
 		setIsEdit(false);
 		comment.style.backgroundColor = "transparent";
+		props.addComment();
+		
 	}
 	
 	function deleteClick(e) {
@@ -29,15 +31,16 @@ export default function DetailCommentItem(props) {
 		setIsEdit(false);
 		const comment = document.getElementById("comment");
 		comment.style.backgroundColor = "transparent";
+		props.deleteComment();
   }
 
   return (
   	<>
 			<div className="comment">
-    		<textarea id="comment" className="commentBox" ref={commentTextArea}>{props.detailComment.content}</textarea>
-				{(!isEdit) && <button name={props.key} onClick={updateClick} onClick={props.updateComment}>編集</button>}
-				{(!isEdit) && <button name={props.key} onClick={deleteClick} onClick={props.deleteComment}>削除</button>}
-				{(isEdit) && <button onClick={sendClick} onClick={props.addComment}>送信</button>}
+    		<textarea id="comment" key={props.key} className="commentBox" ref={commentTextArea}>{props.detailComment.content}</textarea>
+				{(!isEdit) && <button name={props.key} onClick={updateClick}>編集</button>}
+				{(!isEdit) && <button name={props.key} onClick={deleteClick}>削除</button>}
+				{(isEdit) && <button onClick={sendClick}>送信</button>}
 			</div>
 		</>
 	)

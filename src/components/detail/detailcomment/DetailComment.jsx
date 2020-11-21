@@ -6,7 +6,6 @@ import DetailCommentSend from "./DetailCommentSend";
 export default function DetailComment(props) {
   const [ detailCommentJson, setDetailCommentJson] = useState([]);
   const [ addCommentFlg, setAddCommentFlg ] = useState(false);
-  const [ updateCommentFlg, setUpdateCommentFlg ] = useState(false);
   const [ deleteCommentFlg, setDeleteCommentFlg ] = useState(false);
 
   useEffect(() => {
@@ -26,21 +25,18 @@ export default function DetailComment(props) {
       ];
       
       const commentService = new CommentService();
-      const detailCommentJson = await commentService.getCommentByHobby(props.id)
+      //const detailCommentJson = await commentService.getCommentByHobby(props.id)
 
-      setDetailCommentJson(detailCommentJson);
+      //setDetailCommentJson(detailCommentJson);
+      setDetailCommentJson(detailComment);
     };
 
     getDetailComments();
     setAddCommentFlg(false);
-  }, [addCommentFlg, updateCommentFlg, deleteCommentFlg]);
+  }, [addCommentFlg, deleteCommentFlg]);
 
   function addComment() {
       setAddCommentFlg(true);
-  }
-
-  function updateComment() {
-    setUpdateCommentFlg(true);
   }
 
   function deleteComment() {
@@ -51,7 +47,7 @@ export default function DetailComment(props) {
     <div>
       <DetailCommentSend hobbyId={props.hobbyId} addComment={addComment} />
       {detailCommentJson.map(value=>{
-        return <DetailCommentItem hobbyId={props.hobbyId} detailComment={value} key={value.commentId} addComment={addComment} updateComment={updateComment} deleteComment={deleteComment}/>
+        return <DetailCommentItem hobbyId={props.hobbyId} detailComment={value} key={value.commentId} addComment={addComment} deleteComment={deleteComment}/>
       })}
     </div>
   );
