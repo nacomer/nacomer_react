@@ -17,6 +17,7 @@
   flex-flow: row wrap;
   justify-content:left;
   align-items: baseline;
+  background-color: aliceblue;
 }
 
 .search {

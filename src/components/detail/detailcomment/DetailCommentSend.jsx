@@ -13,9 +13,10 @@ export default function DetailCommentItemSend(props) {
 
 	return (
 		<>
+			<h3>　口コミ登録</h3>
 			<form>
 				<textarea id="commentText" className="commentRegisterBox" placeholder="口コミを入力してください"></textarea>
-				<button onSubmit={addComment} onSubmit={props.addComment}>登録</button>
+				<button onSubmit={addComment} className="commentRegisterButton" onSubmit={props.addComment}>登録</button>
 			</form>
 		</>
 	)

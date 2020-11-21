@@ -1,6 +1,6 @@
 .comment {
-    position: relative;
-  margin: 2em 0 2em 40px;
+  position: relative;
+  margin: 2em 2em 2em 2em;
   padding: 15px;
   background: #fff0c6;
   border-radius: 30px;
@@ -8,10 +8,57 @@
 
 .commentBox {
 	background-color: transparent;
-	border: none;
-	width: 80%
+  border: none;
+  font-size: x-large;
+	width: 70%
 }
 
 .commentRegisterBox {
+  margin-left: 10px;
+  font-size: x-large;
 	width: 80%
+}
+
+.commentRegisterButton {
+  font-size: large;
+  width: 10%;
+  margin: 5px;
+}
+
+.deleteButton {
+  width: 10%;
+  margin: 5px;
+  position: relative;
+  font-size: large;
+  display: inline-block;
+  font-weight: bold;
+  border-left: solid 4px orange;
+  border-right: solid 4px orange;
+  color: black;
+  background: antiquewhite;
+}
+.editButton {
+  width: 10%;
+  margin: 5px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: large;
+  border-left: solid 4px orange;
+  border-right: solid 4px orange;
+  color: black;
+  background: antiquewhite;
+}
+
+.sendButton {
+  width: 10%;
+  position: relative;
+  margin: 5px;
+  font-size: large;
+  display: inline-block;
+  font-weight: bold;
+  border-left: solid 4px orange;
+  border-right: solid 4px orange;
+  color: black;
+  background: antiquewhite;
 }

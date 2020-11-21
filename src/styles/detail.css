@@ -1,0 +1,15 @@
+.detailImage {
+    display: inline;
+}
+
+.detailText {
+    display: inline;
+}
+
+.detailHeader {
+    background-color: aliceblue;
+}
+
+.detailHeaderName {
+    margin-bottom: 5px;
+}

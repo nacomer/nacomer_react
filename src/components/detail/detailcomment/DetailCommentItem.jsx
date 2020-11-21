@@ -40,9 +40,9 @@ export default function DetailCommentItem(props) {
 		<>
 			<div className="comment">
 				<textarea id="comment" key={props.key} className="commentBox" ref={commentTextArea}>{props.detailComment.content}</textarea>
-				{(!isEdit) && <button name={props.key} onClick={updateClick}>編集</button>}
-				{(!isEdit) && <button name={props.key} onClick={deleteClick}>削除</button>}
-				{(isEdit) && <button onClick={sendClick}>送信</button>}
+				{(!isEdit) && <button name={props.key} className="editButton" onClick={updateClick}>編集</button>}
+				{(!isEdit) && <button name={props.key} className="deleteButton" onClick={deleteClick}>削除</button>}
+				{(isEdit) && <button className="sendButton" onClick={sendClick}>送信</button>}
 			</div>
 		</>
 	)

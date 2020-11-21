@@ -46,6 +46,8 @@ export default function DetailComment(props) {
   return (
     <div>
       <DetailCommentSend hobbyId={props.hobbyId} addComment={addComment} />
+      <hr />
+      <h3>　口コミ一覧</h3>
       {detailCommentJson.map(value => {
         return <DetailCommentItem hobbyId={props.hobbyId} detailComment={value} key={value.commentId} addComment={addComment} deleteComment={deleteComment} />
       })}
