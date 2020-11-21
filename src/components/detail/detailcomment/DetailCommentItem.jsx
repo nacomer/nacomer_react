@@ -9,8 +9,10 @@ export default function DetailCommentItem(props) {
 	const commentService = new CommentService();
 
 	function updateClick() {
+		// TODO: 編集ボタンを押下したら白抜きにしたい
 		//const comment = document.getElementById("comment");
 		//comment.style.backgroundColor = "white";
+
 		commentTextArea.current.focus();
 		setIsEdit(true);
 	}
