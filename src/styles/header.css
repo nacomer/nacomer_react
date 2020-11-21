@@ -1,4 +1,14 @@
-.logo{
-    width: 100px;
-    height:auto;
+.logo {
+  width: 150px;
+	height:auto;
+	display: inline;
+}
+
+.header {
+	background-color: lightblue;
+}
+
+.catchCopy {
+	display: inline;
+	font-size: xx-large;
 }

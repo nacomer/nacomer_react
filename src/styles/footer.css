@@ -1,0 +1,17 @@
+.footer {
+	background-color: lightblue;
+	height: 250px;
+	text-align: center;
+}
+
+.logo {
+	margin-top: 10px;
+	width: 150px;
+	height:auto;
+}
+
+.sns {
+	width: 50px;
+	height:auto;
+	margin: 30px
+}
