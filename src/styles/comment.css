@@ -1,0 +1,17 @@
+.comment {
+    position: relative;
+  margin: 2em 0 2em 40px;
+  padding: 15px;
+  background: #fff0c6;
+  border-radius: 30px;
+}
+
+.commentBox {
+	background-color: transparent;
+	border: none;
+	width: 80%
+}
+
+.commentRegisterBox {
+	width: 80%
+}
