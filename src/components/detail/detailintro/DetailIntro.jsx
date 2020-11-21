@@ -1,15 +1,15 @@
 import React from "react";
-import DetailIntoroGoodsItem from "./DetailIntroGoodsItem";
-import DetailIntoroYoutubeItem from "./DetailIntroYoutubeItem";
+import DetailIntroGoodsItem from "./DetailIntroGoodsItem";
+import DetailIntroYoutubeItem from "./DetailIntroYoutubeItem";
 
 export default function DetailIntro(props) {
   return (
     <div>
-      {props.detailJson.Youtube.map((value, index)=>{
-        return <DetailIntoroYoutubeItem url={value.youtubeURL} key={index}/>
+      {props.detailJson.Youtube.map((value, index) => {
+        return <DetailIntroYoutubeItem url={value.youtubeURL} key={index} />
       })}
-      {props.detailJson.subPicture.map((value, index)=>{
-        return <DetailIntoroGoodsItem url={value.subpictureURL} key={index}/>
+      {props.detailJson.subPictures.map((value, index) => {
+        return <DetailIntroGoodsItem url={value.subPicture} key={index} />
       })}
     </div>
   );

@@ -1,8 +1,8 @@
 import React from "react";
 import { CommentService } from "../../../services/commentService";
 
-export default function DetailCommentItemSend(props) { 
-	
+export default function DetailCommentItemSend(props) {
+
 	async function addComment(e) {
 		e.preventDefault();
 		const commentService = new CommentService();
@@ -11,12 +11,12 @@ export default function DetailCommentItemSend(props) {
 		commentService.addComment(props.hobbyId, comment);
 	}
 
-  return (
-    <>
+	return (
+		<>
 			<form>
-    		<textarea id="commentText" className="commentRegisterBox" placeholder="口コミを入力してください"></textarea>
+				<textarea id="commentText" className="commentRegisterBox" placeholder="口コミを入力してください"></textarea>
 				<button onSubmit={addComment} onSubmit={props.addComment}>登録</button>
 			</form>
 		</>
-  )
+	)
 }

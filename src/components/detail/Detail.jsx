@@ -10,14 +10,14 @@ export default function Detail(props) {
   const initDataJson = {
     name: "",
     mainPicture: "",
-    description:"",
+    description: "",
     cost: undefined,
     periodID: undefined,
     Youtube: [],
     subPicture: [],
   };
   const [detailJson, setDetailJson] = useState(initDataJson);
-  
+
   useEffect(() => {
     const getHobbyDetail = async () => {
       const hobbyDetail = {
@@ -31,30 +31,30 @@ export default function Detail(props) {
           { youtubeURL: "https://www.youtube.com/embed/XLSamYktmUo" },
           { youtubeURL: "https://www.youtube.com/embed/27eyrDivrz0" },
         ],
-        subPicture: [
-          { subpictureURL: "./image/img1.jpg" },
-          { subpictureURL: "./image/img2.jpg" },
+        subPictures: [
+          { subPicture: "./image/img1.jpg" },
+          { subPicture: "./image/img2.jpg" },
         ],
       };
       //const hobbyDetail = await fetch(process.env.URL + "/api/hobby/" + props.hobbyId)
       setDetailJson(hobbyDetail);
     };
     getHobbyDetail();
-  },[]);
+  }, []);
 
   return (
     <div>
-      <DetailHeader detailJson={detailJson}/>
+      <DetailHeader detailJson={detailJson} />
       <Tabs>
         <TabList>
           <Tab>review</Tab>
           <Tab>Introduction</Tab>
         </TabList>
         <TabPanel>
-          <DetailComment hobbyId={props.hobbyId}/>
+          <DetailComment hobbyId={props.hobbyId} />
         </TabPanel>
         <TabPanel>
-          <DetailIntro detailJson={detailJson}/>
+          <DetailIntro detailJson={detailJson} />
         </TabPanel>
       </Tabs>
     </div>
