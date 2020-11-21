@@ -6,7 +6,6 @@ import "../../styles/list.css"
 export default function List(props) {
     const [filterdPeriod, setFilteredPeriod] = useState([])
 
-
     return (
         <div className="list">
             <ListFilter
