@@ -4,15 +4,15 @@ export default function ListFilter(props) {
 
     const periodItemList = [
         {
-            periodId: 1,
+            periodId: 2,
             hours: 2
         },
         {
-            periodId: 2,
+            periodId: 8,
             hours: 8
         },
         {
-            periodId: 3,
+            periodId: 24,
             hours: 24
         }
     ]
