@@ -14,8 +14,8 @@ export default function Detail(props) {
     description: "",
     cost: undefined,
     periodID: undefined,
-    Youtube: [],
-    subPicture: [],
+    Videos: [],
+    subPictures: [],
   };
   const [detailJson, setDetailJson] = useState(initDataJson);
 
