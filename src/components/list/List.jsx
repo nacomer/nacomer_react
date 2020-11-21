@@ -5,7 +5,6 @@ import ListView from "./ListView"
 export default function List(props) {
     const [filterdPeriod, setFilteredPeriod] = useState([])
 
-
     return (
         <div>
             <font color="red">Filterd Period : {filterdPeriod}</font>
