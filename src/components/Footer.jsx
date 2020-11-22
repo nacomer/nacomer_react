@@ -12,9 +12,9 @@ export default function Footer() {
       <div className="name">
         |  Takumi Kataoka  |  Masahiro Sakai  |  Tadashi Isano  |  Kohei Doihara  |  Ryoma Aoki  |
       </div>
-      <img src={twitter} className="sns" />
-      <img src={facebook} className="sns" />
-      <img src={instagram} className="sns" />
+      <img src={twitter} className="sns" alt="twitter" />
+      <img src={facebook} className="sns" alt="facebook" />
+      <img src={instagram} className="sns" alt="instagram" />
     </div>
   );
 }

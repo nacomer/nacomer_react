@@ -3,7 +3,6 @@ import DetailIntroGoodsItem from "./DetailIntroGoodsItem";
 import DetailIntroYoutubeItem from "./DetailIntroYoutubeItem";
 
 export default function DetailIntro(props) {
-  console.log(props.detailJson.SubPictures)
   return (
     <div className="detailIntro">
       <h2>{props.detailJson.name}の詳細・紹介</h2>

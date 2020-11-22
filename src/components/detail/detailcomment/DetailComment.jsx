@@ -10,24 +10,10 @@ export default function DetailComment(props) {
 
   useEffect(() => {
     const getDetailComments = async () => {
-      //TEST
-      const detailComment = [
-        {
-          commentId: 1,
-          content:
-            "テニスは面白いです。中学生の頃から部活でやっています。本気でやっても、遊びでやっても楽しくできますよ。",
-        },
-        {
-          commentId: 2,
-          content:
-            "歳をとってもテニスはできます。長年楽しめる趣味なので、是非一緒にやりましょう。",
-        },
-      ];
 
       const commentService = new CommentService();
-      //const detailCommentJson = await commentService.getComment(props.id)
+      const detailComment = await commentService.getComment(props.hobbyId)
 
-      //setDetailCommentJson(detailCommentJson);
       setDetailCommentJson(detailComment);
     };
 
@@ -48,8 +34,10 @@ export default function DetailComment(props) {
       <DetailCommentSend hobbyId={props.hobbyId} addComment={addComment} />
       <hr />
       <h3>　口コミ一覧</h3>
-      {detailCommentJson.map(value => {
-        return <DetailCommentItem hobbyId={props.hobbyId} detailComment={value} key={value.commentId} addComment={addComment} deleteComment={deleteComment} />
+      {detailCommentJson.map((comment, index) => {
+        return (
+          <DetailCommentItem hobbyId={props.hobbyId} comment={comment.content} id={comment.id} key={index} addComment={addComment} deleteComment={deleteComment} />
+        )
       })}
     </div>
   );

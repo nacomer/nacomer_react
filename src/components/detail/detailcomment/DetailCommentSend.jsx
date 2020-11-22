@@ -15,7 +15,7 @@ export default function DetailCommentItemSend(props) {
 		<>
 			<h3>　口コミ登録</h3>
 			<form>
-				<textarea id="commentText" className="commentRegisterBox" placeholder="口コミを入力してください"></textarea>
+				<textarea id="commentText" className="commentRegisterBox" defaultValue="" placeholder="口コミを入力してください"></textarea>
 				<button onSubmit={addComment} className="commentRegisterButton" onSubmit={props.addComment}>登録</button>
 			</form>
 		</>

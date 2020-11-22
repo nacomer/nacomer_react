@@ -10,8 +10,8 @@ export default function DetailCommentItem(props) {
 
 	function updateClick() {
 		// TODO: 編集ボタンを押下したら白抜きにしたい
-		//const comment = document.getElementById("comment");
-		//comment.style.backgroundColor = "white";
+		// const comment = document.getElementById("comment");
+		// comment.style.backgroundColor = "white";
 
 		commentTextArea.current.focus();
 		setIsEdit(true);
@@ -39,9 +39,9 @@ export default function DetailCommentItem(props) {
 	return (
 		<>
 			<div className="comment">
-				<textarea id="comment" key={props.key} className="commentBox" ref={commentTextArea}>{props.detailComment.content}</textarea>
-				{(!isEdit) && <button name={props.key} className="editButton" onClick={updateClick}>編集</button>}
-				{(!isEdit) && <button name={props.key} className="deleteButton" onClick={deleteClick}>削除</button>}
+				<textarea id="comment" key={props.id} className="commentBox" defaultValue={props.comment} ref={commentTextArea}></textarea>
+				{(!isEdit) && <button name={props.id} className="editButton" onClick={updateClick}>編集</button>}
+				{(!isEdit) && <button name={props.id} className="deleteButton" onClick={deleteClick}>削除</button>}
 				{(isEdit) && <button className="sendButton" onClick={sendClick}>送信</button>}
 			</div>
 		</>
@@ -49,16 +49,6 @@ export default function DetailCommentItem(props) {
 }
 
 DetailCommentItem.defaultProps = {
-	comments: [
-		{
-			id: "1",
-			comment: "私はこの方法で趣味にすることができました！！！！"
-		},
-		{
-			id: "2",
-			comment: "最高です！"
-		},
-	],
 	updateComment: () => { },
 	deleteComment: () => { }
 }
