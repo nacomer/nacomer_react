@@ -9,15 +9,17 @@ export class CommentService {
 	};
 
 	addComment = async (hobbyId, comment) => {
-		await axios.post(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment", {
+		const addCommentResponse = await axios.post(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment", {
 			content: comment
 		}).catch("コメントの登録に失敗しました。");
+		return addCommentResponse.data[0];
 	};
 
 	updateComment = async (hobbyId, commentId, comment) => {
-		await axios.put(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
+		const updateCommentResponse = await axios.put(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
 			content: comment
 		}).catch("コメントの更新に失敗しました。");
+		return updateCommentResponse.data[0];
 	}
 
 	deleteComment = async (hobbyId, commentId) => {

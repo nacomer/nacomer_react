@@ -9,6 +9,7 @@ export default function DetailCommentItemSend(props) {
 
 		const comment = document.getElementById("commentText").value;
 		commentService.addComment(props.hobbyId, comment);
+		props.addComment();
 	}
 
 	return (
@@ -16,7 +17,7 @@ export default function DetailCommentItemSend(props) {
 			<h3>　口コミ登録</h3>
 			<form>
 				<textarea id="commentText" className="commentRegisterBox" defaultValue="" placeholder="口コミを入力してください"></textarea>
-				<button onSubmit={addComment} className="commentRegisterButton" onSubmit={props.addComment}>登録</button>
+				<button onClick={addComment} className="commentRegisterButton">登録</button>
 			</form>
 		</>
 	)
