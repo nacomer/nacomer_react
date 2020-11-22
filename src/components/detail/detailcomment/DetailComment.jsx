@@ -44,7 +44,7 @@ export default function DetailComment(props) {
   }
 
   return (
-    <div>
+    <div className="detailComment">
       <DetailCommentSend hobbyId={props.hobbyId} addComment={addComment} />
       <hr />
       <h3>　口コミ一覧</h3>

@@ -6,12 +6,24 @@ export default function DetailHeader(props) {
 	return (
 		<div className="detailHeader">
 			<h1 className="detailHeaderName">{props.detailJson.name}</h1>
-			<img alt="" src={props.detailJson.mainPicture} className="detailImage" />
-			<div className="detailText">
-				<div>{props.detailJson.description}</div>
-				<div>費用：約　{props.detailJson.cost}　円</div>
-			</div>
+			<table className="detailTable">
+				<tr>
+					<td rowSpan="3" className="imgTd"><img alt="" src={props.detailJson.mainPicture} className="detailImage" /></td>
+					<td rowSpan="3" className="blankTd"></td>
+					<th className="textTh">趣味名</th>
+					<td className="textTd">{props.detailJson.name}</td>
+				</tr>
+				<tr>
+					<th className="textTh">説明</th>
+					<td className="textTd">{props.detailJson.description}</td>
+				</tr>
+				<tr>
+					<th className="textTh">費用</th>
+					<td className="textTd">約　{props.detailJson.cost}　円</td>
+				</tr>
+			</table>
+			<br />
 			<hr></hr>
-		</div>
+		</div >
 	);
 }
