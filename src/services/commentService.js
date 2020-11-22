@@ -1,49 +1,27 @@
-require("dotenv").config();
+import axios from 'axios';
 
 export class CommentService {
-	constructor() {
-	}
 
-	getCommentByHobby = async (hobbyId) => {
-		const detailCommentResponse = await fetch(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment").catch(err => {
-			console.error("コメントの取得に失敗しました。");
-		});;
-		return detailCommentResponse.json();
+	getComment = async (hobbyId) => {
+		const detailCommentResponse = await axios.get(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment")
+			.catch("コメントの取得に失敗しました。");
+		return detailCommentResponse.data;
 	};
 
 	addComment = async (hobbyId, comment) => {
-		await fetch(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				content: comment
-			})
-		}).catch(err => {
-			console.error("コメントの登録に失敗しました。");
-		});
+		await axios.post(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment", {
+			content: comment
+		}).catch("コメントの登録に失敗しました。");
 	};
 
-	updateComment = async (hobbyId, commentId, commentText) => {
-		await fetch(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				content: commentText
-			})
-		}).catch(err => {
-			console.error("コメントの更新に失敗しました。");
-		});;
+	updateComment = async (hobbyId, commentId, comment) => {
+		await axios.put(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
+			content: comment
+		}).catch("コメントの更新に失敗しました。");
 	}
 
 	deleteComment = async (hobbyId, commentId) => {
-		await fetch(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
-			method: "DELETE"
-		}).catch(err => {
-			console.error("コメントの削除に失敗しました。");
-		});;
+		await axios.post(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId)
+			.catch("コメントの削除に失敗しました。");
 	}
 }

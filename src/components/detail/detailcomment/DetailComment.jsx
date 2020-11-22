@@ -25,7 +25,7 @@ export default function DetailComment(props) {
       ];
 
       const commentService = new CommentService();
-      //const detailCommentJson = await commentService.getCommentByHobby(props.id)
+      //const detailCommentJson = await commentService.getComment(props.id)
 
       //setDetailCommentJson(detailCommentJson);
       setDetailCommentJson(detailComment);
