@@ -5,10 +5,11 @@ import DetailCommentSend from "./DetailCommentSend";
 
 export default function DetailComment(props) {
   const [detailCommentJson, setDetailCommentJson] = useState([]);
-  const [addCommentFlg, setAddCommentFlg] = useState(false);
-  const [deleteCommentFlg, setDeleteCommentFlg] = useState(false);
+  const [addCommentFlg, setAddCommentFlg] = useState(0);
+  const [deleteCommentFlg, setDeleteCommentFlg] = useState(0);
 
   useEffect(() => {
+    console.log("useeffect")
     const getDetailComments = async () => {
 
       const commentService = new CommentService();
@@ -18,15 +19,15 @@ export default function DetailComment(props) {
     };
 
     getDetailComments();
-    setAddCommentFlg(false);
+    //setAddCommentFlg(false);
   }, [addCommentFlg, deleteCommentFlg]);
 
   function addComment() {
-    setAddCommentFlg(true);
+    setAddCommentFlg(addCommentFlg+1);
   }
 
   function deleteComment() {
-    setDeleteCommentFlg(true);
+    setDeleteCommentFlg(deleteCommentFlg+1);
   }
 
   return (

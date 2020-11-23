@@ -17,22 +17,20 @@ export default function DetailCommentItem(props) {
 		setIsEdit(true);
 	}
 
-	function sendClick(e) {
-		const comment = document.getElementById(props.id);
-		commentService.updateComment(props.hobbyId, e.target.name, comment.value);
+	async function sendClick(e) {
+    const comment = document.getElementById(props.id);
+		await commentService.updateComment(props.id, comment.value);
     comment.disabled=true;
 		setIsEdit(false);
 		comment.style.backgroundColor = "transparent";
 		props.addComment();
-
 	}
 
-	function deleteClick(e) {
-		commentService.deleteComment(props.hobbyId, e.target.name);
-
-		setIsEdit(false);
-		const comment = document.getElementById(props.id);
-		comment.style.backgroundColor = "transparent";
+	async function deleteClick(e) {
+		await commentService.deleteComment(props.id);
+		// setIsEdit(false);
+		// const comment = document.getElementById(props.id);
+		// comment.style.backgroundColor = "transparent";
 		props.deleteComment();
 	}
 
