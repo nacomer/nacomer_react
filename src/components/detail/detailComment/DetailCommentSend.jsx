@@ -8,7 +8,7 @@ export default function DetailCommentItemSend(props) {
 		const commentService = new CommentService();
 
 		const textbox = document.getElementById("commentText");
-    commentService.addComment(props.hobbyId, textbox.value);
+    await commentService.addComment(props.hobbyId, textbox.value);
     textbox.value="";
     props.addComment();
 	}

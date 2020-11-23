@@ -15,15 +15,15 @@ export class CommentService {
 		return addCommentResponse.data[0];
 	};
 
-	updateComment = async (hobbyId, commentId, comment) => {
-		const updateCommentResponse = await axios.put(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId, {
+	updateComment = async (commentId, comment) => {
+		const updateCommentResponse = await axios.put(process.env.REACT_APP_URL + "/api/comment/" + commentId, {
 			content: comment
 		}).catch("コメントの更新に失敗しました。");
 		return updateCommentResponse.data[0];
 	}
 
-	deleteComment = async (hobbyId, commentId) => {
-		await axios.post(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment/" + commentId)
+	deleteComment = async (commentId) => {
+		await axios.delete(process.env.REACT_APP_URL + "/api/comment/" + commentId)
 			.catch("コメントの削除に失敗しました。");
 	}
 }
