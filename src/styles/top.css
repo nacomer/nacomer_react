@@ -31,10 +31,12 @@ p{
 	1% {
 		display: block;
 		opacity: 0;
+		transform: translateX(50px)
 	}
 
 	100% {
 		display: block;
 		opacity: 1;
+		transform: translateX(0px)
 	}
 }
