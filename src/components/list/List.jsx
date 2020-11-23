@@ -4,20 +4,21 @@ import ListView from "./ListView"
 import "../../styles/list.css"
 
 export default function List(props) {
-    const [filterdPeriod, setFilteredPeriod] = useState([])
+	const [filteredPeriod, setFilteredPeriod] = useState([])
 
-    return (
-        <div className="list">
-            <ListFilter
-                filterdPeriod={filterdPeriod}
-                setFilteredPeriod={setFilteredPeriod}
-
-            />
-            <ListView
-                filterdPeriod={filterdPeriod}
-                setViewMode={props.setViewMode}
-                setHobbyId={props.setHobbyId}
-            />
-        </div >
-    )
+	return (
+		<div className="list">
+			<ListFilter
+				filteredPeriod={filteredPeriod}
+				setFilteredPeriod={setFilteredPeriod}
+				className="listFilter"
+			/>
+			<ListView
+				filteredPeriod={filteredPeriod}
+				setViewMode={props.setViewMode}
+				setHobbyId={props.setHobbyId}
+				className="listView"
+			/>
+		</div >
+	)
 }
