@@ -79,9 +79,10 @@ body{
 
 .singInModal {
 	opacity:1;
-	position: relative;
-	left :40%;
-	top:40%;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform : translate(-50%,-50%);	 
 	width:300px;
 	height:auto;
 	background-color: transparent;
@@ -102,6 +103,8 @@ body{
   background: transparent;
 	color: black;
 	text-align: center;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
 } 
 
 .modalBtn{
