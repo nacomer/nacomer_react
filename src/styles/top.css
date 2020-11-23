@@ -12,9 +12,44 @@ body{
     font-family:cormorant-garamond, serif;
 }
 
-p{
+.topCatchCopy{
     position :absolute;
     top :55%;
     color: white;
     font-size: 30pt;
+} 
+.log-form{
+  padding: 10px;
+  position :absolute;
+  top :70%;
+  left:2%;
 }
+.topInput{
+  margin: 10px;
+  width: 250px;
+  font-size: 25pt;
+  transition: all .6s ease;
+  border-bottom:1px solid #cccccc;
+  border-right:none;
+  border-left:none;
+  border-top:none;
+  border-radius:0px;
+  background: transparent;
+  color: white;
+} 
+
+.topInput::placeholder {
+  color:#bbbbbb;
+}
+
+.topBtn{
+  margin: 10px;
+  width: 250px;
+  border-radius: 10px;
+  background-color:blue;
+ }
+
+ .signIn{
+   color: white;
+   font-size: 25px;
+ }
