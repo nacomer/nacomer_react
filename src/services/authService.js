@@ -8,7 +8,7 @@ export default class AuthService {
       password:pass
     })
 			.catch("ログインに失敗しました。");
-		return loginResponse.data;
+		return loginResponse.data[0];
 	};
 
 }

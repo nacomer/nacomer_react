@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "../../styles/top.css";
+import  AuthService  from "../../services/authService";
 
 export default function Top(props) {
   
   const clickLogin = (e)=>{
     const userName = document.getElementById("userName").value
     const passwoord = document.getElementById("password").value
-    
+    const authService = new AuthService();
+    const userId = authService.login(userName,passwoord).ID
+
   }
   
   return (
