@@ -7,9 +7,10 @@ export default function DetailCommentItemSend(props) {
 		e.preventDefault();
 		const commentService = new CommentService();
 
-		const comment = document.getElementById("commentText").value;
-		commentService.addComment(props.hobbyId, comment);
-		props.addComment();
+		const textbox = document.getElementById("commentText");
+    commentService.addComment(props.hobbyId, textbox.value);
+    textbox.value="";
+    props.addComment();
 	}
 
 	return (
