@@ -34,32 +34,6 @@
   font-weight: bold;
 }
 
-.listPicDiv{
-  display:flex;
-  flex-direction: column;
-  align-items: flex-end;
-  align-content:flex-end;
-  margin :5px;
-  width: clamp(100pt,25%,150pt);
-  height: auto;
-}
-
-.listPic{
-  width: 100%;
-  height: auto;
-}
-
-.listPic:hover{
-  opacity: 0.6;
-  transition-duration: 0.3s; 
-
-}
-
-button{
-  width: 100%;
-  height: auto;
-}
-
 button{
   font-size:1.6rem;
   border: 1px solid #ccc;
