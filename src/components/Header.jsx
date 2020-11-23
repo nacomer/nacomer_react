@@ -11,6 +11,8 @@ export default function Header(props) {
 			<div className="catchCopy">
 				~ Your Gate of New Hobby ~
 			</div>
+
+			<p>ユーザ名:{props.loginUser}</p>
 		</div>
 	)
 }

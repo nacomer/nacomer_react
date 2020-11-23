@@ -50,7 +50,6 @@ body{
   margin: 10px;
   width: 250px;
   border-radius: 10px;
-  background-color:blue;
 }
 
 .signIn{
@@ -75,4 +74,38 @@ body{
 		opacity: 1;
 		transform: translateX(0px)
 	}
+}
+
+
+.singInModal {
+	opacity:1;
+	position: relative;
+	left :40%;
+	top:40%;
+	width:300px;
+	height:auto;
+	background-color: transparent;
+	
+}
+
+
+.modalInput{
+  margin: 10px;
+  width: 250px;
+  font-size: 25pt;
+  transition: all .6s ease;
+  border-bottom:1px solid #cccccc;
+  border-right:none;
+  border-left:none;
+  border-top:none;
+  border-radius:0px;
+  background: transparent;
+	color: black;
+	text-align: center;
+} 
+
+.modalBtn{
+  margin: 10px;
+  width: 250px;
+  border-radius: 10px;
 }

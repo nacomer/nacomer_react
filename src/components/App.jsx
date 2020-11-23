@@ -9,11 +9,13 @@ import "../styles/app.css"
 export default function App() {
 	const [viewMode, setViewMode] = useState("Top");
 	const [hobbyId, setHobbyId] = useState();
+	const [loginUser, setLoginUser] = useState("")
+
 	return (
 		<div className="app">
-			{viewMode !== "Top" && <Header setViewMode={setViewMode} />}
+			{viewMode !== "Top" && <Header setViewMode={setViewMode} loginUser={loginUser} />}
 
-			{viewMode === "Top" && <Top setViewMode={setViewMode} />}
+			{viewMode === "Top" && <Top setViewMode={setViewMode} setLoginUser={setLoginUser} />}
 			{viewMode === "List" && <List setViewMode={setViewMode} setHobbyId={setHobbyId} />}
 			{viewMode === "Detail" && <Detail hobbyId={hobbyId} />}
 			<br />
