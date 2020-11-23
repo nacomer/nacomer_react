@@ -6,7 +6,8 @@
     padding: 0em;
     position: absolute;
     top:0em;
-    left:0em
+		left:0em;
+		filter: blur(4px);
 }
 body{
     font-family:cormorant-garamond, serif;
