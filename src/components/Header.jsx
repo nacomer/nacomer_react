@@ -19,6 +19,7 @@ export default function Header(props) {
     >
       <img src={logo} alt="logo" className="logo" />
       <div className="catchCopy">~ Your Gate of New Hobby ~</div>
+      <p>ユーザ名:{props.loginUser.name}</p>
     </div>
   );
 }

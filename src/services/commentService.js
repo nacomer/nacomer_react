@@ -17,13 +17,14 @@ export class CommentService {
     return addCommentResponse.data[0];
   };
 
-  updateComment = async (commentId, comment) => {
-    const updateCommentResponse = await axios
-      .put(`${process.env.REACT_APP_URL}/api/comment/${commentId}`, {
+  addComment = async (hobbyId, comment, id) => {
+    const addCommentResponse = await axios
+      .post(`${process.env.REACT_APP_URL}/api/hobby/${hobbyId}/comment`, {
         content: comment,
+        nacomerUserId: id,
       })
-      .catch('コメントの更新に失敗しました。');
-    return updateCommentResponse.data[0];
+      .catch('コメントの登録に失敗しました。');
+    return addCommentResponse.data[0];
   };
 
   deleteComment = async (commentId) => {

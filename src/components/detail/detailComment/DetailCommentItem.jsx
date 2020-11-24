@@ -44,29 +44,24 @@ export default function DetailCommentItem(props) {
           defaultValue={props.comment}
           ref={commentTextArea}
           disabled
-        />
-        {!isEdit && (
-          <button
-            name={props.id}
-            className="editButton"
-            onClick={updateClick}
-            type="submit"
-          >
+        >
+        </textarea>
+        {!isEdit && props.bool && (
+          <button name={props.id} className="editButton" onClick={updateClick}>
             編集
           </button>
         )}
-        {!isEdit && (
+        {!isEdit && props.bool && (
           <button
             name={props.id}
-            type="submit"
             className="deleteButton"
             onClick={deleteClick}
           >
             削除
           </button>
         )}
-        {isEdit && (
-          <button className="sendButton" onClick={sendClick} type="submit">
+        {isEdit && props.bool && (
+          <button className="sendButton" onClick={sendClick}>
             送信
           </button>
         )}
