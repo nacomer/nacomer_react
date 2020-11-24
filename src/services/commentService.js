@@ -17,12 +17,19 @@ export class CommentService {
     return addCommentResponse.data[0];
   };
 
-  addComment = async (hobbyId, comment, userId) => {
+  addComment = async (token, hobbyId, comment, userId) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    console.log('aa');
+
     const addCommentResponse = await axios
       .post(`${process.env.REACT_APP_URL}/api/hobby/${hobbyId}/comment`, {
         content: comment,
         nacomerUserId: userId,
-      })
+      }, config)
       .catch('コメントの登録に失敗しました。');
     return addCommentResponse.data[0];
   };

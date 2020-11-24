@@ -35,7 +35,7 @@ export default function DetailComment(props) {
         <DetailCommentSend
           hobbyId={props.hobbyId}
           addComment={addComment}
-          loginUser={props.loginUser.id}
+          loginUser={props.loginUser}
         />
       )}
       <hr />
@@ -45,7 +45,7 @@ export default function DetailComment(props) {
           <DetailCommentItem
             hobbyId={props.hobbyId}
             comment={comment.content}
-            bool={props.loginUser.id === comment.NacomerUser.id && guestFlg}
+            bool={parseInt(props.loginUser.id, []) === comment.NacomerUser.id && guestFlg}
             id={comment.id}
             key={index}
             loginUser={props.loginUser}

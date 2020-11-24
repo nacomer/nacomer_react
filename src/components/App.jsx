@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import List from './list/List';
 import Detail from './detail/Detail';
 import Top from './Top/Top';
 import '../styles/app.css';
+import AuthService from '../services/authService';
 
 export default function App() {
   const [viewMode, setViewMode] = useState('List');
   const [hobbyId, setHobbyId] = useState();
   const [loginUser, setLoginUser] = useState();
+
+  useEffect(() => {
+    const confirmLogin = async () => {
+      const authService = new AuthService();
+      const token = window.localStorage.getItem('token');
+      const id = window.localStorage.getItem('id');
+      const name = window.localStorage.getItem('name');
+      const isLogin = await authService.confirm(token, name);
+
+      if (isLogin) {
+        setLoginUser({
+          id: id,
+          name: name,
+          token: token,
+        });
+      }
+    };
+
+    confirmLogin();
+  }, [])
 
   return (
     <div className="app">
