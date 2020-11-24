@@ -12,8 +12,8 @@ workflows:
           filters:
             tags:
               only: /v.*/
-            branches:
-              only: main
+            # branches:
+            #   only: main
           account-url: ACCOUNT_URL
           repo: nacomer-react
           region: AWS_DEFAULT_REGION
