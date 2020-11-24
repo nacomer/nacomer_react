@@ -27,8 +27,7 @@ export default function DetailHeader(props) {
           <tr>
             <th className="textTh">費用</th>
             <td className="textTd">
-              約{props.detailJson.cost}
-              　円
+              約 {props.detailJson.cost} 円
             </td>
           </tr>
         </tbody>
