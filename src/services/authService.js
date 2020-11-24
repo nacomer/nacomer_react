@@ -8,11 +8,11 @@ export default class AuthService {
       password:password
     })
 			.catch("ログインに失敗しました。");
-		return loginResponse.data[0];
+		return loginResponse.data;
   };
   
   register = async (userName,pass) => {
-		const registerResponse = await axios.post(process.env.REACT_APP_URL + "/api/user/",{
+		const registerResponse = await axios.post(process.env.REACT_APP_URL + "/api/user/register",{
       name:userName,
       password:pass
     })

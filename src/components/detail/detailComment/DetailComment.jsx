@@ -9,17 +9,13 @@ export default function DetailComment(props) {
   const [deleteCommentFlg, setDeleteCommentFlg] = useState(0);
 
   useEffect(() => {
-    console.log("useeffect");
     const getDetailComments = async () => {
       const commentService = new CommentService();
       const detailComment = await commentService.getComment(props.hobbyId);
-      console.log(detailComment);
-
       setDetailCommentJson(detailComment);
     };
 
     getDetailComments();
-    //setAddCommentFlg(false);
   }, [addCommentFlg, deleteCommentFlg]);
 
   function addComment() {
@@ -34,7 +30,7 @@ export default function DetailComment(props) {
 
   return (
     <div className="detailComment">
-      {gusetFlag && <DetailCommentSend hobbyId={props.hobbyId} addComment={addComment} />}
+      {gusetFlag && <DetailCommentSend hobbyId={props.hobbyId} addComment={addComment} loginUser={props.loginUser.id}/>}
       <hr />
       <h3>　口コミ一覧</h3>
       {detailCommentJson.map((comment, index) => {

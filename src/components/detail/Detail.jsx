@@ -22,22 +22,6 @@ export default function Detail(props) {
   useEffect(() => {
     const hobbyService = new HobbyService();
     const getHobbyDetail = async () => {
-      // const hobbyDetail = {
-      //   name: "tennis",
-      //   mainPicture: "./image/main_tennis.jpg",
-      //   description:
-      //     "始めたばかりの頃はボールを打つこと自体も楽しいですし、上達してきたら習得した技術で作戦を立てて、相手の裏をかいたりボールをコントロールしたりするのも楽しいです。",
-      //   cost: 10000,
-      //   periodID: 1,
-      //   Videos: [
-      //     { videoURL: "https://www.youtube.com/embed/XLSamYktmUo" },
-      //     { videoURL: "https://www.youtube.com/embed/27eyrDivrz0" },
-      //   ],
-      //   SubPictures: [
-      //     { subPicture: "./image/img1.jpg" },
-      //     { subPicture: "./image/img2.jpg" },
-      //   ],
-      // };
       const hobbyDetail = await hobbyService.getHobbyDetail(props.hobbyId);
       setDetailJson(hobbyDetail);
     };

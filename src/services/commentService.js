@@ -8,9 +8,10 @@ export class CommentService {
 		return detailCommentResponse.data;
 	};
 
-	addComment = async (hobbyId, comment) => {
+	addComment = async (hobbyId, comment, id) => {
 		const addCommentResponse = await axios.post(process.env.REACT_APP_URL + "/api/hobby/" + hobbyId + "/comment", {
-			content: comment
+      content: comment,
+      nacomerUserId:id
 		}).catch("コメントの登録に失敗しました。");
 		return addCommentResponse.data[0];
 	};
