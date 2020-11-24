@@ -37,9 +37,7 @@ jobs:
             - ./node_modules
       - run:
           name: build
-          # command: yarn build
-          command: echo "build"
-      - run:
-          name: test
-          # command: yarn test
-          command: echo "test"
+          command: |
+            export CI=false
+            yarn build
+            export CI=true
