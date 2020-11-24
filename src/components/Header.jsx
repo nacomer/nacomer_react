@@ -11,14 +11,15 @@ export default function Header(props) {
       className="header"
       tabIndex="0"
       role="button"
-      onClick={() => { history.pushState(null, null, ''); props.setViewMode('List'); }}
+      onClick={() => {
+        history.pushState(null, null, '');
+        props.setViewMode('List');
+      }}
       aria-hidden="true"
     >
       <img src={logo} alt="logo" className="logo" />
-      <div className="catchCopy">
-        ~ Your Gate of New Hobby ~
-      </div>
-    <p>ユーザ名:{props.loginUser.name}</p>
+      <div className="catchCopy">~ Your Gate of New Hobby ~</div>
+      <p>ユーザ名:{props.loginUser.name}</p>
     </div>
   );
 }

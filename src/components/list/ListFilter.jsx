@@ -14,9 +14,7 @@ export default function ListFilter(props) {
         props.filteredPeriod.filter((item) => item !== e.target.value),
       );
     } else {
-      props.setFilteredPeriod(
-        [...props.filteredPeriod, e.target.value].sort(),
-      );
+      props.setFilteredPeriod([...props.filteredPeriod, e.target.value].sort());
     }
   };
 
@@ -40,5 +38,5 @@ export default function ListFilter(props) {
     </>
   );
 
-  return (<>{filterItem}</>);
+  return <>{filterItem}</>;
 }

@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import "../../styles/top.css";
-import AuthService from "../../services/authService";
-import ReactModal from "react-modal";
-import logo from "../../image/logo.png";
+import React, { useState } from 'react';
+import '../../styles/top.css';
+import ReactModal from 'react-modal';
+import AuthService from '../../services/authService';
+import logo from '../../image/logo.png';
 
 export default function Top(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [finishRegister, setFinishRegister] = useState(false);
-  
+
   const clickLogin = async () => {
-    const userName = document.getElementById("userName").value;
-    const password = document.getElementById("password").value;
+    const userName = document.getElementById('userName').value;
+    const password = document.getElementById('password').value;
     const authService = new AuthService();
     const res = await authService.login(userName, password);
     props.setLoginUser({
@@ -20,8 +20,8 @@ export default function Top(props) {
   };
 
   const clickUserRefister = async (e) => {
-    const userName = document.getElementById("registerUserName").value;
-    const passwoord = document.getElementById("registerPassword").value;
+    const userName = document.getElementById('registerUserName').value;
+    const passwoord = document.getElementById('registerPassword').value;
     const authService = new AuthService();
     const res = await authService.register(userName, passwoord);
     if (res) {
@@ -31,9 +31,7 @@ export default function Top(props) {
 
   const modal = (
     <ReactModal
-      isOpen={
-        isOpen
-      }
+      isOpen={isOpen}
       onRequestClose={() => setIsOpen(false)}
       className="singInModal"
     >
@@ -114,7 +112,7 @@ export default function Top(props) {
           onClick={() => {
             props.setLoginUser({
               id: 0,
-              name: "Guest"
+              name: 'Guest',
             });
           }}
         >

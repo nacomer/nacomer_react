@@ -10,7 +10,7 @@
   border-radius: 30px;
 }
 
-.comment:before {  
+.comment:before {
   content: "";
   position: absolute;
   left: -38px;
@@ -33,16 +33,16 @@
 }
 
 .commentBox {
-	background-color: transparent;
+  background-color: transparent;
   border: none;
   font-size: x-large;
-	width: 70%
+  width: 70%;
 }
 
 .commentRegisterBox {
   margin-left: 10px;
   font-size: x-large;
-	width: 80%
+  width: 80%;
 }
 
 .commentRegisterButton {

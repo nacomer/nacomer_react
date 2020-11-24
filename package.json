@@ -21,42 +21,24 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix 'src/**/*.jsx'"
+    "format": "prettier",
+    "lint": "prettier --write . && eslint --fix 'src/**/*.jsx' 'src/**/*.js'"
   },
   "eslintConfig": {
     "extends": [
       "airbnb"
     ],
+    "parser": "babel-eslint",
     "globals": {
       "window": true,
       "document": true
     },
     "rules": {
-      "import/extensions": 0,
-      "react/prop-types": 0,
-      "max-len": 0,
-      "no-tabs": 0,
-      "react/button-has-type": 0,
-      "no-mixed-spaces-and-tabs": 0,
-      "react/destructuring-assignment": 0,
-      "import/no-named-as-default": 0,
-      "react/no-array-index-key": 0,
-      "jsx-a11y/iframe-has-title": 0,
-      "import/no-named-as-default-member": 0,
-      "jsx-a11y/alt-text": 0,
-      "react/react-in-jsx-scope": 0,
-      "import/named": 0,
-      "no-unused-vars": 0,
-      "no-irregular-whitespace": 0,
-      "no-console": 0,
-      "import/order": 0,
-      "indent": 0,
       "import/prefer-default-export": 0,
-      "padded-blocks": 0,
-      "quotes": 0,
-      "prefer-template": 0,
-      "eol-last": 0,
-      "comma-dangle": 0,
+      "react/prop-types": 0,
+      "react/destructuring-assignment": 0,
+      "react/no-array-index-key": 0,
+      "no-unused-vars": 0,
       "no-shadow": 0,
       "semi": 0,
       "react/jsx-indent": 0,
@@ -68,7 +50,11 @@
       "react/jsx-indent-props": 0,
       "key-spacing": 0,
       "comma-spacing": 0,
-      "object-shorthand": 0
+      "object-shorthand": 0,
+      "react/no-array-index-key": 0,
+      "jsx-a11y/alt-text": 0,
+      "jsx-a11y/iframe-has-title": 0,
+      "react/button-has-type": 0
     }
   },
   "browserslist": {
@@ -84,6 +70,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-import": "^2.22.1",
@@ -91,7 +78,9 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "4.0.0",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1"
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.2.0",
+    "prettier-eslint": "^12.0.0"
   },
   "lint-staged": {
     "*.jsx": [
