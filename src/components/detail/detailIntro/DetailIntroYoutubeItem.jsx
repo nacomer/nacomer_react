@@ -11,14 +11,14 @@ export default function DetailIntroYoutubeItem(props) {
 					className="youtubeIframe"
 					frameBorder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					allowFullScreen >
+					allowFullScreen
+				>
 				</iframe>  
 			</div>
-      </td>
+    </td>
       <td>
       <p>{props.description}</p>
       </td>
-      </tr>
+    </tr>
 	)
 }
-

@@ -20,7 +20,7 @@ export default function DetailCommentItem(props) {
   async function sendClick(e) {
     const comment = document.getElementById(props.id);
 		await commentService.updateComment(props.id, comment.value);
-    comment.disabled=true;
+    comment.disabled = true;
 		setIsEdit(false);
 		comment.style.backgroundColor = "transparent";
 		props.addComment();
@@ -37,10 +37,10 @@ export default function DetailCommentItem(props) {
 	return (
 		<>
 			<div className="comment">
-				<textarea id={props.id} key={props.id} className="commentBox" defaultValue={props.comment} ref={commentTextArea} disabled={true}></textarea>
-				{(!isEdit && props.bool ) && <button name={props.id} className="editButton" onClick={updateClick}>編集</button>}
-				{(!isEdit && props.bool ) && <button name={props.id} className="deleteButton" onClick={deleteClick}>削除</button>}
-				{(isEdit && props.bool ) && <button className="sendButton" onClick={sendClick}>送信</button>}
+				<textarea id={props.id} key={props.id} className="commentBox" defaultValue={props.comment} ref={commentTextArea} disabled></textarea>
+				{(!isEdit && props.bool) && <button name={props.id} className="editButton" onClick={updateClick}>編集</button>}
+				{(!isEdit && props.bool) && <button name={props.id} className="deleteButton" onClick={deleteClick}>削除</button>}
+				{(isEdit && props.bool) && <button className="sendButton" onClick={sendClick}>送信</button>}
 			</div>
 		</>
 	)

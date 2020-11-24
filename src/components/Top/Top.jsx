@@ -35,9 +35,7 @@ export default function Top(props) {
         isOpen
       }
       onRequestClose={() => setIsOpen(false)}
-      className={
-        "singInModal"
-      }
+      className="singInModal"
     >
       <div className="modalDiv">
         <img src={logo} alt="logo" className="modalLogo" />
@@ -117,7 +115,7 @@ export default function Top(props) {
             props.setLoginUser({
               id: 0,
               name: "Guest"
-            });;
+            });
           }}
         >
           Login Later

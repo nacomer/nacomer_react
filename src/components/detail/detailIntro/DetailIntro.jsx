@@ -17,7 +17,7 @@ export default function DetailIntro(props) {
        {props.detailJson.SubPictures.map((value, index) => {
         return <DetailIntroGoodsItem url={value.subPicture} description={value.description} key={index} />
       })}
-  </table>
-  </>
+    </table>
+</>
   );
 }

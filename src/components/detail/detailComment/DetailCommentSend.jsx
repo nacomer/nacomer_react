@@ -6,24 +6,25 @@ export default function DetailCommentItemSend(props) {
     e.preventDefault();
     const commentService = new CommentService();
 
-	async function addComment(e) {
-		e.preventDefault();
-		const commentService = new CommentService();
+    async function addComment(e) {
+      e.preventDefault();
+      const commentService = new CommentService();
 
-		const textbox = document.getElementById("commentText");
-    await commentService.addComment(props.hobbyId, textbox.value, props.loginUser);
-    textbox.value="";
+      const textbox = document.getElementById("commentText");
+      await commentService.addComment(props.hobbyId, textbox.value, props.loginUser);
+      textbox.value = "";
 
-    props.addComment();
+      props.addComment();
+    }
+
+    return (
+      <>
+        <h3>　口コミ登録</h3>
+        <form>
+          <textarea id="commentText" className="commentRegisterBox" defaultValue="" placeholder="口コミを入力してください" />
+          <button onClick={addComment} className="commentRegisterButton">登録</button>
+        </form>
+      </>
+    );
   }
-
-  return (
-    <>
-      <h3>　口コミ登録</h3>
-      <form>
-        <textarea id="commentText" className="commentRegisterBox" defaultValue="" placeholder="口コミを入力してください" />
-        <button onClick={addComment} className="commentRegisterButton">登録</button>
-      </form>
-    </>
-  );
 }
