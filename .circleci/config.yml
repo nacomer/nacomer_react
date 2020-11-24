@@ -18,6 +18,13 @@ workflows:
           repo: nacomer-react
           region: AWS_DEFAULT_REGION
           tag: "${CIRCLE_SHA1}"
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build_and_push_image
+          aws-region: AWS_DEFAULT_REGION
+          family: nacomer-service"
+          cluster-name: nacomer-cluster"
+          container-image-name-updates: "container=nacomer-service,tag=${CIRCLE_SHA1}"
 jobs:
   build:
     docker:
