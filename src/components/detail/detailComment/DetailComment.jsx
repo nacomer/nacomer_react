@@ -40,20 +40,21 @@ export default function DetailComment(props) {
       )}
       <hr />
       <h3>　口コミ一覧</h3>
-      {detailCommentJson.map((comment, index) => {
-        return (
-          <DetailCommentItem
-            hobbyId={props.hobbyId}
-            comment={comment.content}
-            bool={parseInt(props.loginUser.id, []) === comment.NacomerUser.id && guestFlg}
-            id={comment.id}
-            key={index}
-            loginUser={props.loginUser}
-            addComment={addComment}
-            deleteComment={deleteComment}
-          />
-        );
-      })}
+      {detailCommentJson.map((comment, index) => (
+        <DetailCommentItem
+          hobbyId={props.hobbyId}
+          comment={comment.content}
+          bool={
+            parseInt(props.loginUser.id, []) === comment.NacomerUser.id
+            && guestFlg
+          }
+          id={comment.id}
+          key={index}
+          loginUser={props.loginUser}
+          addComment={addComment}
+          deleteComment={deleteComment}
+        />
+      ))}
     </div>
   );
 }

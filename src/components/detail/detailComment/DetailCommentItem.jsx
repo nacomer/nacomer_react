@@ -41,8 +41,7 @@ export default function DetailCommentItem(props) {
           defaultValue={props.comment}
           ref={commentTextArea}
           disabled
-        >
-        </textarea>
+        />
         {!isEdit && props.bool && (
           <button name={props.id} className="editButton" onClick={updateClick}>
             編集
@@ -68,6 +67,6 @@ export default function DetailCommentItem(props) {
 }
 
 DetailCommentItem.defaultProps = {
-  updateComment: () => { },
-  deleteComment: () => { },
+  updateComment: () => {},
+  deleteComment: () => {},
 };

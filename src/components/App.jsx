@@ -22,15 +22,15 @@ export default function App() {
 
       if (isLogin) {
         setLoginUser({
-          id: id,
-          name: name,
-          token: token,
+          id,
+          name,
+          token,
         });
       }
     };
 
     confirmLogin();
-  }, [])
+  }, []);
 
   return (
     <div className="app">

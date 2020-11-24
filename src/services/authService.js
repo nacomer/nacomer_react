@@ -28,12 +28,11 @@ export default class AuthService {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }
+    };
 
     const confirmResponse = await axios
-      .get(`${process.env.REACT_APP_URL}/api/user/login`, config).catch(() => {
-        return false;
-      });
+      .get(`${process.env.REACT_APP_URL}/api/user/login`, config)
+      .catch(() => false);
 
     if (confirmResponse && confirmResponse.data.name === name) {
       return true;
