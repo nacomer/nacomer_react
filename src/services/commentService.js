@@ -8,20 +8,20 @@ export class CommentService {
     return detailCommentResponse.data;
   };
 
-  addComment = async (hobbyId, comment) => {
+  updateComment = async (comment, commentId) => {
     const addCommentResponse = await axios
-      .post(`${process.env.REACT_APP_URL}/api/hobby/${hobbyId}/comment`, {
+      .put(`${process.env.REACT_APP_URL}/api/comment/${commentId}`, {
         content: comment,
       })
-      .catch('コメントの登録に失敗しました。');
+      .catch('コメントの更新に失敗しました。');
     return addCommentResponse.data[0];
   };
 
-  addComment = async (hobbyId, comment, id) => {
+  addComment = async (hobbyId, comment, userId) => {
     const addCommentResponse = await axios
       .post(`${process.env.REACT_APP_URL}/api/hobby/${hobbyId}/comment`, {
         content: comment,
-        nacomerUserId: id,
+        nacomerUserId: userId,
       })
       .catch('コメントの登録に失敗しました。');
     return addCommentResponse.data[0];

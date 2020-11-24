@@ -27,11 +27,11 @@ export default function DetailComment(props) {
     setDeleteCommentFlg(deleteCommentFlg + 1);
   }
 
-  const gusetFlag = props.loginUser.id !== 0;
+  const guestFlg = props.loginUser.id !== 0;
 
   return (
     <div className="detailComment">
-      {gusetFlag && (
+      {guestFlg && (
         <DetailCommentSend
           hobbyId={props.hobbyId}
           addComment={addComment}
@@ -45,7 +45,7 @@ export default function DetailComment(props) {
           <DetailCommentItem
             hobbyId={props.hobbyId}
             comment={comment.content}
-            bool={props.loginUser.id === comment.NacomerUser.id && gusetFlag}
+            bool={props.loginUser.id === comment.NacomerUser.id && guestFlg}
             id={comment.id}
             key={index}
             loginUser={props.loginUser}
