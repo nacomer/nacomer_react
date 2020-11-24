@@ -1,59 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/list.css"
+import HobbyService from "../../services/hobbyService";
 
 export default function ListView(props) {
-    const apiHobby = [
-        {
-            hobbyid: 1,
-            name: "golf",
-            picture: "./golf.jpeg",
-            periodID: 1
-        },
-        {
-            hobbyid: 2,
-            name: "camp",
-            picture: "./camp.jpeg",
-            periodID: 2
-        },
-        {
-            hobbyid: 3,
-            name: "swimming",
-            picture: "./swimming.jpg",
-            periodID: 3
-        }
-    ]
+	const [apiHobby, setApiHobby] = useState([]);
 
-    const hobbyClicked = (element) => {
-        props.setViewMode("Detail");
-        props.setHobbyId(element.hobbyid)
-    }
+	useEffect(() => {
+		const hobbyService = new HobbyService();
+		const getHobby = async () => {
+			const hobbyData = await hobbyService.getHobby();
+			setApiHobby(hobbyData);
+		}
+		getHobby();
+	}, [])
 
-    return (
-        <div className="listView">
-            {apiHobby
-                .filter((element) => {
-                    return (
-                        (props.filterdPeriod.length === 0) ||
-                        (props.filterdPeriod.includes(element.periodID.toString()))
-                    )
-                })
-                .map((element) => {
-                    return (
-                        <div key={element.name}>
-                            <img
-                                src={element.picture}
-                                alt={element.name}
-                            ></img>
-                            <button
-                                name={element.name}
-                                onClick={() => { hobbyClicked(element) }}
-                            >
-                                {element.name}
-                            </button>
-                        </div>)
-                })}
+	const hobbyClicked = (event) => {
+		props.setViewMode("Detail");
+		props.setHobbyId(event.target.id);
+	}
 
-            <p>ListView</p>
-        </div>
-    )
+	return (
+		<div className="listView">
+			{apiHobby
+				.filter((hobby) => {
+					return (
+						(props.filteredPeriod.length === 0) ||
+						(props.filteredPeriod.includes(hobby.period))
+					)
+				})
+				.map((hobby) => {
+					return (
+						<div key={hobby.name} className="hobbyDiv">
+							<img src={hobby.mainPicture} alt={hobby.name} className="hobbyImg" />
+							<div className="hobbyButtonDiv">
+								<button id={hobby.id} onClick={hobbyClicked} className="hobbyButton">
+									{hobby.name}
+								</button>
+							</div>
+						</div>
+					)
+				})
+			}
+		</div>
+	)
 }
