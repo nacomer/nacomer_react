@@ -8,7 +8,7 @@ export class CommentService {
     return detailCommentResponse.data;
   };
 
-  updateComment = async (comment, commentId) => {
+  updateComment = async (commentId, comment) => {
     const addCommentResponse = await axios
       .put(`${process.env.REACT_APP_URL}/api/comment/${commentId}`, {
         content: comment,

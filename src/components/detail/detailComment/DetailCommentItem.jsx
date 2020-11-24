@@ -28,9 +28,6 @@ export default function DetailCommentItem(props) {
 
   async function deleteClick(e) {
     await commentService.deleteComment(props.id);
-    // setIsEdit(false);
-    // const comment = document.getElementById(props.id);
-    // comment.style.backgroundColor = "transparent";
     props.deleteComment();
   }
 
