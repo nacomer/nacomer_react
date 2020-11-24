@@ -10,6 +10,8 @@ workflows:
             tags:
               only: /v.*/
       - aws-ecr/build_and_push_image:
+          requires:
+            - build
           filters:
             tags:
               only: /v.*/
@@ -23,8 +25,8 @@ workflows:
           requires:
             - aws-ecr/build_and_push_image
           aws-region: AWS_DEFAULT_REGION
-          family: nacomer-service"
-          cluster-name: nacomer-cluster"
+          family: nacomer-service
+          cluster-name: nacomer-cluster
           container-image-name-updates: "container=nacomer-service,tag=${CIRCLE_SHA1}"
 jobs:
   build:
