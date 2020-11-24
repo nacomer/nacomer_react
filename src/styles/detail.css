@@ -17,17 +17,18 @@
 }
 
 .youtube {
-  /* display: inline; */
+  display: inline;
   flex-flow: row wrap;
   justify-content: left;
   align-items: baseline;
-  margin: 10px 0px 10px 10px;
+  margin: 5px;
   width: 450px;
 }
 .youtubeIframe {
-  margin: 10px;
+  margin: auto;
   width: 400px;
   height: 250px;
+  display: block;
 }
 
 .detailIntroGoods {
@@ -35,12 +36,13 @@
   flex-flow: row wrap;
   justify-content: left;
   align-items: baseline;
-  margin: 10px;
+  margin: 5px;
 }
 .detailGoodsImg {
-  margin: 10px;
+  margin: auto;
   width: 400px;
   height: 250px;
+  display: block;
 }
 
 .detailTable {
@@ -62,11 +64,32 @@
 .textTd {
   text-align: center;
   width: 70%;
-  background-color: lightgray;
+  background-color: #eeeeee;
   padding: 10px 0;
 }
 
 .blankTd {
   width: 3%;
   background-color: transparent;
+}
+
+.introTable {
+  width: 100%;
+  /* table-layout: fixed; */
+}
+
+.introTr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+.introTr:nth-child(even) {
+  background-color: wheat;
+}
+
+.introImg {
+  width: 70%;
+}
+
+.introDescription {
+  width: 30%;
+  text-align: center;
 }

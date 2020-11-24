@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function DetailIntroYoutubeItem(props) {
   return (
-    <tr>
-      <td>
+    <tr className="introTr">
+      <td className="introImg">
         <div className="youtube">
           <iframe
             src={props.url}
@@ -14,7 +14,7 @@ export default function DetailIntroYoutubeItem(props) {
           />
         </div>
       </td>
-      <td>
+      <td className="introDescription">
         <p>{props.description}</p>
       </td>
     </tr>
