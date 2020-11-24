@@ -12,18 +12,28 @@ export default function Top(props) {
     const userName = document.getElementById('userName').value;
     const password = document.getElementById('password').value;
     const authService = new AuthService();
-    const res = await authService.login(userName, password);
-    props.setLoginUser({
-      id: res.id,
-      name: userName,
+    const res = await authService.login(userName, password).catch(() => {
+      window.alert('ログイン失敗しました')
     });
+
+    if (res) {
+      window.localStorage.setItem('token', res.token);
+      window.localStorage.setItem('id', res.userId);
+      window.localStorage.setItem('name', res.name);
+
+      props.setLoginUser({
+        id: res.userId,
+        name: res.name,
+        token: res.token,
+      });
+    }
   };
 
-  const clickUserRefister = async (e) => {
+  const clickUserRegister = async (e) => {
     const userName = document.getElementById('registerUserName').value;
-    const passwoord = document.getElementById('registerPassword').value;
+    const password = document.getElementById('registerPassword').value;
     const authService = new AuthService();
-    const res = await authService.register(userName, passwoord);
+    const res = await authService.register(userName, password);
     if (res) {
       setFinishRegister(true);
     }
@@ -54,7 +64,7 @@ export default function Top(props) {
             <button
               type="submit"
               className="modalBtn"
-              onClick={clickUserRefister}
+              onClick={clickUserRegister}
             >
               登録
             </button>

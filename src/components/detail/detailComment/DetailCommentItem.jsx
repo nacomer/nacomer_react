@@ -68,6 +68,6 @@ export default function DetailCommentItem(props) {
 }
 
 DetailCommentItem.defaultProps = {
-  updateComment: () => {},
-  deleteComment: () => {},
+  updateComment: () => { },
+  deleteComment: () => { },
 };

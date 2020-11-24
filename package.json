@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
+    "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -40,6 +41,7 @@
       "react/no-array-index-key": 0,
       "no-unused-vars": 0,
       "no-shadow": 0,
+      "no-alert": 0,
       "semi": 0,
       "react/jsx-indent": 0,
       "no-trailing-spaces": 0,
@@ -51,7 +53,6 @@
       "key-spacing": 0,
       "comma-spacing": 0,
       "object-shorthand": 0,
-      "react/no-array-index-key": 0,
       "jsx-a11y/alt-text": 0,
       "jsx-a11y/iframe-has-title": 0,
       "react/button-has-type": 0
