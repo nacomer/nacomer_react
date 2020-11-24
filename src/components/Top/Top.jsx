@@ -8,14 +8,23 @@ import logo from "../../image/logo.png";
 export default function Top(props) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const clickLogin = (e) => {
+  const clickLogin = async () => {
     const userName = document.getElementById("userName").value
-    const passwoord = document.getElementById("password").value
-    // const authService = new AuthService();
-    // const userId = authService.login(userName, passwoord).ID
-    props.setLoginUser(userName)
-    props.setViewMode("List")
+    const password = document.getElementById("password").value
+    const authService = new AuthService();
+    const res = await authService.login(userName, password)
+    props.setLoginUser({
+      id: res.id,
+      name: userName
+    })
+  }
 
+  const clickUserRefister = async (e) => {
+    const userName = document.getElementById("registerUserName").value
+    const passwoord = document.getElementById("registerPassword").value
+    const authService = new AuthService();
+    await authService.register(userName, passwoord)
+    setIsOpen(false)
   }
 
   const modal = (
@@ -23,6 +32,7 @@ export default function Top(props) {
       isOpen={
         isOpen
         /* Boolean describing if the modal should be shown or not. */}
+      onRequestClose={()=>setIsOpen(false)}
       className={
         "singInModal"
       /* String className to be applied to the modal content.
@@ -35,7 +45,7 @@ export default function Top(props) {
         <br></br>
         <input type="password" placeholder="password" id="registerPassword" className="modalInput" />
         <br></br>
-        <button type="submit" className="modalBtn" onClick={clickLogin}>登録</button>
+        <button type="submit" className="modalBtn" onClick={clickUserRefister}>登録</button>
         <br></br>
         <button className="modalBtn" onClick={() => { setIsOpen(false) }}>戻る</button>
       </div>

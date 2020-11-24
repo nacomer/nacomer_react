@@ -7,19 +7,19 @@ import Top from "./Top/Top"
 import "../styles/app.css"
 
 export default function App() {
-	const [viewMode, setViewMode] = useState("Top");
+	const [viewMode, setViewMode] = useState("List");
 	const [hobbyId, setHobbyId] = useState();
-	const [loginUser, setLoginUser] = useState("")
+	const [loginUser, setLoginUser] = useState()
 
 	return (
 		<div className="app">
-			{viewMode !== "Top" && <Header setViewMode={setViewMode} loginUser={loginUser} />}
+			{loginUser && <Header setViewMode={setViewMode} loginUser={loginUser} />}
 
-			{viewMode === "Top" && <Top setViewMode={setViewMode} setLoginUser={setLoginUser} />}
-			{viewMode === "List" && <List setViewMode={setViewMode} setHobbyId={setHobbyId} />}
-			{viewMode === "Detail" && <Detail hobbyId={hobbyId} />}
+			{!loginUser && <Top setLoginUser={setLoginUser} />}
+			{(loginUser && viewMode === "List") && <List setViewMode={setViewMode} setHobbyId={setHobbyId} />}
+			{(loginUser && viewMode === "Detail") && <Detail hobbyId={hobbyId} loginUser={loginUser} />}
 			<br />
-			{viewMode !== "Top" && <Footer />}
+			{loginUser && <Footer />}
 		</div>
 	);
 }

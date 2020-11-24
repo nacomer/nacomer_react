@@ -54,7 +54,7 @@ export default function Detail(props) {
           <Tab>Introduction</Tab>
         </TabList>
         <TabPanel>
-          <DetailComment hobbyId={props.hobbyId} />
+          <DetailComment hobbyId={props.hobbyId} loginUser={props.loginUser} />
         </TabPanel>
         <TabPanel>
           <DetailIntro detailJson={detailJson} />

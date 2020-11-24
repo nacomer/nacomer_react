@@ -12,7 +12,7 @@ export default function Header(props) {
 				~ Your Gate of New Hobby ~
 			</div>
 
-			<p>ユーザ名:{props.loginUser}</p>
+			<p>ユーザ名:{props.loginUser.name}</p>
 		</div>
 	)
 }
