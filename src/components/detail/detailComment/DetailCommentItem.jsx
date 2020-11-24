@@ -19,31 +19,32 @@ export default function DetailCommentItem(props) {
 
   async function sendClick(e) {
     const comment = document.getElementById(props.id);
-    await commentService.updateComment(props.id, comment.value);
+		await commentService.updateComment(props.id, comment.value);
     comment.disabled = true;
-    setIsEdit(false);
-    comment.style.backgroundColor = 'transparent';
-    props.addComment();
-  }
+		setIsEdit(false);
+		comment.style.backgroundColor = "transparent";
+		props.addComment();
+	}
 
-  async function deleteClick(e) {
-    await commentService.deleteComment(props.id);
-    // setIsEdit(false);
-    // const comment = document.getElementById(props.id);
-    // comment.style.backgroundColor = "transparent";
-    props.deleteComment();
-  }
+	async function deleteClick(e) {
+		await commentService.deleteComment(props.id);
+		// setIsEdit(false);
+		// const comment = document.getElementById(props.id);
+		// comment.style.backgroundColor = "transparent";
+		props.deleteComment();
+	}
 
-  return (
-    <>
-      <div className="comment">
-        <textarea id={props.id} key={props.id} className="commentBox" defaultValue={props.comment} ref={commentTextArea} disabled />
-        {(!isEdit) && <button name={props.id} className="editButton" onClick={updateClick}>編集</button>}
-        {(!isEdit) && <button name={props.id} className="deleteButton" onClick={deleteClick}>削除</button>}
-        {(isEdit) && <button className="sendButton" onClick={sendClick}>送信</button>}
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className="comment">
+				<textarea id={props.id} key={props.id} className="commentBox" defaultValue={props.comment} ref={commentTextArea} disabled></textarea>
+				{(!isEdit && props.bool) && <button name={props.id} className="editButton" onClick={updateClick}>編集</button>}
+				{(!isEdit && props.bool) && <button name={props.id} className="deleteButton" onClick={deleteClick}>削除</button>}
+				{(isEdit && props.bool) && <button className="sendButton" onClick={sendClick}>送信</button>}
+			</div>
+		</>
+	)
+
 }
 
 DetailCommentItem.defaultProps = {

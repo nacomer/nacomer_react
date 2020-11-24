@@ -9,7 +9,6 @@ export default function DetailComment(props) {
   const [deleteCommentFlg, setDeleteCommentFlg] = useState(0);
 
   useEffect(() => {
-    console.log('useeffect');
     const getDetailComments = async () => {
       const commentService = new CommentService();
       const detailComment = await commentService.getComment(props.hobbyId);
@@ -18,7 +17,6 @@ export default function DetailComment(props) {
     };
 
     getDetailComments();
-    // setAddCommentFlg(false);
   }, [addCommentFlg, deleteCommentFlg]);
 
   function addComment() {
@@ -29,14 +27,30 @@ export default function DetailComment(props) {
     setDeleteCommentFlg(deleteCommentFlg + 1);
   }
 
+  const gusetFlag = (props.loginUser.id !== 0)
+
   return (
     <div className="detailComment">
-      <DetailCommentSend hobbyId={props.hobbyId} addComment={addComment} />
+      {gusetFlag && <DetailCommentSend hobbyId={props.hobbyId} addComment={addComment} loginUser={props.loginUser.id} />}
       <hr />
       <h3>　口コミ一覧</h3>
-      {detailCommentJson.map((comment, index) => (
-        <DetailCommentItem hobbyId={props.hobbyId} comment={comment.content} id={comment.id} key={index} addComment={addComment} deleteComment={deleteComment} />
-      ))}
+      {detailCommentJson.map((comment, index) => {
+        return (
+          <DetailCommentItem
+            hobbyId={props.hobbyId}
+            comment={comment.content}
+            bool={
+              props.loginUser.id === comment.NacomerUser.id
+              && gusetFlag
+            }
+            id={comment.id}
+            key={index}
+            loginUser={props.loginUser}
+            addComment={addComment}
+            deleteComment={deleteComment}
+          />
+        );
+      })}
     </div>
   );
 }
