@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
 
 export default function DetailIntroGoodsItem(props) {
   return (
+
     <tr>
       <td>
         <div className="detailIntroGoods">
@@ -12,5 +13,6 @@ export default function DetailIntroGoodsItem(props) {
         <p>{props.description}</p>
       </td>
     </tr>
+
   );
 }

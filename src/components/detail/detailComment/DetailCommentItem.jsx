@@ -1,23 +1,23 @@
-import React, { useRef, useState } from "react";
-import "../../../styles/comment.css";
-import { CommentService } from "../../../services/commentService";
+import React, { useRef, useState } from 'react';
+import '../../../styles/comment.css';
+import { CommentService } from '../../../services/commentService';
 
 export default function DetailCommentItem(props) {
-	const commentTextArea = useRef(null);
-	const [isEdit, setIsEdit] = useState(false);
+  const commentTextArea = useRef(null);
+  const [isEdit, setIsEdit] = useState(false);
 
-	const commentService = new CommentService();
+  const commentService = new CommentService();
 
-	function updateClick() {
-		const comment = document.getElementById(props.id);
-		comment.style.backgroundColor = "white";
+  function updateClick() {
+    const comment = document.getElementById(props.id);
+    comment.style.backgroundColor = 'white';
 
-    comment.disabled=false;
-		commentTextArea.current.focus();
-		setIsEdit(true);
-	}
+    comment.disabled = false;
+    commentTextArea.current.focus();
+    setIsEdit(true);
+  }
 
-	async function sendClick(e) {
+  async function sendClick(e) {
     const comment = document.getElementById(props.id);
 		await commentService.updateComment(props.id, comment.value);
     comment.disabled=true;
@@ -44,9 +44,10 @@ export default function DetailCommentItem(props) {
 			</div>
 		</>
 	)
+
 }
 
 DetailCommentItem.defaultProps = {
-	updateComment: () => { },
-	deleteComment: () => { }
-}
+  updateComment: () => { },
+  deleteComment: () => { },
+};

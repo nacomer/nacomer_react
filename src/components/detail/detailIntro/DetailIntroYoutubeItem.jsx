@@ -1,6 +1,7 @@
-import React from "react";
+import React from 'react';
 
 export default function DetailIntroYoutubeItem(props) {
+
 	return (
     <tr>
     <td>
@@ -20,3 +21,4 @@ export default function DetailIntroYoutubeItem(props) {
       </tr>
 	)
 }
+
