@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { CommentService } from "../../../services/commentService";
-import DetailCommentItem from "./DetailCommentItem";
-import DetailCommentSend from "./DetailCommentSend";
+import React, { useEffect, useState } from 'react';
+import { CommentService } from '../../../services/commentService';
+import DetailCommentItem from './DetailCommentItem';
+import DetailCommentSend from './DetailCommentSend';
 
 export default function DetailComment(props) {
   const [detailCommentJson, setDetailCommentJson] = useState([]);
@@ -9,7 +9,6 @@ export default function DetailComment(props) {
   const [deleteCommentFlg, setDeleteCommentFlg] = useState(0);
 
   useEffect(() => {
-    console.log("useeffect");
     const getDetailComments = async () => {
       const commentService = new CommentService();
       const detailComment = await commentService.getComment(props.hobbyId);
@@ -39,7 +38,7 @@ export default function DetailComment(props) {
           hobbyId={props.hobbyId}
           comment={comment.content}
           id={comment.id}
-          key={index}
+          key={comment.id}
           addComment={addComment}
           deleteComment={deleteComment}
         />

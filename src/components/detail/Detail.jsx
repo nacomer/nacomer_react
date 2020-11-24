@@ -1,24 +1,24 @@
+import React, { useEffect, useState } from 'react';
 import {
- Tab, Tabs, TabList, TabPanel
-} from "react-tabs";
-import DetailHeader from "./DetailHeader";
-import DetailIntro from "./detailIntro/DetailIntro";
-import DetailComment from "./detailComment/DetailComment";
-import "react-tabs/style/react-tabs.css";
-import { useEffect, useState } from "react";
-import HobbyService from "../../services/hobbyService";
+  Tab, Tabs, TabList, TabPanel,
+} from 'react-tabs';
+import DetailHeader from './DetailHeader';
+import DetailIntro from './detailIntro/DetailIntro';
+import DetailComment from './detailComment/DetailComment';
+import 'react-tabs/style/react-tabs.css';
+import HobbyService from '../../services/hobbyService';
 
-require("dotenv").config();
+require('dotenv').config();
 
 export default function Detail(props) {
   const initDataJson = {
-    name: "",
-    mainPicture: "",
-    description: "",
+    name: '',
+    mainPicture: '',
+    description: '',
     cost: undefined,
     periodID: undefined,
     Videos: [],
-    subPictures: []
+    subPictures: [],
   };
   const [detailJson, setDetailJson] = useState(initDataJson);
 

@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
-import "../../../styles/comment.css";
-import { CommentService } from "../../../services/commentService";
+import React, { useRef, useState } from 'react';
+import '../../../styles/comment.css';
+import { CommentService } from '../../../services/commentService';
 
 export default function DetailCommentItem(props) {
   const commentTextArea = useRef(null);
@@ -10,7 +10,7 @@ export default function DetailCommentItem(props) {
 
   function updateClick() {
     const comment = document.getElementById(props.id);
-    comment.style.backgroundColor = "white";
+    comment.style.backgroundColor = 'white';
 
     comment.disabled = false;
     commentTextArea.current.focus();
@@ -22,7 +22,7 @@ export default function DetailCommentItem(props) {
     await commentService.updateComment(props.id, comment.value);
     comment.disabled = true;
     setIsEdit(false);
-    comment.style.backgroundColor = "transparent";
+    comment.style.backgroundColor = 'transparent';
     props.addComment();
   }
 
@@ -46,13 +46,19 @@ export default function DetailCommentItem(props) {
           disabled
         />
         {!isEdit && (
-          <button name={props.id} className="editButton" onClick={updateClick}>
+          <button
+            name={props.id}
+            className="editButton"
+            onClick={updateClick}
+            type="submit"
+          >
             編集
           </button>
         )}
         {!isEdit && (
           <button
             name={props.id}
+            type="submit"
             className="deleteButton"
             onClick={deleteClick}
           >
@@ -60,7 +66,7 @@ export default function DetailCommentItem(props) {
           </button>
         )}
         {isEdit && (
-          <button className="sendButton" onClick={sendClick}>
+          <button className="sendButton" onClick={sendClick} type="submit">
             送信
           </button>
         )}
@@ -71,5 +77,5 @@ export default function DetailCommentItem(props) {
 
 DetailCommentItem.defaultProps = {
   updateComment: () => {},
-  deleteComment: () => {}
+  deleteComment: () => {},
 };

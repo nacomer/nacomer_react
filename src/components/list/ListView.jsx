@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "../../styles/list.css";
-import HobbyService from "../../services/hobbyService";
+import React, { useEffect, useState } from 'react';
+import '../../styles/list.css';
+import HobbyService from '../../services/hobbyService';
 
 export default function ListView(props) {
   const [apiHobby, setApiHobby] = useState([]);
@@ -15,7 +15,7 @@ export default function ListView(props) {
   }, []);
 
   const hobbyClicked = (event) => {
-    props.setViewMode("Detail");
+    props.setViewMode('Detail');
     props.setHobbyId(event.target.id);
   };
 
@@ -24,7 +24,7 @@ export default function ListView(props) {
       {apiHobby
         .filter(
           (hobby) => props.filteredPeriod.length === 0
-            || props.filteredPeriod.includes(hobby.period)
+            || props.filteredPeriod.includes(hobby.period),
         )
         .map((hobby) => (
           <div key={hobby.name} className="hobbyDiv">
@@ -36,6 +36,7 @@ export default function ListView(props) {
             <div className="hobbyButtonDiv">
               <button
                 id={hobby.id}
+                type="submit"
                 onClick={hobbyClicked}
                 className="hobbyButton"
               >

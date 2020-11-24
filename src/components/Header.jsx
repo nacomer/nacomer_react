@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import logo from "../image/logo.png";
-import "../styles/header.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import logo from '../image/logo.png';
+import '../styles/header.css';
 
 const { history } = window;
 
@@ -12,8 +12,8 @@ export default function Header(props) {
       tabIndex="0"
       role="button"
       onClick={() => {
-        history.pushState(null, null, "");
-        props.setViewMode("List");
+        history.pushState(null, null, '');
+        props.setViewMode('List');
       }}
       aria-hidden="true"
     >
@@ -24,5 +24,5 @@ export default function Header(props) {
 }
 
 Header.propTypes = {
-  setViewMode: PropTypes.func.isRequired
+  setViewMode: PropTypes.func.isRequired,
 };

@@ -1,9 +1,9 @@
-import React from "react";
-import logo from "../image/logo.png";
-import twitter from "../image/twitter.png";
-import facebook from "../image/facebook.png";
-import instagram from "../image/instagram.png";
-import "../styles/footer.css";
+import React from 'react';
+import logo from '../image/logo.png';
+import twitter from '../image/twitter.png';
+import facebook from '../image/facebook.png';
+import instagram from '../image/instagram.png';
+import '../styles/footer.css';
 
 export default function Footer() {
   return (

@@ -1,5 +1,5 @@
-import React from "react";
-import "../../styles/detail.css";
+import React from 'react';
+import '../../styles/detail.css';
 
 export default function DetailHeader(props) {
   return (
