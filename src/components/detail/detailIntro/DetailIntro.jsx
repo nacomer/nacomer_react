@@ -4,10 +4,11 @@ import DetailIntroYoutubeItem from './DetailIntroYoutubeItem';
 
 export default function DetailIntro(props) {
   return (
-    <>
-      <table width="100%">
-        <caption>オススメ動画</caption>
+      <table className="introTable">
         <tbody>
+          <th colSpan="2">
+            <h3>オススメ動画</h3>
+          </th>
           {props.detailJson.Videos.map((value, index) => {
             return (
               <DetailIntroYoutubeItem
@@ -18,9 +19,9 @@ export default function DetailIntro(props) {
             );
           })}
         </tbody>
-      </table>
-      <table width="100%">
-        <caption>オススメグッズ・イベント</caption>
+          <th colSpan="2">
+            <h3>オススメグッズ・イベント</h3>
+          </th>
         <tbody>
           {props.detailJson.SubPictures.map((value, index) => {
             return (
@@ -33,6 +34,5 @@ export default function DetailIntro(props) {
           })}
         </tbody>
       </table>
-    </>
   );
 }
