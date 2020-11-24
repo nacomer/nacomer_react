@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
-import '../../../styles/comment.css';
-import { CommentService } from '../../../services/commentService';
+import React, { useRef, useState } from "react";
+import "../../../styles/comment.css";
+import { CommentService } from "../../../services/commentService";
 
 export default function DetailCommentItem(props) {
   const commentTextArea = useRef(null);
@@ -10,7 +10,7 @@ export default function DetailCommentItem(props) {
 
   function updateClick() {
     const comment = document.getElementById(props.id);
-    comment.style.backgroundColor = 'white';
+    comment.style.backgroundColor = "white";
 
     comment.disabled = false;
     commentTextArea.current.focus();
@@ -22,7 +22,7 @@ export default function DetailCommentItem(props) {
     await commentService.updateComment(props.id, comment.value);
     comment.disabled = true;
     setIsEdit(false);
-    comment.style.backgroundColor = 'transparent';
+    comment.style.backgroundColor = "transparent";
     props.addComment();
   }
 
@@ -37,16 +37,39 @@ export default function DetailCommentItem(props) {
   return (
     <>
       <div className="comment">
-        <textarea id={props.id} key={props.id} className="commentBox" defaultValue={props.comment} ref={commentTextArea} disabled />
-        {(!isEdit) && <button name={props.id} className="editButton" onClick={updateClick}>編集</button>}
-        {(!isEdit) && <button name={props.id} className="deleteButton" onClick={deleteClick}>削除</button>}
-        {(isEdit) && <button className="sendButton" onClick={sendClick}>送信</button>}
+        <textarea
+          id={props.id}
+          key={props.id}
+          className="commentBox"
+          defaultValue={props.comment}
+          ref={commentTextArea}
+          disabled
+        />
+        {!isEdit && (
+          <button name={props.id} className="editButton" onClick={updateClick}>
+            編集
+          </button>
+        )}
+        {!isEdit && (
+          <button
+            name={props.id}
+            className="deleteButton"
+            onClick={deleteClick}
+          >
+            削除
+          </button>
+        )}
+        {isEdit && (
+          <button className="sendButton" onClick={sendClick}>
+            送信
+          </button>
+        )}
       </div>
     </>
   );
 }
 
 DetailCommentItem.defaultProps = {
-  updateComment: () => { },
-  deleteComment: () => { },
+  updateComment: () => {},
+  deleteComment: () => {}
 };

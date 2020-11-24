@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../styles/detail.css';
+import React from "react";
+import "../../styles/detail.css";
 
 export default function DetailHeader(props) {
   return (
@@ -9,7 +9,13 @@ export default function DetailHeader(props) {
         <thead />
         <tbody>
           <tr>
-            <td rowSpan="3" className="imgTd"><img alt="" src={props.detailJson.mainPicture} className="detailImage" /></td>
+            <td rowSpan="3" className="imgTd">
+              <img
+                alt=""
+                src={props.detailJson.mainPicture}
+                className="detailImage"
+              />
+            </td>
             <td rowSpan="3" className="blankTd" />
             <th className="textTh">趣味名</th>
             <td className="textTd">{props.detailJson.name}</td>
@@ -23,7 +29,7 @@ export default function DetailHeader(props) {
             <td className="textTd">
               約
               {props.detailJson.cost}
-　円
+              　円
             </td>
           </tr>
         </tbody>

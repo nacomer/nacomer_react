@@ -1,14 +1,14 @@
 .logo {
   width: 150px;
-	height:auto;
-	display: inline;
+  height: auto;
+  display: inline;
 }
 
 .header {
-	background-color: lightblue;
+  background-color: lightblue;
 }
 
 .catchCopy {
-	display: inline;
-	font-size: xx-large;
+  display: inline;
+  font-size: xx-large;
 }

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import ListFilter from './ListFilter';
-import ListView from './ListView';
-import '../../styles/list.css';
+import React, { useState } from "react";
+import ListFilter from "./ListFilter";
+import ListView from "./ListView";
+import "../../styles/list.css";
 
 export default function List(props) {
   const [filteredPeriod, setFilteredPeriod] = useState([]);

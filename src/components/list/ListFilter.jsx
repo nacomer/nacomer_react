@@ -1,22 +1,20 @@
-import React from 'react';
-import '../../styles/list.css';
+import React from "react";
+import "../../styles/list.css";
 
 export default function ListFilter(props) {
   const periodItemList = [
     { periodId: 2, hours: 2 },
     { periodId: 8, hours: 8 },
-    { periodId: 24, hours: 24 },
+    { periodId: 24, hours: 24 }
   ];
 
   const setFilterValue = (e) => {
     if (props.filteredPeriod.includes(e.target.value)) {
       props.setFilteredPeriod(
-        props.filteredPeriod.filter((item) => item !== e.target.value),
+        props.filteredPeriod.filter((item) => item !== e.target.value)
       );
     } else {
-      props.setFilteredPeriod(
-        [...props.filteredPeriod, e.target.value].sort(),
-      );
+      props.setFilteredPeriod([...props.filteredPeriod, e.target.value].sort());
     }
   };
 
@@ -40,5 +38,5 @@ export default function ListFilter(props) {
     </>
   );
 
-  return (<>{filterItem}</>);
+  return <>{filterItem}</>;
 }
