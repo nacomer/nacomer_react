@@ -30,14 +30,10 @@ This was created during my time as a student at [Code Chrysalis](https://codechr
 - 趣味詳細画面  
 ![detail](https://user-images.githubusercontent.com/63960082/100206962-5d0ab400-2f4a-11eb-8a03-a446fb7262d5.gif)
 
-## VS. 
-
 ## Requirement
 ### "nacomer_react" の動作確認 Nodejs のバージョン
 - v12.19
 - v14.15
-
-
 
 ## Install
 
