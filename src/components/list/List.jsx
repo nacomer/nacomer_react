@@ -7,16 +7,20 @@ import '../../styles/list.css';
 
 export default function List(props) {
   const [filteredPeriod, setFilteredPeriod] = useState([]);
+  const [filteredCategory, setFilteredCategory] = useState([]);
 
   return (
     <div className="list">
       <ListFilter
         filteredPeriod={filteredPeriod}
         setFilteredPeriod={setFilteredPeriod}
+        filteredCategory={filteredCategory}
+        setFilteredCategory={setFilteredCategory}
         className="listFilter"
       />
       <ListView
         filteredPeriod={filteredPeriod}
+        filteredCategory={filteredCategory}
         setViewMode={props.setViewMode}
         setHobbyId={props.setHobbyId}
         className="listView"

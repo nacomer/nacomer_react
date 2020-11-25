@@ -26,6 +26,10 @@ export default function ListView(props) {
           (hobby) => props.filteredPeriod.length === 0
             || props.filteredPeriod.includes(hobby.period),
         )
+        // .filter(
+        //   (hobby) => props.filteredCategory.length === 0
+        //     || props.filteredCategory.includes(hobby.category),
+        // )
         .map((hobby) => (
           <div key={hobby.name} className="hobbyDiv">
             <img
