@@ -9,11 +9,13 @@ workflows:
             tags:
               only: /v.*/
       - aws-ecr/build_and_push_image:
+          requires:
+            - build
           filters:
             tags:
               only: /v.*/
-            branches:
-              only: main
+            # branches:
+            #   only: main
           account-url: ACCOUNT_URL
           repo: nacomer-react
           region: AWS_DEFAULT_REGION
