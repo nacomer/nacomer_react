@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Tab, Tabs, TabList, TabPanel, 
+  Tab, Tabs, TabList, TabPanel,
 } from 'react-tabs';
 import DetailHeader from './DetailHeader';
 import DetailIntro from './detailIntro/DetailIntro';

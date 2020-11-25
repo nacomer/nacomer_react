@@ -13,7 +13,7 @@ export default function Top(props) {
     const password = document.getElementById('password').value;
     const authService = new AuthService();
     const res = await authService.login(userName, password).catch(() => {
-      window.alert('ログイン失敗しました')
+      window.alert('ログイン失敗しました');
     });
 
     if (res) {
@@ -95,18 +95,18 @@ export default function Top(props) {
           id="userName"
           className="topInput"
         />
-        <br></br>
+        <br />
         <input
           type="password"
           placeholder="password"
           id="password"
           className="topInput"
         />
-        <br></br>
+        <br />
         <button type="submit" className="topBtn" onClick={clickLogin}>
           Login
         </button>
-        <br></br>
+        <br />
         <button
           type="submit"
           className="topBtn"

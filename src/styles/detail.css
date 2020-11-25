@@ -73,23 +73,23 @@
   background-color: transparent;
 }
 
-.introTable{
+.introTable {
   width: 100%;
   /* table-layout: fixed; */
 }
 
-.introTr:nth-child(odd){
-  background-color:#f0f0f0;
+.introTr:nth-child(odd) {
+  background-color: #f0f0f0;
 }
-.introTr:nth-child(even){
-  background-color:wheat;
-}
-
-.introImg{
-  width:70%;
+.introTr:nth-child(even) {
+  background-color: wheat;
 }
 
-.introDescription{
-  width:30%;
+.introImg {
+  width: 70%;
+}
+
+.introDescription {
+  width: 30%;
   text-align: center;
 }

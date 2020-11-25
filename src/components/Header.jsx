@@ -18,8 +18,16 @@ export default function Header(props) {
       aria-hidden="true"
     >
       <img src={logo} alt="logo" className="logo" />
-      <div className="catchCopy">自分らしくいられる趣味を見つけよう<br></br>〜 be NAture, as a new COMER 〜</div>
-      <h3 className="loginUser">ユーザ名:{props.loginUser.name}</h3>
+      <div className="catchCopy">
+        自分らしくいられる趣味を見つけよう
+        <br />
+        〜 be NAture, as a new COMER
+        〜
+      </div>
+      <h3 className="loginUser">
+        ユーザ名:
+        {props.loginUser.name}
+      </h3>
     </div>
   );
 }
