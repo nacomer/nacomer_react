@@ -44,7 +44,8 @@
       "no-alert": 0,
       "jsx-a11y/alt-text": 0,
       "jsx-a11y/iframe-has-title": 0,
-      "react/button-has-type": 0
+      "react/button-has-type": 0,
+      "max-len": 0
     }
   },
   "browserslist": {

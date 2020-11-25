@@ -21,9 +21,9 @@ export default function ListView(props) {
 
   const costCheck = (hobby) => {
     const costItem = props.costItemList.filter(
-      (value) => value.CostId === props.filterCost,
+      (value) => value.costId === props.filterCost,
     );
-    return costItem.lowCost <= hobby.cost && costItem.highCost >= hobby.cost;
+    return costItem[0].lowCost <= hobby.cost && costItem[0].highCost >= hobby.cost;
   };
 
   return (
@@ -32,6 +32,14 @@ export default function ListView(props) {
         .filter(
           (hobby) => props.filteredPeriod.length === 0
             || props.filteredPeriod.includes(hobby.period),
+        )
+        .filter(
+          (hobby) => props.filteredName.length === 0
+            || hobby.name.indexOf(props.filteredName) > -1,
+        )
+        .filter(
+          (hobby) => props.filteredCategory.length === 0
+            || props.filteredCategory.every((category) => hobby.Categories.map((obj) => obj.name).includes(category)),
         )
         .filter((hobby) => props.filterCost === 'none' || costCheck(hobby))
         .map((hobby) => (

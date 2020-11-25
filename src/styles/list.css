@@ -34,6 +34,11 @@
   font-weight: bold;
 }
 
+.searchRadioBtn{
+  margin: 10px 0 10px 10px;
+  font-weight: bold;
+}
+
 button {
   font-size: 1.6rem;
   border: 1px solid #ccc;
@@ -82,4 +87,13 @@ button:hover {
 
 .hobbyButtonDiv {
   margin-top: -5px;
+}
+
+.searchNameInput {
+  margin-left: 15px;
+}
+
+.searchNameButton {
+  margin-left: 5px;
+  font-size: medium;
 }
