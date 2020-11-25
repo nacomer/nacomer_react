@@ -11,6 +11,9 @@ export default function ListFilter(props) {
   const categoryItemList = [
     { categoryId: 1, categoryName: 'アウトドア' },
     { categoryId: 2, categoryName: 'インドア' },
+    { categoryId: 3, categoryName: 'スポーツ' },
+    { categoryId: 4, categoryName: '旅行' },
+    { categoryId: 5, categoryName: '料理' },
   ];
 
   const setFilterPeriod = (e) => {
@@ -73,7 +76,7 @@ export default function ListFilter(props) {
             <input
               type="checkbox"
               name="category"
-              value={element.categoryId}
+              value={element.categoryName}
               onClick={setFilterCategory}
             />
             {element.categoryName}
