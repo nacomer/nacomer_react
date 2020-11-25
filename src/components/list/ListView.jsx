@@ -19,6 +19,13 @@ export default function ListView(props) {
     props.setHobbyId(event.target.id);
   };
 
+  const costCheck = (hobby) => {
+    const costItem = props.costItemList.filter(
+      (value) => value.CostId === props.filterCost,
+    );
+    return costItem.lowCost <= hobby.cost && costItem.highCost >= hobby.cost;
+  };
+
   return (
     <div className="listView">
       {apiHobby
@@ -26,6 +33,7 @@ export default function ListView(props) {
           (hobby) => props.filteredPeriod.length === 0
             || props.filteredPeriod.includes(hobby.period),
         )
+        .filter((hobby) => props.filterCost === 'none' || costCheck(hobby))
         .map((hobby) => (
           <div key={hobby.name} className="hobbyDiv">
             <img
