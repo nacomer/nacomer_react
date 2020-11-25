@@ -8,7 +8,7 @@ export default function ListFilter(props) {
     { periodId: 24, hours: 24 },
   ];
 
-  const setFilterValue = (e) => {
+  const setFilterPeriod = (e) => {
     if (props.filteredPeriod.includes(e.target.value)) {
       props.setFilteredPeriod(
         props.filteredPeriod.filter((item) => item !== e.target.value),
@@ -16,6 +16,11 @@ export default function ListFilter(props) {
     } else {
       props.setFilteredPeriod([...props.filteredPeriod, e.target.value].sort());
     }
+  };
+
+  const setFilterName = () => {
+    const searchName = document.getElementById('searchName').value;
+    props.setFilteredName(searchName);
   };
 
   const filterItem = (
@@ -28,12 +33,22 @@ export default function ListFilter(props) {
               type="checkbox"
               name="period"
               value={element.periodId}
-              onClick={setFilterValue}
+              onClick={setFilterPeriod}
             />
             {element.hours}
             時間
           </p>
         ))}
+        <div className="search">趣味名で検索</div>
+        <input
+          id="searchName"
+          type="text"
+          name="title"
+          className="searchNameInput"
+          defaultValue=""
+          placeholder="入力文字を含む趣味を検索"
+        />
+        <button className="searchNameButton" onClick={setFilterName}>検索</button>
       </div>
     </>
   );

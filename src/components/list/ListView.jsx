@@ -25,6 +25,9 @@ export default function ListView(props) {
         .filter(
           (hobby) => props.filteredPeriod.length === 0
             || props.filteredPeriod.includes(hobby.period),
+        ).filter(
+          (hobby) => props.filteredName.length === 0
+            || hobby.name.indexOf(props.filteredName) > -1,
         )
         .map((hobby) => (
           <div key={hobby.name} className="hobbyDiv">
