@@ -23,6 +23,11 @@ export default function ListFilter(props) {
     }
   };
 
+  const setFilterName = () => {
+    const searchName = document.getElementById('searchName').value;
+    props.setFilteredName(searchName);
+  };
+
   const setFilterCategory = (e) => {
     if (props.filteredCategory.includes(e.target.value)) {
       props.setFilteredCategory(
@@ -51,6 +56,16 @@ export default function ListFilter(props) {
             時間
           </p>
         ))}
+        <div className="search">趣味名で検索</div>
+        <input
+          id="searchName"
+          type="text"
+          name="title"
+          className="searchNameInput"
+          defaultValue=""
+          placeholder="入力文字を含む趣味を検索"
+        />
+        <button className="searchNameButton" onClick={setFilterName}>検索</button>
 
         <div className="search">カテゴリで検索</div>
         {categoryItemList.map((element) => (

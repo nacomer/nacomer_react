@@ -83,3 +83,12 @@ button:hover {
 .hobbyButtonDiv {
   margin-top: -5px;
 }
+
+.searchNameInput {
+  margin-left: 15px;
+}
+
+.searchNameButton {
+  margin-left: 5px;
+  font-size: medium;
+}

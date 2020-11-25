@@ -6,6 +6,13 @@ import '../styles/header.css';
 const { history } = window;
 
 export default function Header(props) {
+  const logout = () => {
+    window.localStorage.removeItem('id');
+    window.localStorage.removeItem('name');
+    window.localStorage.removeItem('token');
+    window.location.reload();
+  };
+
   return (
     <div
       className="header"
@@ -23,10 +30,13 @@ export default function Header(props) {
         <br />
         〜 be NAture, as a new COMER 〜
       </div>
-      <h3 className="loginUser">
-        ユーザ名:
-        {props.loginUser.name}
-      </h3>
+      <div className="loginUserDiv">
+        <h3 className="loginUser">
+          ユーザ名:
+          {props.loginUser.name}
+        </h3>
+        <button className="logout" onClick={logout}>ログアウト</button>
+      </div>
     </div>
   );
 }

@@ -18,8 +18,20 @@
   vertical-align: middle;
 }
 
-.loginUser {
+.loginUserDiv {
   display: inline-block;
   float: right;
   margin-right: 30px;
+}
+
+.loginUser {
+  margin-bottom: 10px;
+}
+
+.logout {
+  margin-top: 0%;
+  width: 100px;
+  height: 30px;
+  font-size: small;
+  border-radius: 10px;
 }
