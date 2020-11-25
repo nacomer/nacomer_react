@@ -35,7 +35,9 @@ export default function Header(props) {
           ユーザ名:
           {props.loginUser.name}
         </h3>
-        <button className="logout" onClick={logout}>ログアウト</button>
+        <button className="logout" onClick={logout}>
+          ログアウト
+        </button>
       </div>
     </div>
   );

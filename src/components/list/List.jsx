@@ -7,12 +7,22 @@ import '../../styles/list.css';
 
 export default function List(props) {
   const [filteredPeriod, setFilteredPeriod] = useState([]);
+  const [filterCost, setFilterCost] = useState('none');
   const [filteredName, setFilteredName] = useState('');
   const [filteredCategory, setFilteredCategory] = useState([]);
+
+  const costItemList = [
+    { costId: 'low', lowCost: 0, highCost: 4999 },
+    { costId: 'mid', lowCost: 5000, highCost: 9999 },
+    { costId: 'high', lowCost: 10000, highCost: 99999 },
+  ];
 
   return (
     <div className="list">
       <ListFilter
+        costItemList={costItemList}
+        filterCost={filterCost}
+        setFilterCost={setFilterCost}
         filteredPeriod={filteredPeriod}
         setFilteredPeriod={setFilteredPeriod}
         filteredName={filteredName}
@@ -22,6 +32,8 @@ export default function List(props) {
         className="listFilter"
       />
       <ListView
+        costItemList={costItemList}
+        filterCost={filterCost}
         filteredPeriod={filteredPeriod}
         filteredName={filteredName}
         filteredCategory={filteredCategory}

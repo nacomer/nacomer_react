@@ -59,6 +59,29 @@ export default function ListFilter(props) {
             時間
           </p>
         ))}
+        <div className="search">費用で検索</div>
+        <p key="none" className="searchRadioBtn">
+          <input
+            type="radio"
+            name="cost"
+            value="none"
+            onClick={(e) => {
+              props.setFilterCost(e.target.value);
+            }}
+          />
+          選択しない
+        </p>
+        {props.costItemList.map((element) => (
+          <p key={element.costId} className="searchRadioBtn">
+            <input
+              type="radio"
+              name="cost"
+              value={element.costId}
+              onClick={(e) => props.setFilterCost(e.target.value)}
+            />
+            {`${element.lowCost}円 ~ ${element.highCost}円`}
+          </p>
+        ))}
         <div className="search">趣味名で検索</div>
         <input
           id="searchName"
@@ -68,7 +91,9 @@ export default function ListFilter(props) {
           defaultValue=""
           placeholder="入力文字を含む趣味を検索"
         />
-        <button className="searchNameButton" onClick={setFilterName}>検索</button>
+        <button className="searchNameButton" onClick={setFilterName}>
+          検索
+        </button>
 
         <div className="search">カテゴリで検索</div>
         {categoryItemList.map((element) => (
