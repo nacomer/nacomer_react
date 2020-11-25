@@ -8,13 +8,30 @@ export default function ListFilter(props) {
     { periodId: 24, hours: 24 },
   ];
 
-  const setFilterValue = (e) => {
+  const categoryItemList = [
+    { categoryId: 1, categoryName: 'アウトドア' },
+    { categoryId: 2, categoryName: 'インドア' },
+  ];
+
+  const setFilterPeriod = (e) => {
     if (props.filteredPeriod.includes(e.target.value)) {
       props.setFilteredPeriod(
         props.filteredPeriod.filter((item) => item !== e.target.value),
       );
     } else {
       props.setFilteredPeriod([...props.filteredPeriod, e.target.value].sort());
+    }
+  };
+
+  const setFilterCategory = (e) => {
+    if (props.filteredCategory.includes(e.target.value)) {
+      props.setFilteredCategory(
+        props.filteredCategory.filter((item) => item !== e.target.value),
+      );
+    } else {
+      props.setFilteredCategory(
+        [...props.filteredCategory, e.target.value].sort(),
+      );
     }
   };
 
@@ -28,10 +45,23 @@ export default function ListFilter(props) {
               type="checkbox"
               name="period"
               value={element.periodId}
-              onClick={setFilterValue}
+              onClick={setFilterPeriod}
             />
             {element.hours}
             時間
+          </p>
+        ))}
+
+        <div className="search">カテゴリで検索</div>
+        {categoryItemList.map((element) => (
+          <p key={element.categoryId} className="searchCheckBox">
+            <input
+              type="checkbox"
+              name="category"
+              value={element.categoryId}
+              onClick={setFilterCategory}
+            />
+            {element.categoryName}
           </p>
         ))}
       </div>
