@@ -18,7 +18,11 @@ export default function App() {
       const token = window.localStorage.getItem('token');
       const id = window.localStorage.getItem('id');
       const name = window.localStorage.getItem('name');
-      const isLogin = await authService.confirm(token, name);
+
+      let isLogin = false;
+      if (token) {
+        isLogin = await authService.confirm(token, name);
+      }
 
       if (isLogin) {
         setLoginUser({
