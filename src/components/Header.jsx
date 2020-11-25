@@ -28,7 +28,7 @@ export default function Header(props) {
       <div className="catchCopy">
         自分らしくいられる趣味を見つけよう
         <br />
-        〜 be NAture, as a new COMER 〜
+        〜 be NAtural, as a newCOMER 〜
       </div>
       <div className="loginUserDiv">
         <h3 className="loginUser">
