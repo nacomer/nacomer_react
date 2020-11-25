@@ -1,20 +1,20 @@
-.list{
+.list {
   display: flex;
   flex-direction: row;
 }
 
-.filterItem{
+.filterItem {
   width: 20%;
   float: left;
   background-color: antiquewhite;
   margin-right: 10px;
 }
 
-.listView{
+.listView {
   width: 80%;
   display: flex;
   flex-flow: row wrap;
-  justify-content:left;
+  justify-content: left;
   align-items: baseline;
   background-color: aliceblue;
 }
@@ -23,10 +23,10 @@
   font-weight: bold;
   padding: 0.5em 1em;
   margin: 10px;
-  background:orange;
-  border-bottom: solid 4px #FFF5E5;
+  background: orange;
+  border-bottom: solid 4px #fff5e5;
   border-radius: 9px;
-  width: auto
+  width: auto;
 }
 
 .searchCheckBox {
@@ -34,11 +34,22 @@
   font-weight: bold;
 }
 
-button{
-  font-size:1.6rem;
+.searchRadioBtn{
+  margin: 10px 0 10px 10px;
+  font-weight: bold;
+}
+
+button {
+  font-size: 1.6rem;
   border: 1px solid #ccc;
   background: #f1e767;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fdfbfb), to(#ebedee));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#fdfbfb),
+    to(#ebedee)
+  );
   background: -webkit-linear-gradient(top, #fdfbfb 0%, #ebedee 100%);
   background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
   -webkit-box-shadow: inset 1px 1px 1px #fff;
@@ -46,7 +57,13 @@ button{
 }
 
 button:hover {
-  background: -webkit-gradient(linear, left bottom, left top, from(#fdfbfb), to(#ebedee));
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#fdfbfb),
+    to(#ebedee)
+  );
   background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }
@@ -64,10 +81,19 @@ button:hover {
   object-fit: cover;
 }
 
-.hobbyButton{
+.hobbyButton {
   width: 90%;
 }
 
 .hobbyButtonDiv {
   margin-top: -5px;
+}
+
+.searchNameInput {
+  margin-left: 15px;
+}
+
+.searchNameButton {
+  margin-left: 5px;
+  font-size: medium;
 }

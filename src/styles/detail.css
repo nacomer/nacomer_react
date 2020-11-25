@@ -1,72 +1,95 @@
 .detailIntro {
-    background-color: lightcyan;
+  background-color: lightcyan;
 }
 
 .detailImage {
-    width: 400px;
-    height: 350px;
+  width: 400px;
+  height: 350px;
 }
 
 .detailHeader {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 .detailHeaderName {
-    margin-bottom: 5px;
-    margin-top: 0%;
+  margin-bottom: 5px;
+  margin-top: 0%;
 }
 
 .youtube {
-    /* display: inline; */
-    flex-flow: row wrap;
-    justify-content:left;
-    align-items: baseline;
-    margin: 10px 0px 10px 10px;
-    width: 450px;
+  display: inline;
+  flex-flow: row wrap;
+  justify-content: left;
+  align-items: baseline;
+  margin: 5px;
+  width: 450px;
 }
 .youtubeIframe {
-    margin: 10px;
-    width: 400px;
-    height: 250px;
+  margin: auto;
+  width: 400px;
+  height: 250px;
+  display: block;
 }
 
 .detailIntroGoods {
-    display: inline;
-    flex-flow: row wrap;
-    justify-content:left;
-    align-items: baseline;
-    margin: 10px;
+  display: inline;
+  flex-flow: row wrap;
+  justify-content: left;
+  align-items: baseline;
+  margin: 5px;
 }
 .detailGoodsImg {
-    margin: 10px;
-    width: 400px;
-    height: 250px;
+  margin: auto;
+  width: 400px;
+  height: 250px;
+  display: block;
 }
 
-.detailTable{
-	border-collapse: collapse;
-	width: 90%;
-	margin: auto;
+.detailTable {
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
 }
 
-.textTh{
-    position: relative;
-    text-align: left;
-    width: 10%;
-    background-color: #52c2d0;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}
-  
-.textTd{
-    text-align: center;
-    width: 70%;
-    background-color: lightgray;
-    padding: 10px 0;
+.textTh {
+  position: relative;
+  text-align: left;
+  width: 10%;
+  background-color: #52c2d0;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
 }
 
-.blankTd{
-	width: 3%;
-	background-color:transparent;
+.textTd {
+  text-align: center;
+  width: 70%;
+  background-color: #eeeeee;
+  padding: 10px 0;
+}
+
+.blankTd {
+  width: 3%;
+  background-color: transparent;
+}
+
+.introTable {
+  width: 100%;
+  /* table-layout: fixed; */
+}
+
+.introTr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+.introTr:nth-child(even) {
+  background-color: wheat;
+}
+
+.introImg {
+  width: 70%;
+}
+
+.introDescription {
+  width: 30%;
+  text-align: center;
 }
