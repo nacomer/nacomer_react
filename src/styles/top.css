@@ -17,9 +17,20 @@ body {
   position: absolute;
   top: 55%;
   color: white;
-  font-size: 30pt;
+  font-size: min(30pt, 5vw);
   animation-duration: 5s;
   animation-name: fade-in;
+  margin-left: 15px;
+}
+
+.topCatchCopySub {
+  position: absolute;
+  top: 62%;
+  color: white;
+  font-size: min(25pt, 5vw);
+  animation-duration: 7s;
+  animation-name: fade-in;
+  margin-left: 50px;
 }
 
 .log-form {
