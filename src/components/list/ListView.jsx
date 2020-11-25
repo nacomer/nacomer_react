@@ -23,7 +23,9 @@ export default function ListView(props) {
     const costItem = props.costItemList.filter(
       (value) => value.costId === props.filterCost,
     );
-    return costItem[0].lowCost <= hobby.cost && costItem[0].highCost >= hobby.cost;
+    return (
+      costItem[0].lowCost <= hobby.cost && costItem[0].highCost >= hobby.cost
+    );
   };
 
   return (

@@ -116,18 +116,6 @@ export default function Top(props) {
         >
           SIGN IN
         </button>
-        <button
-          type="submit"
-          className="topBtn"
-          onClick={() => {
-            props.setLoginUser({
-              id: 0,
-              name: 'Guest',
-            });
-          }}
-        >
-          Login Later
-        </button>
       </div>
       {modal}
     </div>
