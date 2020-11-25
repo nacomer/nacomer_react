@@ -8,6 +8,11 @@ export default function ListFilter(props) {
     { periodId: 24, hours: 24 },
   ];
 
+  const categoryItemList = [
+    { categoryId: 1, categoryName: 'アウトドア' },
+    { categoryId: 2, categoryName: 'インドア' },
+  ];
+
   const setFilterPeriod = (e) => {
     if (props.filteredPeriod.includes(e.target.value)) {
       props.setFilteredPeriod(
@@ -21,6 +26,18 @@ export default function ListFilter(props) {
   const setFilterName = () => {
     const searchName = document.getElementById('searchName').value;
     props.setFilteredName(searchName);
+  };
+
+  const setFilterCategory = (e) => {
+    if (props.filteredCategory.includes(e.target.value)) {
+      props.setFilteredCategory(
+        props.filteredCategory.filter((item) => item !== e.target.value),
+      );
+    } else {
+      props.setFilteredCategory(
+        [...props.filteredCategory, e.target.value].sort(),
+      );
+    }
   };
 
   const filterItem = (
@@ -49,6 +66,19 @@ export default function ListFilter(props) {
           placeholder="入力文字を含む趣味を検索"
         />
         <button className="searchNameButton" onClick={setFilterName}>検索</button>
+
+        <div className="search">カテゴリで検索</div>
+        {categoryItemList.map((element) => (
+          <p key={element.categoryId} className="searchCheckBox">
+            <input
+              type="checkbox"
+              name="category"
+              value={element.categoryId}
+              onClick={setFilterCategory}
+            />
+            {element.categoryName}
+          </p>
+        ))}
       </div>
     </>
   );
