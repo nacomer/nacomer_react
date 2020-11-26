@@ -1,5 +1,6 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
+import GoogleAuthService from '../../services/googleAuthService';
 import '../../styles/top.css';
 
 export default function Top(props) {
@@ -11,10 +12,15 @@ export default function Top(props) {
         imageUrl: response.profileObj.imageUrl,
         tokenId: response.tokenId,
       };
-      props.setLoginUser(resLoginUser);
-      props.setLoginSuccess(true);
-      // save cookie
-      props.setCookie('loginUser', JSON.stringify(resLoginUser));
+      /// /login api send
+      const googleOAuth = new GoogleAuthService();
+      const authRes = await googleOAuth.login(resLoginUser);
+      if (authRes.status === 200 || authRes.status === 201) {
+        props.setLoginUser(resLoginUser);
+        props.setLoginSuccess(true);
+        // save cookie
+        props.setCookie('loginUser', JSON.stringify(resLoginUser));
+      }
     }
   };
 
