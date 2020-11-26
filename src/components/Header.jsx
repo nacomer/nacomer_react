@@ -1,4 +1,5 @@
 import React from 'react';
+import { GoogleLogout } from 'react-google-login';
 import PropTypes from 'prop-types';
 import logo from '../image/logo.png';
 import '../styles/header.css';
@@ -7,11 +8,12 @@ const { history } = window;
 
 export default function Header(props) {
   const logout = () => {
-    window.localStorage.removeItem('id');
-    window.localStorage.removeItem('name');
-    window.localStorage.removeItem('token');
-    window.location.reload();
+    props.setLoginSuccess(false);
+    props.setLoginUser({});
+    props.removeCookie('loginUser');
   };
+
+  const handleLogoutFailure = () => {};
 
   return (
     <div
@@ -33,11 +35,14 @@ export default function Header(props) {
       <div className="loginUserDiv">
         <h3 className="loginUser">
           ユーザ名:
-          {props.loginUser.name}
+          {props.loginUser.userName}
         </h3>
-        <button className="logout" onClick={logout}>
-          ログアウト
-        </button>
+        <GoogleLogout
+          clientId={props.CLIENT_ID}
+          buttonText="Logout"
+          onLogoutSuccess={logout}
+          onFailure={handleLogoutFailure}
+        />
       </div>
     </div>
   );
