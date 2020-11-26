@@ -30,6 +30,7 @@ export class CommentService {
         {
           content: comment,
           nacomerUserId: userId,
+          // コメント登録時に送る項目
         },
         config,
       )

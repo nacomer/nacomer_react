@@ -1,6 +1,10 @@
 import React, { useRef, useState } from 'react';
+import {
+  Card, CardHeader, CardContent, Avatar,
+} from '@material-ui/core';
 import '../../../styles/comment.css';
 import { CommentService } from '../../../services/commentService';
+import imgUrl from './facebook.png';
 
 export default function DetailCommentItem(props) {
   const commentTextArea = useRef(null);
@@ -34,14 +38,30 @@ export default function DetailCommentItem(props) {
   return (
     <>
       <div className="comment">
-        <textarea
+        {/* <textarea
           id={props.id}
           key={props.id}
           className="commentBox"
           defaultValue={props.comment}
           ref={commentTextArea}
           disabled
-        />
+        /> */}
+        <Card>
+          <CardHeader
+            avatar={<Avatar alt="googleUserImg" src={imgUrl} />}
+            title="竹木"
+          />
+          <CardContent>
+            <textarea
+              id={props.id}
+              key={props.id}
+              className="commentBox"
+              defaultValue={props.comment}
+              ref={commentTextArea}
+              disabled
+            />
+          </CardContent>
+        </Card>
         {!isEdit && props.bool && (
           <button name={props.id} className="editButton" onClick={updateClick}>
             編集
