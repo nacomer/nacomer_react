@@ -26,7 +26,7 @@ export default function DetailComment(props) {
     setDeleteCommentFlg(deleteCommentFlg + 1);
   }
 
-  const guestFlg = props.loginUser.id !== 0;
+  const guestFlg = props.loginUser.googleId !== 0;
 
   return (
     <div className="detailComment">
@@ -45,8 +45,7 @@ export default function DetailComment(props) {
           com={comment}
           comment={comment.content}
           bool={
-            parseInt(props.loginUser.id, []) === comment.NacomerUser.id
-            && guestFlg
+            (props.loginUser.googleId === comment.NacomerUser.googleId) && { guestFlg }
           }
           id={comment.id}
           key={index}

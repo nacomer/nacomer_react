@@ -10,7 +10,6 @@ export default function DetailCommentItem(props) {
   const [isEdit, setIsEdit] = useState(false);
 
   const commentService = new CommentService();
-
   function updateClick() {
     const comment = document.getElementById(props.id);
     comment.style.backgroundColor = 'white';
@@ -39,7 +38,9 @@ export default function DetailCommentItem(props) {
       <div className="comment">
         <Card>
           <CardHeader
-            avatar={<Avatar alt="googleUserImg" src={props.com.NacomerUser.picture} />}
+            avatar={
+              <Avatar alt="googleUserImg" src={props.com.NacomerUser.picture} />
+            }
             title={props.com.NacomerUser.name}
           />
           <CardContent>
