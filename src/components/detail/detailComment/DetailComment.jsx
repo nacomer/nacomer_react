@@ -7,7 +7,6 @@ export default function DetailComment(props) {
   const [detailCommentJson, setDetailCommentJson] = useState([]);
   const [addCommentFlg, setAddCommentFlg] = useState(0);
   const [deleteCommentFlg, setDeleteCommentFlg] = useState(0);
-  const CLIENT_ID = '535477566115-nk6dj1hrk0gvsfrmhimmbqgts7f3puqt.apps.googleusercontent.com';
 
   useEffect(() => {
     const getDetailComments = async () => {
