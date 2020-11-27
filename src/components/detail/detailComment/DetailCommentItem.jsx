@@ -1,4 +1,7 @@
 import React, { useRef, useState } from 'react';
+import {
+  Card, CardHeader, CardContent, Avatar,
+} from '@material-ui/core';
 import '../../../styles/comment.css';
 import { CommentService } from '../../../services/commentService';
 
@@ -7,7 +10,6 @@ export default function DetailCommentItem(props) {
   const [isEdit, setIsEdit] = useState(false);
 
   const commentService = new CommentService();
-
   function updateClick() {
     const comment = document.getElementById(props.id);
     comment.style.backgroundColor = 'white';
@@ -34,14 +36,24 @@ export default function DetailCommentItem(props) {
   return (
     <>
       <div className="comment">
-        <textarea
-          id={props.id}
-          key={props.id}
-          className="commentBox"
-          defaultValue={props.comment}
-          ref={commentTextArea}
-          disabled
-        />
+        <Card>
+          <CardHeader
+            avatar={
+              <Avatar alt="googleUserImg" src={props.com.NacomerUser.picture} />
+            }
+            title={props.com.NacomerUser.name}
+          />
+          <CardContent>
+            <textarea
+              id={props.id}
+              key={props.id}
+              className="commentBox"
+              defaultValue={props.comment}
+              ref={commentTextArea}
+              disabled
+            />
+          </CardContent>
+        </Card>
         {!isEdit && props.bool && (
           <button name={props.id} className="editButton" onClick={updateClick}>
             編集
