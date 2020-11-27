@@ -19,6 +19,9 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build release file
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          REACT_APP_URL: ${{ secrets.API_SERVER_URL }}
         run: yarn build
 
       - name: Configure AWS Credentials # AWSアクセス権限設定
