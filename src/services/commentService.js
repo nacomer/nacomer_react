@@ -17,10 +17,10 @@ export class CommentService {
     return addCommentResponse.data[0];
   };
 
-  addComment = async (token, hobbyId, comment, userId) => {
+  addComment = async (googleId, hobbyId, comment, userId) => {
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        'x-googleid': `${googleId}`,
       },
     };
 
@@ -30,7 +30,6 @@ export class CommentService {
         {
           content: comment,
           nacomerUserId: userId,
-          // コメント登録時に送る項目
         },
         config,
       )

@@ -13,8 +13,6 @@ export default function DetailComment(props) {
     const getDetailComments = async () => {
       const commentService = new CommentService();
       const detailComment = await commentService.getComment(props.hobbyId);
-      console.log('口コミでもらう内容');
-      console.log(detailComment);
       setDetailCommentJson(detailComment);
     };
 
@@ -45,6 +43,7 @@ export default function DetailComment(props) {
       {detailCommentJson.map((comment, index) => (
         <DetailCommentItem
           hobbyId={props.hobbyId}
+          com={comment}
           comment={comment.content}
           bool={
             parseInt(props.loginUser.id, []) === comment.NacomerUser.id

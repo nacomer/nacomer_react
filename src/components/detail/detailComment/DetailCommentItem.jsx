@@ -4,7 +4,6 @@ import {
 } from '@material-ui/core';
 import '../../../styles/comment.css';
 import { CommentService } from '../../../services/commentService';
-import imgUrl from './facebook.png';
 
 export default function DetailCommentItem(props) {
   const commentTextArea = useRef(null);
@@ -38,18 +37,10 @@ export default function DetailCommentItem(props) {
   return (
     <>
       <div className="comment">
-        {/* <textarea
-          id={props.id}
-          key={props.id}
-          className="commentBox"
-          defaultValue={props.comment}
-          ref={commentTextArea}
-          disabled
-        /> */}
         <Card>
           <CardHeader
-            avatar={<Avatar alt="googleUserImg" src={imgUrl} />}
-            title="竹木"
+            avatar={<Avatar alt="googleUserImg" src={props.com.NacomerUser.picture} />}
+            title={props.com.NacomerUser.name}
           />
           <CardContent>
             <textarea

@@ -7,9 +7,8 @@ export default function DetailCommentSend(props) {
     const commentService = new CommentService();
 
     const textbox = document.getElementById('commentText');
-
     await commentService.addComment(
-      props.loginUser.token,
+      props.loginUser.googleId,
       props.hobbyId,
       textbox.value,
       props.loginUser.id,
