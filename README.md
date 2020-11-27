@@ -1,6 +1,6 @@
 # :two_men_holding_hands: nacomer_react
 
-[![CircleCI](https://circleci.com/gh/nacomer/nacomer_react.png?circle-token=5010dca7c71c726f7e5ccb6aeebf7d450851c779)](https://circleci.com/gh/nacomer/nacomer_react.png?circle-token=5010dca7c71c726f7e5ccb6aeebf7d450851c779)
+![AWS S3 deployment](https://github.com/nacomer/nacomer_react/workflows/AWS%20S3%20deployment/badge.svg)
 
 This was created during my time as a student at [Code Chrysalis](https://codechrysalis.io/)
 
