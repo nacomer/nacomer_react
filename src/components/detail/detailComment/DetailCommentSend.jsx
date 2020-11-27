@@ -9,6 +9,7 @@ export default function DetailCommentSend(props) {
     const textbox = document.getElementById('commentText');
     await commentService.addComment(
       props.loginUser.googleId,
+      props.loginUser.tokenId,
       props.hobbyId,
       textbox.value,
       props.loginUser.id,

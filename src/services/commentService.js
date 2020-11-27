@@ -17,10 +17,11 @@ export class CommentService {
     return addCommentResponse.data[0];
   };
 
-  addComment = async (googleId, hobbyId, comment, userId) => {
+  addComment = async (googleId, tokenId, hobbyId, comment, userId) => {
     const config = {
       headers: {
         'x-googleid': `${googleId}`,
+        'x-auth-token': tokenId,
       },
     };
 
