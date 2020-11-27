@@ -14,4 +14,15 @@ export default class HobbyService {
       .catch('趣味詳細の取得に失敗しました。');
     return hobbyDetailResponse.data[0];
   };
+
+  getHobbySuggest = async (personalityId, count) => {
+    const hobbySuggestResponse = await axios
+      .get(`${process.env.REACT_APP_URL}/api/hobby/${personalityId}`, {
+        params: {
+          limit: count,
+        },
+      })
+      .catch('趣味の取得に失敗しました。');
+    return hobbySuggestResponse;
+  };
 }
