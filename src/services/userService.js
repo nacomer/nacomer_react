@@ -30,7 +30,7 @@ export class UserService {
     };
 
     const postPersonalityRes = await axios
-      .patch(`${process.env.REACT_APP_URL}/api/user/login`, body, header)
+      .patch(`${process.env.REACT_APP_URL}/api/user/personality`, body, header)
       .catch('ユーザ登録に失敗しました。');
     return postPersonalityRes;
   };
