@@ -15,7 +15,7 @@ export default function App() {
   const [loginUser, setLoginUser] = useState();
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['loginUser']);
-  const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+  const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
