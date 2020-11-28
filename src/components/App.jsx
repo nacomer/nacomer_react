@@ -103,31 +103,25 @@ export default function App() {
                 </Card>
               </CardAction>
             </div>
-            <CardAction>
-              <Card elevation={1} rounded>
-                <div>
-                  主催者：ﾅｶﾏｰ
-                  <br />
-                  人：3 / 5
-                  <br />
-                  集合場所：新宿ピカデリー
-                  <br />
-                  時間：11/29(日) 19:00-20:00
-                </div>
-              </Card>
-            </CardAction>
-            <CardAction>
-              <IconButton>
-                <Icon path={mdiHeart} size={1} />
-              </IconButton>
-              <IconButton>
-                <Icon path={mdiShareVariant} size={1} />
-              </IconButton>
-              <Spacer />
-              <Fab className="pa-8" color="#299ae6" size="large">
-                参加&nbsp;
-              </Fab>
-            </CardAction>
+            <div className="margin">
+              <CardAction className="more">
+                <Card elevation={1} rounded>
+                  <div className="padding">
+                    主催者：ﾅｶﾏｰ
+                    <br />
+                    人：3 / 5
+                    <br />
+                    集合場所：新宿ピカデリー
+                    <br />
+                    時間：11/29(日) 19:00-20:00
+                  </div>
+                </Card>
+                <Spacer />
+                <Fab className="pa-8" color="#299ae6" size="large">
+                  参　加&nbsp;
+                </Fab>
+              </CardAction>
+            </div>
           </Card>
           {viewMode === 'Detail' && (
             <Detail hobbyId={hobbyId} loginUser={loginUser} />
