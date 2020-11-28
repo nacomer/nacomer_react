@@ -1,7 +1,28 @@
 .app {
+  width: 100%;
+  margin: 0 auto;
 }
 .logo {
-  margin-top: 10px;
   width: 150px;
   height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eventbox {
+  float: left;
+}
+
+.mb-6 {
+  float: left;
+}
+
+.picture {
+  float: left;
+  margin: 10px;
+}
+
+.more {
+  clear: both;
 }

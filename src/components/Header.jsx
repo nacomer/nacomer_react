@@ -25,23 +25,24 @@ export default function Header(props) {
         props.setViewMode('List');
       }}
       aria-hidden="true"
-      elevation={2}
+      elevation={3}
       rounded
     >
       <img src={logo} alt="logo" className="logo" />
       {props.loginUser ? (
-        <div className="loginUserDiv">
-          <p className="loginUser">
-            ユーザ名:
-            {props.loginUser.userName}
-          </p>
-          <GoogleLogout
-            clientId={props.CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={logout}
-            onFailure={handleLogoutFailure}
-          />
-        </div>
+        // <div className="loginUserDiv">
+        //   <p className="loginUser">
+        //     ユーザ名:
+        //     {props.loginUser.userName}
+        //   </p>
+        //   <GoogleLogout
+        //     clientId={props.CLIENT_ID}
+        //     buttonText="Logout"
+        //     onLogoutSuccess={logout}
+        //     onFailure={handleLogoutFailure}
+        //   />
+        // </div>
+        <></>
       ) : (
         <></>
       )}

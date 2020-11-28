@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import '../styles/footer.css';
 
 export default function Footer() {
   return (

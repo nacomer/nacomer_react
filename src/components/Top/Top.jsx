@@ -1,7 +1,9 @@
 import React from 'react';
+import { Card, Divider } from 'ui-neumorphism';
 import { GoogleLogin } from 'react-google-login';
 import GoogleAuthService from '../../services/googleAuthService';
 import '../../styles/top.css';
+import Footer from '../Footer';
 
 export default function Top(props) {
   const login = async (response) => {
@@ -27,12 +29,10 @@ export default function Top(props) {
   const handleLoginFailure = (response) => {};
 
   return (
-    <div>
-      <img className="topImage" src="./image/friends.jpg" />
-      <p className="topCatchCopy">自分らしくいられる趣味を見つけよう</p>
-      <p className="topCatchCopySub">〜 be NAtural, as a newCOMER 〜</p>
-      <div className="log-form">
+    <Card>
+      <Card style={{ backgroundColor: 'white' }}>
         <GoogleLogin
+          className="login"
           clientId={props.CLIENT_ID}
           buttonText="Login"
           onSuccess={login}
@@ -40,7 +40,7 @@ export default function Top(props) {
           cookiePolicy="single_host_origin"
           responseType="code,token"
         />
-      </div>
-    </div>
+      </Card>
+    </Card>
   );
 }
