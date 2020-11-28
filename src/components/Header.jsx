@@ -29,8 +29,7 @@ export default function Header(props) {
       <img src={logo} alt="logo" className="logo" />
       <div className="catchCopy">
         自分らしくいられる趣味を見つけよう
-        <br />
-        〜 be NAtural, as a newCOMER 〜
+        <br />〜 be NAtural, as a newCOMER 〜
       </div>
       <div className="loginUserDiv">
         <h3 className="loginUser">

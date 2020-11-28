@@ -32,16 +32,21 @@ export default function ListView(props) {
     <div className="listView">
       {apiHobby
         .filter(
-          (hobby) => props.filteredPeriod.length === 0
-            || props.filteredPeriod.includes(hobby.period),
+          (hobby) =>
+            props.filteredPeriod.length === 0 ||
+            props.filteredPeriod.includes(hobby.period),
         )
         .filter(
-          (hobby) => props.filteredName.length === 0
-            || hobby.name.indexOf(props.filteredName) > -1,
+          (hobby) =>
+            props.filteredName.length === 0 ||
+            hobby.name.indexOf(props.filteredName) > -1,
         )
         .filter(
-          (hobby) => props.filteredCategory.length === 0
-            || props.filteredCategory.every((category) => hobby.Categories.map((obj) => obj.name).includes(category)),
+          (hobby) =>
+            props.filteredCategory.length === 0 ||
+            props.filteredCategory.every((category) =>
+              hobby.Categories.map((obj) => obj.name).includes(category),
+            ),
         )
         .filter((hobby) => props.filterCost === 'none' || costCheck(hobby))
         .map((hobby) => (

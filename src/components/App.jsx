@@ -15,7 +15,8 @@ export default function App() {
   const [loginUser, setLoginUser] = useState();
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['loginUser']);
-  const CLIENT_ID = '1043624097371-gg3s33ujpdf3a2jlqvh8cfg9j8v6132r.apps.googleusercontent.com';
+  const CLIENT_ID =
+    '1043624097371-gg3s33ujpdf3a2jlqvh8cfg9j8v6132r.apps.googleusercontent.com';
 
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
