@@ -23,6 +23,8 @@
   margin: 10px;
 }
 
-.more {
+.clearfix::after {
+  content: “”;
+  display: block;
   clear: both;
 }

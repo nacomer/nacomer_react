@@ -30,19 +30,18 @@ export default function Header(props) {
     >
       <img src={logo} alt="logo" className="logo" />
       {props.loginUser ? (
-        // <div className="loginUserDiv">
-        //   <p className="loginUser">
-        //     ユーザ名:
-        //     {props.loginUser.userName}
-        //   </p>
-        //   <GoogleLogout
-        //     clientId={props.CLIENT_ID}
-        //     buttonText="Logout"
-        //     onLogoutSuccess={logout}
-        //     onFailure={handleLogoutFailure}
-        //   />
-        // </div>
-        <></>
+        <div className="loginUserDiv">
+          <p className="loginUser">
+            ユーザ名:
+            {props.loginUser.userName}
+          </p>
+          <GoogleLogout
+            clientId={props.CLIENT_ID}
+            buttonText="Logout"
+            onLogoutSuccess={logout}
+            onFailure={handleLogoutFailure}
+          />
+        </div>
       ) : (
         <></>
       )}

@@ -71,48 +71,51 @@ export default function App() {
       {loginSuccess ? (
         <>
           <Card>
-            <CardHeader
-              title={<H6>We partnered up with Google</H6>}
-              subtitle={
-                <Subtitle2 secondary>We partnered up with Google</Subtitle2>
-              }
-              action={(
-                <IconButton>
-                  <Icon path={mdiDotsVertical} size={1} />
-                </IconButton>
-              )}
-            />
-            <Card width={200} className="picture">
-              <CardMedia dark src="images/beaches-2.jpg" />
-            </Card>
+            <div className="clearfix">
+              <CardHeader
+                title={<H6>We partnered up with Google</H6>}
+                subtitle={
+                  <Subtitle2 secondary>We partnered up with Google</Subtitle2>
+                }
+                action={(
+                  <IconButton>
+                    <Icon path={mdiDotsVertical} size={1} />
+                  </IconButton>
+                )}
+              />
+              <Card width={200} className="picture">
+                <CardMedia dark src="images/beaches-2.jpg" />
+              </Card>
+              <CardAction>
+                <Card flat className="eventbox">
+                  <Alert className="mb-6" type="info">
+                    急募
+                  </Alert>
+                  <Alert className="mb-6" type="warning">
+                    オープン
+                  </Alert>
+                  <Alert className="mb-6" type="error">
+                    初心者歓迎
+                  </Alert>
+                  <Alert className="mb-6" type="success" inset>
+                    達人
+                  </Alert>
+                </Card>
+              </CardAction>
+            </div>
             <CardAction>
-              <Spacer />
-              <Card flat className="eventbox">
-                <Alert className="mb-6" type="info">
-                  急募
-                </Alert>
-                <Alert className="mb-6" type="warning">
-                  オープン
-                </Alert>
-                <Alert className="mb-6" type="error">
-                  初心者歓迎
-                </Alert>
-                <Alert className="mb-6" type="success" inset>
-                  達人
-                </Alert>
+              <Card elevation={1} rounded>
+                <div>
+                  主催者：ﾅｶﾏｰ
+                  <br />
+                  人：3 / 5
+                  <br />
+                  集合場所：新宿ピカデリー
+                  <br />
+                  時間：11/29(日) 19:00-20:00
+                </div>
               </Card>
             </CardAction>
-            <Card elevation={1} classname="more" rounded>
-              <div>
-                主催者：ﾅｶﾏｰ
-                <br />
-                人：3 / 5
-                <br />
-                集合場所：新宿ピカデリー
-                <br />
-                時間：11/29(日) 19:00-20:00
-              </div>
-            </Card>
             <CardAction>
               <IconButton>
                 <Icon path={mdiHeart} size={1} />
