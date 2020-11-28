@@ -1,4 +1,7 @@
 .app {
-  border: 0em;
-  padding: 0em;
+}
+.logo {
+  margin-top: 10px;
+  width: 150px;
+  height: auto;
 }

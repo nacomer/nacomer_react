@@ -1,8 +1,8 @@
 import React from 'react';
+import { Card, CardHeader } from 'ui-neumorphism';
 import { GoogleLogout } from 'react-google-login';
 import PropTypes from 'prop-types';
 import logo from '../image/logo.png';
-import '../styles/header.css';
 
 const { history } = window;
 
@@ -16,7 +16,7 @@ export default function Header(props) {
   const handleLogoutFailure = () => {};
 
   return (
-    <div
+    <CardHeader
       className="header"
       tabIndex="0"
       role="button"
@@ -25,26 +25,27 @@ export default function Header(props) {
         props.setViewMode('List');
       }}
       aria-hidden="true"
+      elevation={2}
+      rounded
     >
       <img src={logo} alt="logo" className="logo" />
-      <div className="catchCopy">
-        自分らしくいられる趣味を見つけよう
-        <br />
-        〜 be NAtural, as a newCOMER 〜
-      </div>
-      <div className="loginUserDiv">
-        <h3 className="loginUser">
-          ユーザ名:
-          {props.loginUser.userName}
-        </h3>
-        <GoogleLogout
-          clientId={props.CLIENT_ID}
-          buttonText="Logout"
-          onLogoutSuccess={logout}
-          onFailure={handleLogoutFailure}
-        />
-      </div>
-    </div>
+      {props.loginUser ? (
+        <div className="loginUserDiv">
+          <p className="loginUser">
+            ユーザ名:
+            {props.loginUser.userName}
+          </p>
+          <GoogleLogout
+            clientId={props.CLIENT_ID}
+            buttonText="Logout"
+            onLogoutSuccess={logout}
+            onFailure={handleLogoutFailure}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
+    </CardHeader>
   );
 }
 

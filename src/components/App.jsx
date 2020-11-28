@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import { Card, Divider } from 'ui-neumorphism';
 import Header from './Header';
 import Footer from './Footer';
 import List from './list/List';
@@ -36,17 +37,18 @@ export default function App() {
   }, []);
 
   return (
-    <div className="app">
+    <Card className="app">
+      <Header
+        CLIENT_ID={CLIENT_ID}
+        loginUser={loginUser}
+        setViewMode={setViewMode}
+        setLoginUser={setLoginUser}
+        setLoginSuccess={setLoginSuccess}
+        removeCookie={removeCookie}
+      />
+      <Divider elavated />
       {loginSuccess ? (
         <>
-          <Header
-            CLIENT_ID={CLIENT_ID}
-            loginUser={loginUser}
-            setViewMode={setViewMode}
-            setLoginUser={setLoginUser}
-            setLoginSuccess={setLoginSuccess}
-            removeCookie={removeCookie}
-          />
           {viewMode === 'List' && (
             <List setViewMode={setViewMode} setHobbyId={setHobbyId} />
           )}
@@ -54,7 +56,6 @@ export default function App() {
             <Detail hobbyId={hobbyId} loginUser={loginUser} />
           )}
           <br />
-          <Footer />
         </>
       ) : (
         <Top
@@ -64,6 +65,7 @@ export default function App() {
           setLoginSuccess={setLoginSuccess}
         />
       )}
-    </div>
+      <Footer />
+    </Card>
   );
 }
