@@ -42,32 +42,74 @@ export default function Event(props) {
   }, []);
 
   return (
-    <div className="clearfix">
-      <CardHeader
-        title={<H6>We partnered up with Google</H6>}
-        subtitle={<Subtitle2 secondary>We partnered up with Google</Subtitle2>}
-        // action={
-        //   <IconButton>
-        //     <Icon path={mdiDotsVertical} size={1} />
-        //   </IconButton>
-        // }
-      />
-      <Card width={200} className="picture">
-        <CardMedia dark src="images/beaches-2.jpg" />
-      </Card>
-      <CardAction>
-        <Card flat className="eventbox">
-          {eventInfo.properties ? (
-            eventInfo.properties.map((data, idx) => (
-              <Alert className="mb-6" type="info" key={idx}>
-                {data.name}
-              </Alert>
-            ))
-          ) : (
-            <></>
-          )}
-        </Card>
-      </CardAction>
-    </div>
+    <Card>
+      {eventInfo && eventInfo.users ? (
+        <>
+          <div className="clearfix">
+            <CardHeader
+              title={<H6>{eventInfo.subject}</H6>}
+              subtitle={
+                <Subtitle2 secondary>We partnered up with Google</Subtitle2>
+              }
+              // action={
+              //   <IconButton>
+              //     <Icon path={mdiDotsVertical} size={1} />
+              //   </IconButton>
+              // }
+            />
+            <Card width={200} className="picture">
+              <CardMedia dark src="images/beaches-2.jpg" />
+            </Card>
+            <CardAction>
+              <Card flat className="eventbox">
+                {eventInfo.properties ? (
+                  eventInfo.properties.map((data, idx) => (
+                    <Alert className="mb-6" type="info" key={idx}>
+                      {data.name}
+                    </Alert>
+                  ))
+                ) : (
+                  <></>
+                )}
+                {console.log(eventInfo)}
+              </Card>
+            </CardAction>
+          </div>
+          <div className="margin">
+            <CardAction className="more">
+              <Card elevation={1} rounded>
+                <div className="padding">
+                  主催者：
+                  {eventInfo.ownerId}
+                  <br />
+                  参加者：
+                  {eventInfo.users.length}
+                  /
+                  {eventInfo.maxpart}
+                  <br />
+                  集合場所：
+                  {eventInfo.place}
+                  <br />
+                  開始時間：
+                  {eventInfo.start}
+                  <br />
+                  終了時間：
+                  {eventInfo.end}
+                  <br />
+                  <br />
+                  {eventInfo.description}
+                </div>
+              </Card>
+              <Spacer />
+              <Fab className="pa-8" color="#299ae6" size="large">
+                参　加&nbsp;
+              </Fab>
+            </CardAction>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+    </Card>
   );
 }

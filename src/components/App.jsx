@@ -39,7 +39,6 @@ export default function App() {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['loginUser']);
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  const [eventInfo, setEventInfo] = useState({});
 
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
@@ -73,31 +72,10 @@ export default function App() {
       <Divider elavated />
       {loginSuccess ? (
         <>
-          <Card>
-            <Event loginUser={loginUser} />
-            <div className="margin">
-              <CardAction className="more">
-                <Card elevation={1} rounded>
-                  <div className="padding">
-                    主催者：ﾅｶﾏｰ
-                    <br />
-                    人：3 / 5
-                    <br />
-                    集合場所：新宿ピカデリー
-                    <br />
-                    時間：11/29(日) 19:00-20:00
-                  </div>
-                </Card>
-                <Spacer />
-                <Fab className="pa-8" color="#299ae6" size="large">
-                  参　加&nbsp;
-                </Fab>
-              </CardAction>
-            </div>
-          </Card>
-          {viewMode === 'Detail' && (
+          <Event loginUser={loginUser} />
+          {/* {viewMode === 'Detail' && (
             <Detail hobbyId={hobbyId} loginUser={loginUser} />
-          )}
+          )} */}
           <br />
         </>
       ) : (
