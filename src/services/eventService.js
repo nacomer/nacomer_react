@@ -13,7 +13,7 @@ export default class EventService {
 
     const eventInfoRes = await axios
       .get(`${process.env.REACT_APP_URL}/v1/events/${eventId}`, header)
-      .catch('ユーザ登録に失敗しました。');
+      .catch('イベント情報の取得に失敗しました。');
     return eventInfoRes;
   };
 }

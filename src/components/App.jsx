@@ -24,11 +24,12 @@ import {
 // import { Card, Divider } from 'ui-neumorphism';
 import Header from './Header';
 import Footer from './Footer';
+import Event from './events/Event';
 import List from './list/List';
 import Detail from './detail/Detail';
 import Top from './Top/Top';
 import '../styles/app.css';
-import AuthService from '../services/authService';
+
 import GoogleAuthService from '../services/googleAuthService';
 
 export default function App() {
@@ -38,9 +39,11 @@ export default function App() {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['loginUser']);
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  const [eventInfo, setEventInfo] = useState({});
 
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
+
     const checkLogin = async () => {
       const googleOAuth = new GoogleAuthService();
       if (cookies.loginUser) {
@@ -71,38 +74,7 @@ export default function App() {
       {loginSuccess ? (
         <>
           <Card>
-            <div className="clearfix">
-              <CardHeader
-                title={<H6>We partnered up with Google</H6>}
-                subtitle={
-                  <Subtitle2 secondary>We partnered up with Google</Subtitle2>
-                }
-                action={(
-                  <IconButton>
-                    <Icon path={mdiDotsVertical} size={1} />
-                  </IconButton>
-                )}
-              />
-              <Card width={200} className="picture">
-                <CardMedia dark src="images/beaches-2.jpg" />
-              </Card>
-              <CardAction>
-                <Card flat className="eventbox">
-                  <Alert className="mb-6" type="info">
-                    急募
-                  </Alert>
-                  <Alert className="mb-6" type="warning">
-                    オープン
-                  </Alert>
-                  <Alert className="mb-6" type="error">
-                    初心者歓迎
-                  </Alert>
-                  <Alert className="mb-6" type="success" inset>
-                    達人
-                  </Alert>
-                </Card>
-              </CardAction>
-            </div>
+            <Event loginUser={loginUser} />
             <div className="margin">
               <CardAction className="more">
                 <Card elevation={1} rounded>
