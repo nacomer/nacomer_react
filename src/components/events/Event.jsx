@@ -15,6 +15,7 @@ import {
   Spacer,
   Button,
   Body2,
+  Chip,
   Card,
   Fab,
   H6,
@@ -23,6 +24,7 @@ import {
 } from 'ui-neumorphism';
 import EventService from '../../services/eventService';
 import Chat from './Chat';
+import '../../styles/event.css';
 
 export default function Event(props) {
   const [eventInfo, setEventInfo] = useState({});
@@ -34,21 +36,41 @@ export default function Event(props) {
       const eventService = new EventService();
       // TODO: 表示のテストのため、seedされたeventIdを直接指定しています。
       // ここは適宜変更をお願いします。
-      const eventId = '2d9065a2-da6e-4f58-8547-3f3f0c202430';
+      const eventId = '204e2643-515f-42fa-bd60-50f0c8f9fb7b';
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
         eventId,
       );
       setEventInfo(eventInfoRes.data);
+      // 既に参加済みの場合は参加済みstateをtrueに設定する。
+      if (
+        eventInfoRes.data.users
+        && eventInfoRes.data.users.find(
+          (user) => user.googleId === props.loginUser.googleId,
+        )
+      ) {
+        setParticipate(true);
+      }
     };
     getEvent();
   }, []);
 
   const clickParticipate = () => {
-    setParticipate(true);
+    const participateEvent = async () => {
+      const eventService = new EventService();
+      const participantsRes = await eventService.participateEvent(
+        props.loginUser,
+        eventInfo.id,
+      );
+      if (participantsRes.status === 201) {
+        setParticipate(true);
+      }
+    };
+    participateEvent();
   };
 
   const quitParticipate = () => {
+    // TODO:参加取り消しのAPIが必要
     setParticipate(false);
   };
   const enterChat = () => {
@@ -66,9 +88,6 @@ export default function Event(props) {
               <div className="clearfix">
                 <CardHeader
                   title={<H6>{eventInfo.subject}</H6>}
-                  subtitle={
-                    <Subtitle2 secondary>We partnered up with Google</Subtitle2>
-                  }
                   // action={
                   //   <IconButton>
                   //     <Icon path={mdiDotsVertical} size={1} />
@@ -82,14 +101,13 @@ export default function Event(props) {
                   <Card flat className="eventbox">
                     {eventInfo.properties ? (
                       eventInfo.properties.map((data, idx) => (
-                        <Alert className="mb-6" type="info" key={idx}>
+                        <Chip className="propChip" key={idx}>
                           {data.name}
-                        </Alert>
+                        </Chip>
                       ))
                     ) : (
                       <></>
                     )}
-                    {console.log(eventInfo)}
                   </Card>
                 </CardAction>
               </div>

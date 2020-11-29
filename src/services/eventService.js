@@ -30,7 +30,7 @@ export default class EventService {
     };
 
     const participantsRes = await axios
-      .post(`${process.env.REACT_APP_URL}/v1/participants`, body, header)
+      .post(`${process.env.REACT_APP_URL}/v1/participant`, body, header)
       .catch('イベントの参加登録に失敗しました。');
     return participantsRes;
   };
