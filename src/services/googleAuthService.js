@@ -18,13 +18,12 @@ export default class GoogleAuthService {
       },
     };
     const body = {
-      googleId: userData.googleId,
       userName: userData.userName,
       picture: userData.imageUrl,
     };
 
     const authRes = await axios
-      .post(`${process.env.REACT_APP_URL}/api/user/login`, body, header)
+      .post(`${process.env.REACT_APP_URL}/v1/login`, body, header)
       .catch('ユーザ登録に失敗しました。');
     return authRes;
   };

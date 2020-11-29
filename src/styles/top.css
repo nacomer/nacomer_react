@@ -33,11 +33,9 @@ body {
   margin-left: 50px;
 }
 
-.log-form {
-  padding: 10px;
-  position: absolute;
-  top: 70%;
-  left: 2%;
+.login {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .topInput {

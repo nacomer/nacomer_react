@@ -45,7 +45,9 @@ export default function DetailComment(props) {
           com={comment}
           comment={comment.content}
           bool={
-            (props.loginUser.googleId === comment.NacomerUser.googleId) && { guestFlg }
+            props.loginUser.googleId === comment.NacomerUser.googleId && {
+              guestFlg,
+            }
           }
           id={comment.id}
           key={index}

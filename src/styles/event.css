@@ -1,0 +1,9 @@
+.propChip {
+  margin: 5px;
+  color: blue;
+}
+.avatar {
+  float: right;
+  display: block;
+  margin-left: -20px;
+}

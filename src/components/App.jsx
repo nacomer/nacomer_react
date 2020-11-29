@@ -1,12 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import Icon from '@mdi/react';
+import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
+import {
+  Alert,
+  CardContent,
+  IconButton,
+  CardHeader,
+  CardAction,
+  CardMedia,
+  Subtitle1,
+  Subtitle2,
+  Divider,
+  Spacer,
+  Button,
+  Body2,
+  Card,
+  Fab,
+  H6,
+  H5,
+  H4,
+} from 'ui-neumorphism';
+// import { Card, Divider } from 'ui-neumorphism';
 import Header from './Header';
 import Footer from './Footer';
+import Event from './events/Event';
 import List from './list/List';
 import Detail from './detail/Detail';
 import Top from './Top/Top';
 import '../styles/app.css';
-import AuthService from '../services/authService';
+
 import GoogleAuthService from '../services/googleAuthService';
 
 export default function App() {
@@ -19,6 +42,7 @@ export default function App() {
 
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
+
     const checkLogin = async () => {
       const googleOAuth = new GoogleAuthService();
       if (cookies.loginUser) {
@@ -36,34 +60,35 @@ export default function App() {
   }, []);
 
   return (
-    <div className="app">
+    <Card className="app">
+      <Header
+        CLIENT_ID={CLIENT_ID}
+        loginUser={loginUser}
+        setViewMode={setViewMode}
+        setLoginUser={setLoginUser}
+        setLoginSuccess={setLoginSuccess}
+        removeCookie={removeCookie}
+      />
+      <Divider elavated />
       {loginSuccess ? (
         <>
-          <Header
-            CLIENT_ID={CLIENT_ID}
-            loginUser={loginUser}
-            setViewMode={setViewMode}
-            setLoginUser={setLoginUser}
-            setLoginSuccess={setLoginSuccess}
-            removeCookie={removeCookie}
-          />
-          {viewMode === 'List' && (
-            <List setViewMode={setViewMode} setHobbyId={setHobbyId} />
-          )}
-          {viewMode === 'Detail' && (
+          <Event loginUser={loginUser} />
+          {/* {viewMode === 'Detail' && (
             <Detail hobbyId={hobbyId} loginUser={loginUser} />
-          )}
+          )} */}
           <br />
-          <Footer />
         </>
       ) : (
-        <Top
-          CLIENT_ID={CLIENT_ID}
-          setLoginUser={setLoginUser}
-          setCookie={setCookie}
-          setLoginSuccess={setLoginSuccess}
-        />
+        <>
+          <Top
+            CLIENT_ID={CLIENT_ID}
+            setLoginUser={setLoginUser}
+            setCookie={setCookie}
+            setLoginSuccess={setLoginSuccess}
+          />
+        </>
       )}
-    </div>
+      <Footer />
+    </Card>
   );
 }

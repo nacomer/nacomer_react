@@ -19,7 +19,7 @@ export default function List(props) {
 
   return (
     <div className="list">
-      <ListFilter
+      {/* <ListFilter
         costItemList={costItemList}
         filterCost={filterCost}
         setFilterCost={setFilterCost}
@@ -30,7 +30,7 @@ export default function List(props) {
         filteredCategory={filteredCategory}
         setFilteredCategory={setFilteredCategory}
         className="listFilter"
-      />
+      /> */}
       <ListView
         costItemList={costItemList}
         filterCost={filterCost}
