@@ -21,8 +21,8 @@ export default class ChatService {
     return chatListRes;
   };
 
-  // イベントへの参加登録API
-  participateEvent = async (userData, eventId) => {
+  // チャット投稿API
+  postChat = async (userData, eventId, comment) => {
     const header = {
       headers: {
         'Content-Type': 'application/json',
@@ -32,11 +32,12 @@ export default class ChatService {
     };
     const body = {
       eventId,
+      comment,
     };
 
     const participantsRes = await axios
-      .post(`${process.env.REACT_APP_URL}/v1/participant`, body, header)
-      .catch('イベントの参加登録に失敗しました。');
+      .post(`${process.env.REACT_APP_URL}/v1/chatComments`, body, header)
+      .catch('チャットの投稿に失敗しました。');
     return participantsRes;
   };
 }
