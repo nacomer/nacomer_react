@@ -35,9 +35,9 @@ export default class ChatService {
       comment,
     };
 
-    const participantsRes = await axios
+    const chatPostRes = await axios
       .post(`${process.env.REACT_APP_URL}/v1/chatComments`, body, header)
       .catch('チャットの投稿に失敗しました。');
-    return participantsRes;
+    return chatPostRes;
   };
 }

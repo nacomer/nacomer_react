@@ -81,7 +81,11 @@ export default function Event(props) {
   return (
     <>
       {chatMode ? (
-        <Chat setChatMode={setChatMode} />
+        <Chat
+          setChatMode={setChatMode}
+          eventInfo={eventInfo}
+          loginUser={props.loginUser}
+        />
       ) : (
         <Card>
           {eventInfo && eventInfo.users ? (
