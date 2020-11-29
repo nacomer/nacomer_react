@@ -18,7 +18,6 @@ export default class GoogleAuthService {
       },
     };
     const body = {
-      googleId: userData.googleId,
       userName: userData.userName,
       picture: userData.imageUrl,
     };
