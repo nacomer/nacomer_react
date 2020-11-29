@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader } from 'ui-neumorphism';
+import { Card, CardHeader, Avatar } from 'ui-neumorphism';
 import { GoogleLogout } from 'react-google-login';
 import PropTypes from 'prop-types';
 import logo from '../image/logo.png';
@@ -35,6 +35,7 @@ export default function Header(props) {
             ユーザ名:
             {props.loginUser.userName}
           </p>
+          <Avatar alt="Avatar" src={props.loginUser.imageUrl} />
           <GoogleLogout
             clientId={props.CLIENT_ID}
             buttonText="Logout"
