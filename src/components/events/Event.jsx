@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
 import {
   Alert,
+  Avatar,
   CardContent,
   IconButton,
   CardHeader,
@@ -99,15 +100,11 @@ export default function Event(props) {
                 </Card>
                 <CardAction>
                   <Card flat className="eventbox">
-                    {eventInfo.properties ? (
-                      eventInfo.properties.map((data, idx) => (
-                        <Chip className="propChip" key={idx}>
-                          {data.name}
-                        </Chip>
-                      ))
-                    ) : (
-                      <></>
-                    )}
+                    {eventInfo.properties.map((data, idx) => (
+                      <Chip className="propChip" key={idx}>
+                        {data.name}
+                      </Chip>
+                    ))}
                   </Card>
                 </CardAction>
               </div>
@@ -118,7 +115,13 @@ export default function Event(props) {
                       主催者：
                       {eventInfo.ownerId}
                       <br />
-                      {'参加者：{eventInfo.users.length}/{eventInfo.maxpart}'}
+                      参加者：
+                      {eventInfo.users.length}
+                      /
+                      {eventInfo.maxpart}
+                      {eventInfo.properties.map((data, idx) => (
+                        <Avatar alt="Avatar" src={data.imageUrl} key={idx} />
+                      ))}
                       <br />
                       集合場所：
                       {eventInfo.place}
@@ -136,7 +139,11 @@ export default function Event(props) {
                 </CardAction>
                 {!participate ? (
                   <>
-                    <Button onClick={clickParticipate}>参加</Button>
+                    {eventInfo.maxpart === eventInfo.users.length ? (
+                      <Button disabled>参加</Button>
+                    ) : (
+                      <Button onClick={clickParticipate}>参加</Button>
+                    )}
                   </>
                 ) : (
                   <>
