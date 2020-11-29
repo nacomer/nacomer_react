@@ -45,8 +45,8 @@ export default function Event(props) {
       setEventInfo(eventInfoRes.data);
       // 既に参加済みの場合は参加済みstateをtrueに設定する。
       if (
-        eventInfoRes.data.users
-        && eventInfoRes.data.users.find(
+        eventInfoRes.data.users &&
+        eventInfoRes.data.users.find(
           (user) => user.googleId === props.loginUser.googleId,
         )
       ) {
@@ -115,16 +115,27 @@ export default function Event(props) {
                       主催者：
                       {eventInfo.ownerId}
                       <br />
-                      参加者：
-                      {eventInfo.users.length}
-                      /
-                      {eventInfo.maxpart}
-                      {eventInfo.properties.map((data, idx) => (
-                        <Avatar alt="Avatar" src={data.imageUrl} key={idx} />
-                      ))}
+                      <div>
+                        参加者：
+                        {eventInfo.users.length}
+                        /
+                        {eventInfo.maxpart}
+                      </div>
+                      <div>
+                        {eventInfo.users.map((data, idx) => (
+                          <Avatar
+                            className="avatar"
+                            alt="Avatar"
+                            src={data.picture}
+                            key={idx}
+                          />
+                        ))}
+                      </div>
                       <br />
-                      集合場所：
-                      {eventInfo.place}
+                      <div>
+                        集合場所：
+                        {eventInfo.place}
+                      </div>
                       <br />
                       開始時間：
                       {eventInfo.start}
