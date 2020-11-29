@@ -23,6 +23,19 @@
   margin: 10px;
 }
 
+.more {
+  clear: both;
+  margin: 10px;
+}
+
+.padding {
+  padding: 10px;
+}
+
+.margin {
+  margin: 10px;
+}
+
 .clearfix::after {
   content: “”;
   display: block;
