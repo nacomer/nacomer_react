@@ -12,3 +12,8 @@
   float: left;
   margin: auto;
 }
+
+.cardWrapper {
+  overflow-y: scroll;
+  height: 500px;
+}
