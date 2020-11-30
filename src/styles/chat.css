@@ -1,0 +1,16 @@
+.chatCard {
+  margin: 5px;
+  color: blue;
+}
+.chatInput {
+  display: flex;
+  margin: 8px;
+  padding: 8px;
+}
+.chatInputText {
+  padding: auto;
+}
+.chatInputButton {
+  float: left;
+  margin: auto;
+}

@@ -37,7 +37,7 @@ export default function Event(props) {
       const eventService = new EventService();
       // TODO: 表示のテストのため、seedされたeventIdを直接指定しています。
       // ここは適宜変更をお願いします。
-      const eventId = '204e2643-515f-42fa-bd60-50f0c8f9fb7b';
+      const eventId = '6c6a7723-01ab-4014-980c-dcce740cc2a6';
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
         eventId,
@@ -81,7 +81,11 @@ export default function Event(props) {
   return (
     <>
       {chatMode ? (
-        <Chat setChatMode={setChatMode} />
+        <Chat
+          setChatMode={setChatMode}
+          eventInfo={eventInfo}
+          loginUser={props.loginUser}
+        />
       ) : (
         <Card>
           {eventInfo && eventInfo.users ? (
@@ -117,9 +121,7 @@ export default function Event(props) {
                       <br />
                       <div>
                         参加者：
-                        {eventInfo.users.length}
-                        /
-                        {eventInfo.maxpart}
+                        {/* {eventInfo.users.length}/{eventInfo.maxpart} */}
                       </div>
                       <div>
                         {eventInfo.users.map((data, idx) => (
