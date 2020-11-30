@@ -25,8 +25,12 @@ import {
   H5,
   H4,
 } from 'ui-neumorphism';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
 import EventService from '../../services/eventService';
 import Chat from './Chat';
+import EventOther from './EventOther';
 import '../../styles/event.css';
 
 export default function Event(props) {
@@ -98,6 +102,28 @@ export default function Event(props) {
     setChatMode(true);
   };
 
+  const openTwitterLink = () => {
+    const text = eventInfo.subject + 'に参加しよう';
+    const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
+    const hashtag = 'nacomer';
+    const via = 'nacomer';
+    const uri =
+      'https://twitter.com/intent/tweet?text=' +
+      text +
+      '&url=' +
+      url +
+      '&hashtag=' +
+      hashtag +
+      '&via=' +
+      via;
+    location.href = uri;
+  };
+
+  // const openFacebookLink = () => {
+  //      const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
+
+  //  }
+
   return (
     <Card elevation={1} style={{ height: 'fit-content' }}>
       {chatMode ? (
@@ -114,7 +140,24 @@ export default function Event(props) {
                   icon={<Icon path={mdiInformationVariant} size={1} />}
                   border="left"
                 >
-                  {eventInfo.subject}
+                  <div className="eventTitle">
+                    <p>{eventInfo.subject}</p>
+                    <div className="snsIcons">
+                      <IconButton
+                        rounded
+                        size="large"
+                        onClick={openTwitterLink}
+                      >
+                        <TwitterIcon className="inButton" />
+                      </IconButton>
+                      <IconButton rounded size="large">
+                        <FacebookIcon className="inButton" />
+                      </IconButton>
+                      <IconButton rounded size="large">
+                        <InstagramIcon className="inButton" />
+                      </IconButton>
+                    </div>
+                  </div>
                 </Alert>
                 <div>
                   <Card width={200} maxHeight={160} className="picture">
@@ -167,9 +210,7 @@ export default function Event(props) {
                       <br />
                       <div>
                         参加者：
-                        {eventInfo.users.length}
-                        /
-                        {eventInfo.maxpart}
+                        {eventInfo.users.length}/{eventInfo.maxpart}
                       </div>
                       <div className="avatarlist">
                         {eventInfo.users.map((data, idx) => (
@@ -198,6 +239,13 @@ export default function Event(props) {
                     </div>
                   </Card>
                 </CardAction>
+              </div>
+              <div>
+                {eventInfo.maxpart === eventInfo.users.length ? (
+                  <EventOther />
+                ) : (
+                  <EventOther />
+                )}
               </div>
             </>
           ) : (

@@ -1,7 +1,5 @@
 import React, { useRef, useState } from 'react';
-import {
-  Card, CardHeader, CardContent, Avatar,
-} from '@material-ui/core';
+import { Card, CardHeader, CardContent, Avatar } from '@material-ui/core';
 import '../../../styles/comment.css';
 import { CommentService } from '../../../services/commentService';
 
