@@ -21,7 +21,7 @@ export default function Header(props) {
       <img src={logo} alt="logo" className="logo" />
       {props.loginUser ? (
         <div className="loginUserDiv">
-          <Card rounded>
+          <Card rounded elevation={3}>
             <div className="inCardAvatar">
               <Avatar
                 className="headerAvatar"
@@ -30,12 +30,6 @@ export default function Header(props) {
               />
             </div>
           </Card>
-          {/* <GoogleLogout
-            clientId={props.CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={logout}
-            onFailure={handleLogoutFailure}
-          /> */}
         </div>
       ) : (
         <></>
