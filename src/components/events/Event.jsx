@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Icon, { mdiInformationVariant } from '@mdi/react';
+import Icon from '@mdi/react';
 import 'moment/locale/ja';
 import moment from 'moment';
-import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
+import {
+  mdiDotsVertical,
+  mdiShareVariant,
+  mdiHeart,
+  mdiInformationVariant,
+} from '@mdi/js';
 import {
   Alert,
   Avatar,
@@ -27,7 +32,7 @@ import {
 } from 'ui-neumorphism';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import InstagramIcon from '@material-ui/icons/Instagram';
+import EventIcon from '@material-ui/icons/Event';
 import EventService from '../../services/eventService';
 import Chat from './Chat';
 import EventOthers from './EventOthers';
@@ -123,7 +128,7 @@ export default function Event(props) {
     const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
     const hashtag = 'nacomer';
     const via = 'nacomer';
-    const uri =
+    const targetUri =
       'https://twitter.com/intent/tweet?text=' +
       text +
       '&url=' +
@@ -132,13 +137,28 @@ export default function Event(props) {
       hashtag +
       '&via=' +
       via;
-    location.href = uri;
+    location.href = targetUri;
   };
 
-  // const openFacebookLink = () => {
-  //      const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
+  const openFacebookLink = () => {
+    const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
+    const targetUri = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+    location.href = targetUri;
+  };
 
-  //  }
+  const openCalendar = () => {
+    const text = eventInfo.subject;
+    const dates =
+      start.format('YYYYMMDD[T]hhmmss') + '/' + end.format('YYYYMMDD[T]hhmmss');
+    const targetUri =
+      'https://www.google.com/calendar/render?action=TEMPLATE&text=' +
+      text +
+      '&dates=' +
+      dates +
+      '&location=' +
+      eventInfo.place;
+    location.href = targetUri;
+  };
 
   return (
     <Card elevation={1} style={{ height: 'fit-content' }}>
@@ -163,18 +183,14 @@ export default function Event(props) {
                   <div className="eventTitle">
                     <p>{eventInfo.subject}</p>
                     <div className="snsIcons">
-                      <IconButton
-                        rounded
-                        size="large"
-                        onClick={openTwitterLink}
-                      >
-                        <TwitterIcon className="inButton" />
+                      <IconButton rounded onClick={openTwitterLink}>
+                        <TwitterIcon className="inButtonNormal" />
                       </IconButton>
-                      <IconButton rounded size="large">
-                        <FacebookIcon className="inButton" />
+                      <IconButton rounded onClick={openFacebookLink}>
+                        <FacebookIcon className="inButtonNormal" />
                       </IconButton>
-                      <IconButton rounded size="large">
-                        <InstagramIcon className="inButton" />
+                      <IconButton rounded onClick={openCalendar}>
+                        <EventIcon className="inButtonNormal" />
                       </IconButton>
                     </div>
                   </div>
@@ -209,8 +225,12 @@ export default function Event(props) {
                       </>
                     ) : (
                       <>
-                        <Button onClick={quitParticipate}>参加取消</Button>
-                        <Button onClick={enterChat}>トーク画面</Button>
+                        <Button onClick={quitParticipate}>
+                          <p className="inButton">参加取消</p>
+                        </Button>
+                        <Button onClick={enterChat}>
+                          <p className="inButton">トーク画面</p>
+                        </Button>
                       </>
                     )}
                   </div>

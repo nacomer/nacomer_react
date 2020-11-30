@@ -38,15 +38,11 @@ export default function ChatPost(props) {
       props.eventInfo.id,
       comment,
     );
-    console.log(chatInputRef);
     if (postChatRes.status === 201) {
       chatInputRef.current.value = '';
       setComment('');
       props.getChat();
     }
-  };
-  const back = () => {
-    props.setChatMode(false);
   };
 
   return (
@@ -57,6 +53,11 @@ export default function ChatPost(props) {
         placeholder="メッセージを入力..."
         onChange={(e) => {
           setComment(e.target.value);
+        }}
+        onKeyPress={(e) => {
+          if (e.key == 'Enter' && comment) {
+            postComment();
+          }
         }}
         ref={chatInputRef}
       />

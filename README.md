@@ -22,23 +22,10 @@ This was created during my time as a student at [Code Chrysalis](https://codechr
 そんなあなたに打ってつけのアプリが*NACOMER*  
 新しい趣味を見つけるもよし！自分の好きなことで新しい出会いを求めるもよし！
 
-## Demo
-
-- ユーザ登録＆ログイン  
-  ![login](https://user-images.githubusercontent.com/63960082/100206243-6e06f580-2f49-11eb-8c15-8fbaa389bc5e.gif)
-
-- 趣味一覧画面  
-  ![list](https://user-images.githubusercontent.com/63960082/100206880-406e7c00-2f4a-11eb-99f6-4e0a77d950c4.gif)
-
-- 趣味詳細画面  
-  ![detail](https://user-images.githubusercontent.com/63960082/100206962-5d0ab400-2f4a-11eb-8a03-a446fb7262d5.gif)
-
 ## Requirement
 
 ### "nacomer_react" の動作確認 Nodejs のバージョン
-
-- v12.19
-- v14.15
+- v14.15.1
 
 ## Install
 
@@ -55,6 +42,7 @@ git clone https://github.com/nacomer/nacomer_react.git
 
 ```
 REACT_APP_URL=http://localhost:5000 ※nacomer_expressの設定に従い記載
+REACT_APP_GOOGLE_CLIENT_ID　※googleで発行したClientIdを記載
 ```
 
 - モジュールインストール（依存パッケージのインストール）
