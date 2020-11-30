@@ -8,6 +8,15 @@ import {
   mdiShareVariant,
   mdiHeart,
   mdiInformationVariant,
+  mdiAccount,
+  mdiAccountGroup,
+  mdiMapMarker,
+  mdiClockOutline,
+  mdiAccountPlus,
+  mdiAccountPlusOutline,
+  mdiAccountMinus,
+  mdiChat,
+  mdiLeadPencil,
 } from '@mdi/js';
 import {
   Alert,
@@ -33,7 +42,11 @@ import {
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import EventIcon from '@material-ui/icons/Event';
+import ScheduleIcon from '@material-ui/icons/Schedule';
+import PlaceIcon from '@material-ui/icons/Place';
 import EventService from '../../services/eventService';
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
+import PeopleIcon from '@material-ui/icons/People';
 import Chat from './Chat';
 import EventOther from './EventOther';
 import '../../styles/event.css';
@@ -50,8 +63,14 @@ export default function Event(props) {
     const getEvent = async () => {
       const eventService = new EventService();
       // TODO: 表示のテストのため、1番目のeventIdを取得しています
-      const ids = await eventService.getRandomEvent(props.loginUser);
-      const eventId = ids.data[0].id;
+      const sessionSavedId = sessionStorage.getItem('eventid');
+      let eventId;
+      if (sessionSavedId) {
+        eventId = sessionSavedId;
+      } else {
+        const ids = await eventService.getRandomEvent(props.loginUser);
+        eventId = ids.data[0].id;
+      }
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
         eventId,
@@ -179,7 +198,7 @@ export default function Event(props) {
                     </div>
                   </div>
                 </Alert>
-                <div>
+                <div className="eventInfo">
                   <Card width={200} maxHeight={160} className="picture">
                     <CardMedia dark src="images/beaches-2.jpg" />
                   </Card>
@@ -196,26 +215,44 @@ export default function Event(props) {
                     {!participate ? (
                       <>
                         {eventInfo.maxpart === eventInfo.users.length ? (
-                          <Button disabled>参加</Button>
+                          <Button disabled>
+                            <div className="inEventButton">
+                              <Icon path={mdiAccountPlus} size={1.0} />
+                              <p>参加</p>
+                            </div>
+                          </Button>
                         ) : (
                           <Button
                             bordered
                             onClick={clickParticipate}
                             className="partButton"
                           >
-                            <p className="inButton">参加</p>
+                            <div className="inEventButton">
+                              <Icon path={mdiAccountPlus} size={1.0} />
+                              <p>参加</p>
+                            </div>
                           </Button>
                         )}
                       </>
                     ) : (
-                      <>
-                        <Button onClick={quitParticipate}>
-                          <p className="inButton">参加取消</p>
-                        </Button>
-                        <Button onClick={enterChat}>
-                          <p className="inButton">トーク画面</p>
-                        </Button>
-                      </>
+                      <div>
+                        <div className="multiLineButton">
+                          <Button onClick={quitParticipate}>
+                            <div className="inCancelButton">
+                              <Icon path={mdiAccountMinus} size={0.8} />
+                              <p>参加取消</p>
+                            </div>
+                          </Button>
+                        </div>
+                        <div className="multiLineButton">
+                          <Button onClick={enterChat}>
+                            <div className="inEventButton">
+                              <Icon path={mdiChat} size={0.8} />
+                              <p>トーク画面</p>
+                            </div>
+                          </Button>
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -229,37 +266,102 @@ export default function Event(props) {
                     style={{ width: '-webkit-fill-available' }}
                   >
                     <div className="padding">
-                      主催者：
-                      {ownerName}
-                      <br />
-                      <div>
-                        参加者：
-                        {eventInfo.users.length}/{eventInfo.maxpart}
-                      </div>
-                      <div className="avatarlist">
-                        {eventInfo.users.map((data, idx) => (
-                          <Avatar
-                            className="avatar"
-                            alt="Avatar"
-                            src={data.picture}
-                            key={idx}
-                          />
-                        ))}
-                      </div>
-                      <Divider />
-                      <div>
-                        集合場所：
-                        {eventInfo.place}
+                      <div className="infoBox">
+                        <div className="infoIcon">
+                          <Chip prepend={<Icon path={mdiAccount} size={1.0} />}>
+                            主催者
+                          </Chip>
+                        </div>
+                        <div className="infoDetailBox">
+                          <p className="infoDetail">{ownerName}</p>
+                        </div>
                       </div>
                       <br />
-                      開始時間：
-                      {start.format('YYYY/MM/DD(dd) h:mm')}
+                      <div className="infoBox">
+                        <div className="infoIcon">
+                          <Chip
+                            prepend={<Icon path={mdiAccountGroup} size={1.0} />}
+                          >
+                            参加者
+                          </Chip>
+                        </div>
+                        <div className="infoDetailBox">
+                          {/* {eventInfo.users.length}/{eventInfo.maxpart} */}
+                          <div className="avatarlist">
+                            {eventInfo.users.map((data, idx) => (
+                              <Avatar
+                                className="avatar"
+                                alt="Avatar"
+                                src={data.picture}
+                                key={idx}
+                              />
+                            ))}
+                            {[
+                              ...Array(
+                                eventInfo.maxpart - eventInfo.users.length,
+                              ).keys(),
+                            ].map((key) => {
+                              return (
+                                <Avatar
+                                  className="avatar"
+                                  bgColor="var(--warning)"
+                                >
+                                  <Icon
+                                    key={key}
+                                    path={mdiAccountPlusOutline}
+                                    size={1.0}
+                                  />
+                                </Avatar>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                      <Divider className="infoDivide" />
+                      <div className="infoBox">
+                        <div className="infoIcon">
+                          <Chip
+                            prepend={<Icon path={mdiMapMarker} size={1.0} />}
+                          >
+                            場所
+                          </Chip>
+                        </div>
+                        <div className="infoDetailBox">
+                          <p className="infoDetail">{eventInfo.place}</p>
+                        </div>
+                      </div>
                       <br />
-                      終了時間：
-                      {end.format('YYYY/MM/DD(dd) h:mm')}
-                      <br />
-                      <br />
-                      {eventInfo.description}
+                      <div className="infoBox">
+                        <div className="infoIcon">
+                          <Chip
+                            prepend={<Icon path={mdiClockOutline} size={1.0} />}
+                          >
+                            時間
+                          </Chip>
+                        </div>
+                        <div className="infoDetailBox">
+                          <p className="infoDetail">
+                            {start.format('YYYY/MM/DD(dd) h:mm')}
+                          </p>
+                          <p className="infoDetail">～</p>
+                          <p className="infoDetail">
+                            {end.format('YYYY/MM/DD(dd) h:mm')}
+                          </p>
+                        </div>
+                      </div>
+                      <Divider className="infoDivide" />
+                      <div className="infoBox lastInfoBox">
+                        <div className="infoIcon">
+                          <Chip
+                            prepend={<Icon path={mdiLeadPencil} size={1.0} />}
+                          >
+                            詳細
+                          </Chip>
+                        </div>
+                        <div className="infoDetailBox">
+                          <p className="infoDetail">{eventInfo.description}</p>
+                        </div>
+                      </div>
                     </div>
                   </Card>
                 </CardAction>
