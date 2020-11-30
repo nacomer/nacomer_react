@@ -26,6 +26,10 @@
   height: max-content;
 }
 
+.eventSubject {
+  max-width: 53vw;
+}
+
 .inButtonNormal {
   background-color: #e4ebf5;
 }

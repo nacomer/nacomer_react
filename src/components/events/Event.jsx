@@ -166,6 +166,27 @@ export default function Event(props) {
 
   return (
     <Card elevation={1} style={{ height: 'fit-content' }}>
+      <Alert
+        type="info"
+        bordered
+        icon={<Icon path={mdiInformationVariant} size={1} />}
+        border="left"
+      >
+        <div className="eventTitle">
+          <p className="eventSubject">{eventInfo.subject}</p>
+          <div className="snsIcons">
+            <IconButton rounded onClick={openTwitterLink}>
+              <TwitterIcon className="inButtonNormal" />
+            </IconButton>
+            <IconButton rounded onClick={openFacebookLink}>
+              <FacebookIcon className="inButtonNormal" />
+            </IconButton>
+            <IconButton rounded onClick={openCalendar}>
+              <EventIcon className="inButtonNormal" />
+            </IconButton>
+          </div>
+        </div>
+      </Alert>
       {chatMode ? (
         <Chat
           setChatMode={setChatMode}
@@ -178,27 +199,6 @@ export default function Event(props) {
             <>
               <div className="clearfix">
                 {/* <CardHeader title={<H6>{eventInfo.subject}</H6>} /> */}
-                <Alert
-                  type="info"
-                  bordered
-                  icon={<Icon path={mdiInformationVariant} size={1} />}
-                  border="left"
-                >
-                  <div className="eventTitle">
-                    <p>{eventInfo.subject}</p>
-                    <div className="snsIcons">
-                      <IconButton rounded onClick={openTwitterLink}>
-                        <TwitterIcon className="inButtonNormal" />
-                      </IconButton>
-                      <IconButton rounded onClick={openFacebookLink}>
-                        <FacebookIcon className="inButtonNormal" />
-                      </IconButton>
-                      <IconButton rounded onClick={openCalendar}>
-                        <EventIcon className="inButtonNormal" />
-                      </IconButton>
-                    </div>
-                  </div>
-                </Alert>
                 <div className="eventInfo">
                   <Card width={200} maxHeight={160} className="picture">
                     <CardMedia dark src="images/beaches-2.jpg" />
