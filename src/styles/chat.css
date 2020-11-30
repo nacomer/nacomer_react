@@ -8,9 +8,21 @@
   padding: 8px;
 }
 .chatInputText {
-  padding: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: none;
+  width: 100%;
+  background-color: #e4ebf5;
+}
+.chatInputText:focus {
+  outline: none;
+  border: none;
 }
 .chatInputButton {
   float: left;
-  margin: auto;
+  margin-left: auto;
+}
+.inButton {
+  background-color: #e4ebf5;
+  color: blue;
 }

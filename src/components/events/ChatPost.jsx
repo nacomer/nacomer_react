@@ -63,7 +63,7 @@ export default function ChatPost(props) {
       <input
         type="text"
         className="chatInputText"
-        placeholder="Type something"
+        placeholder="メッセージを入力..."
         onChange={(e) => {
           setComment(e.target.value);
         }}
@@ -71,15 +71,11 @@ export default function ChatPost(props) {
       />
       {comment ? (
         <Button rounded className="chatInputButton" onClick={postComment}>
-          <SendIcon />
+          <SendIcon className="inButton" />
         </Button>
       ) : (
-        <Button
-          disabled
-          rounded
-          className="chatInputButton"
-        >
-          <SendIcon />
+        <Button disabled rounded className="chatInputButton">
+          <SendIcon className="inButton" />
         </Button>
       )}
     </Card>
