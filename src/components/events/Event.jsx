@@ -127,7 +127,11 @@ export default function Event(props) {
   return (
     <Card elevation={1} style={{ height: 'fit-content' }}>
       {chatMode ? (
-        <Chat setChatMode={setChatMode} />
+        <Chat
+          setChatMode={setChatMode}
+          eventInfo={eventInfo}
+          loginUser={props.loginUser}
+        />
       ) : (
         <>
           {eventInfo && eventInfo.users ? (

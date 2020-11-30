@@ -1,0 +1,55 @@
+.chatInput {
+  display: flex;
+  margin: 8px;
+  padding: 8px;
+}
+.chatInputText {
+  margin-left: 10px;
+  margin-right: 10px;
+  border: none;
+  width: 100%;
+  background-color: #e4ebf5;
+}
+.chatInputText:focus {
+  outline: none;
+  border: none;
+}
+.chatInputButton {
+  float: left;
+  margin-left: auto;
+}
+.inButton {
+  background-color: #e4ebf5;
+  color: blue;
+}
+
+.cardWrapper {
+  overflow-y: scroll;
+  height: 500px;
+}
+.chatBox {
+  display: flex;
+  margin: 8px;
+  padding: 8px;
+}
+.avatar {
+  display: block;
+  margin-left: -20px;
+}
+.chatCard {
+  margin: 8px;
+  padding: 8px;
+}
+.contentCard {
+  width: 100%;
+}
+.avatarCard {
+  width: 40px;
+}
+.profileCard {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+.inCardAvatar {
+  padding: 3px;
+}

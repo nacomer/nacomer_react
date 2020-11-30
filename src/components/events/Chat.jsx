@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
 import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
 import {
   Alert,
+  Avatar,
+  ProgressCircular,
   CardContent,
   IconButton,
   CardHeader,
@@ -20,17 +22,62 @@ import {
   H6,
   H5,
   H4,
+  TextField,
 } from 'ui-neumorphism';
-import EventService from '../../services/eventService';
+import useInterval from 'use-interval';
+import ChatService from '../../services/chatService';
+import ChatPost from './ChatPost';
+import ChatBox from './ChatBox';
+import MyChatBox from './MyChatBox';
+import '../../styles/chat.css';
 
 export default function Chat(props) {
+  const [chatList, setChatList] = useState([]);
+
+  // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
+  const getChat = async () => {
+    const chatService = new ChatService();
+    const chatListRes = await chatService.getChatList(
+      props.loginUser,
+      props.eventInfo.id,
+    );
+    console.log(chatListRes);
+    setChatList(chatListRes.data);
+  };
+  useEffect(() => {
+    getChat();
+  }, []);
+  // 30秒に1回チャットの情報を取得する。
+  useInterval(() => {
+    getChat();
+  }, 30000);
+
   const back = () => {
     props.setChatMode(false);
   };
+
   return (
-    <div>
-      <p>チャット画面</p>
-      <Button onClick={back}>戻る</Button>
-    </div>
+    // <div style="overflow: 'scroll'">
+    <>
+      <div className="cardWrapper">
+        {chatList.map((chat, idx) =>
+          chat.user.googleId == props.loginUser.googleId ? (
+            <MyChatBox key={idx} chat={chat} />
+          ) : (
+            <ChatBox key={idx} chat={chat} />
+          ),
+        )}
+      </div>
+      <div>
+        <ChatPost
+          getChat={getChat}
+          loginUser={props.loginUser}
+          eventInfo={props.eventInfo}
+        />
+        <div>
+          <Button onClick={back}>←</Button>
+        </div>
+      </div>
+    </>
   );
 }
