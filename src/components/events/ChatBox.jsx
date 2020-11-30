@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
 import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
+import 'moment/locale/ja';
+import moment from 'moment';
 import {
   Alert,
   Avatar,
@@ -29,9 +31,15 @@ import '../../styles/chat.css';
 export default function ChatBox(props) {
   return (
     <Card flat className="chatBox">
-      <Avatar className="avatar" alt="Avatar" src={props.chat.user.picture} />
       <Card flat>
-  <Card flat><h5>{props.chat.user.name}</h5><h6>{props.chat.date}</h6></Card>
+        <Avatar className="avatar" alt="Avatar" src={props.chat.user.picture} />
+      </Card>
+
+      <Card flat>
+        <Card flat>
+          <h5>{props.chat.user.name}</h5>
+          <h6>{moment(props.chat.date).fromNow()}</h6>
+        </Card>
         <Card inset className="chatCard">
           {props.chat.comment}
         </Card>
