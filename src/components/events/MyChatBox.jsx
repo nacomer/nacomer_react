@@ -28,13 +28,9 @@ import {
 } from 'ui-neumorphism';
 import '../../styles/chat.css';
 
-export default function ChatBox(props) {
+export default function MyChatBox(props) {
   return (
     <div flat className="chatBox">
-      <div flat className="avatarCard">
-        <Avatar className="avatar" alt="Avatar" src={props.chat.user.picture} />
-      </div>
-
       <div flat className="contentCard">
         <div flat className="profileCard">
           <h5>{props.chat.user.name}</h5>
@@ -43,6 +39,9 @@ export default function ChatBox(props) {
         <Card inset className="chatCard">
           {props.chat.comment}
         </Card>
+      </div>
+      <div flat className="avatarCard">
+        <Avatar className="avatar" alt="Avatar" src={props.chat.user.picture} />
       </div>
     </div>
   );
