@@ -42,7 +42,12 @@ export default function Event(props) {
       const eventService = new EventService();
       // TODO: 表示のテストのため、seedされたeventIdを直接指定しています。
       // ここは適宜変更をお願いします。
-      const eventId = '4a08838e-2a8c-4901-b300-ad8cc1380abf';
+      // const eventId = '012258a3-217e-4335-b587-6360704b3c51';
+      const ids = await eventService.getRandomEvent(
+        props.loginUser,
+      );
+      const eventId = ids.data[0].id;
+      console.log(ids);
       // 4a08838e-2a8c-4901-b300-ad8cc1380abf
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
@@ -50,7 +55,9 @@ export default function Event(props) {
       );
       setEventInfo(eventInfoRes.data);
       // ownerNameの設定
-      const owner = eventInfoRes.data.users.filter((user) => user.id === eventInfoRes.data.ownerId);
+      const owner = eventInfoRes.data.users.filter(
+        (user) => user.id === eventInfoRes.data.ownerId,
+      );
       setOwnerName(owner[0].name);
       // 既に参加済みの場合は参加済みstateをtrueに設定する。
       if (
@@ -63,7 +70,7 @@ export default function Event(props) {
       }
     };
     getEvent();
-  }, []);
+  }, [participate]);
 
   const clickParticipate = () => {
     const participateEvent = async () => {
@@ -80,9 +87,19 @@ export default function Event(props) {
   };
 
   const quitParticipate = () => {
-    // TODO:参加取り消しのAPIが必要
-    setParticipate(false);
+    const unparticipateEvent = async () => {
+      const eventService = new EventService();
+      const unparticipantsRes = await eventService.unparticipateEvent(
+        props.loginUser,
+        eventInfo.id,
+      );
+      if (unparticipantsRes.status === 204) {
+        setParticipate(false);
+      }
+    };
+    unparticipateEvent();
   };
+
   const enterChat = () => {
     setChatMode(true);
   };
@@ -96,26 +113,40 @@ export default function Event(props) {
           {eventInfo && eventInfo.users ? (
             <>
               <div className="clearfix">
-                <CardHeader
-                  title={<H6>{eventInfo.subject}</H6>}
-                  // action={
-                  //   <IconButton>
-                  //     <Icon path={mdiDotsVertical} size={1} />
-                  //   </IconButton>
-                  // }
-                />
-                <Card width={200} className="picture">
-                  <CardMedia dark src="images/beaches-2.jpg" />
-                </Card>
-                <CardAction>
-                  <Card flat className="eventbox">
-                    {eventInfo.properties.map((data, idx) => (
-                      <Chip className="propChip" key={idx}>
-                        {data.name}
-                      </Chip>
-                    ))}
+                <CardHeader title={<H6>{eventInfo.subject}</H6>} />
+                <div>
+                  <Card width={200} className="picture">
+                    <CardMedia dark src="images/beaches-2.jpg" />
                   </Card>
-                </CardAction>
+                  <CardAction>
+                    <Card flat className="eventbox">
+                      {eventInfo.properties.map((data, idx) => (
+                        <Chip className="propChip" key={idx}>
+                          {data.name}
+                        </Chip>
+                      ))}
+                    </Card>
+                  </CardAction>
+                  <Card
+                    className="participate"
+                    style={({ paddingbottom: 0 })}
+                  >
+                    {!participate ? (
+                      <>
+                        {eventInfo.maxpart === eventInfo.users.length ? (
+                          <Button disabled>参加</Button>
+                        ) : (
+                          <Button onClick={clickParticipate}>参加</Button>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <Button onClick={quitParticipate}>参加取消</Button>
+                        <Button onClick={enterChat}>トーク画面</Button>
+                      </>
+                    )}
+                  </Card>
+                </div>
               </div>
               <div className="margin">
                 <CardAction className="more">
