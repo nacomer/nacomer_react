@@ -264,7 +264,7 @@ export default function Event(props) {
                 {eventInfo.maxpart === eventInfo.users.length ? (
                   <EventOthers eventInfo={eventInfo} />
                 ) : eventInfo != {} ? (
-                  <EventOthers eventInfo={eventInfo} />
+                  <></>
                 ) : (
                   <></>
                 )}
