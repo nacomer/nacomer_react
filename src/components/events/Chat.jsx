@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
-import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
+import { mdiArrowLeft } from '@mdi/js';
 import {
   Alert,
   Avatar,
@@ -29,6 +29,7 @@ import ChatService from '../../services/chatService';
 import ChatPost from './ChatPost';
 import ChatBox from './ChatBox';
 import MyChatBox from './MyChatBox';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import '../../styles/chat.css';
 
 export default function Chat(props) {
@@ -57,8 +58,12 @@ export default function Chat(props) {
   };
 
   return (
-    // <div style="overflow: 'scroll'">
     <>
+      <div>
+        <Button onClick={back}>
+          <ArrowBackIcon className="inButton" />
+        </Button>
+      </div>
       <div className="cardWrapper">
         {chatList.map((chat, idx) =>
           chat.user.googleId == props.loginUser.googleId ? (
@@ -74,9 +79,6 @@ export default function Chat(props) {
           loginUser={props.loginUser}
           eventInfo={props.eventInfo}
         />
-        <div>
-          <Button onClick={back}>←</Button>
-        </div>
       </div>
     </>
   );

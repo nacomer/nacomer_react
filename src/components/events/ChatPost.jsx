@@ -58,10 +58,19 @@ export default function ChatPost(props) {
         onChange={(e) => {
           setComment(e.target.value);
         }}
+        onKeyPress={(e) => {
+          if (e.key == 'Enter' && comment) {
+            postComment();
+          }
+        }}
         ref={chatInputRef}
       />
       {comment ? (
-        <Button rounded className="chatInputButton" onClick={postComment}>
+        <Button
+          rounded
+          className="chatInputButton"
+          onClick={postComment}
+        >
           <SendIcon className="inButton" />
         </Button>
       ) : (
