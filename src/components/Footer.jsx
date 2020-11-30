@@ -10,17 +10,20 @@ export default function Footer() {
   return (
     <Card elevation={1} className="footer">
       <IconButton rounded size="large">
-        <TwitterIcon className="inButton"
+        <TwitterIcon
+          className="inButton"
           style={({ backgroundColor: '#e4ebf5' }, { fontSize: 30 })}
         />
       </IconButton>
       <IconButton rounded size="large">
-        <FacebookIcon className="inButton"
+        <FacebookIcon
+          className="inButton"
           style={({ backgroundColor: '#e4ebf5' }, { fontSize: 30 })}
         />
       </IconButton>
       <IconButton rounded size="large">
-        <InstagramIcon className="inButton"
+        <InstagramIcon
+          className="inButton"
           style={({ backgroundColor: '#e4ebf5' }, { fontSize: 30 })}
         />
       </IconButton>
