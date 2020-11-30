@@ -13,6 +13,7 @@ import {
   mdiMapMarker,
   mdiClockOutline,
   mdiAccountPlus,
+  mdiAccountPlusOutline,
   mdiAccountMinus,
   mdiChat,
   mdiLeadPencil,
@@ -62,8 +63,14 @@ export default function Event(props) {
     const getEvent = async () => {
       const eventService = new EventService();
       // TODO: 表示のテストのため、1番目のeventIdを取得しています
-      const ids = await eventService.getRandomEvent(props.loginUser);
-      const eventId = ids.data[0].id;
+      const sessionSavedId = sessionStorage.getItem('eventid');
+      let eventId;
+      if (sessionSavedId) {
+        eventId = sessionSavedId;
+      } else {
+        const ids = await eventService.getRandomEvent(props.loginUser);
+        eventId = ids.data[0].id;
+      }
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
         eventId,
@@ -289,6 +296,25 @@ export default function Event(props) {
                                 key={idx}
                               />
                             ))}
+                            {[
+                              ...Array(
+                                eventInfo.maxpart - eventInfo.users.length,
+                              ).keys(),
+                            ].map((key) => {
+                              // console.log(key);
+                              return (
+                                <Avatar
+                                  className="avatar"
+                                  bgColor="var(--warning)"
+                                >
+                                  <Icon
+                                    key={key}
+                                    path={mdiAccountPlusOutline}
+                                    size={1.0}
+                                  />
+                                </Avatar>
+                              );
+                            })}
                           </div>
                         </div>
                       </div>
