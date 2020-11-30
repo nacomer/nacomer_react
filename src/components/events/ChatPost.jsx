@@ -51,15 +51,6 @@ export default function ChatPost(props) {
 
   return (
     <Card className="chatInput">
-      {/* <TextField
-        rounded
-        className="chatInputText"
-        placeholder="Type something"
-        onChange={(e) => {
-          setComment(e.value);
-        }}
-        ref={chatInputRef}
-      /> */}
       <input
         type="text"
         className="chatInputText"

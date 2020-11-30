@@ -57,7 +57,7 @@ export default function Chat(props) {
   return (
     <div>
       {chatList.map((data, idx) => (
-        <Card className="chatCard" key={idx}>
+        <Card inset className="chatCard" key={idx}>
           <Avatar
             className="avatar"
             alt="Avatar"
