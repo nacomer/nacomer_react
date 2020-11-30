@@ -2,3 +2,13 @@
   margin: 5px;
   color: blue;
 }
+.chatInput {
+  display: flex;
+}
+.chatInputText {
+  padding: auto;
+}
+.chatInputButton {
+  float: left;
+  margin: auto;
+}

@@ -121,9 +121,7 @@ export default function Event(props) {
                       <br />
                       <div>
                         参加者：
-                        {eventInfo.users.length}
-                        /
-                        {eventInfo.maxpart}
+                        {/* {eventInfo.users.length}/{eventInfo.maxpart} */}
                       </div>
                       <div>
                         {eventInfo.users.map((data, idx) => (

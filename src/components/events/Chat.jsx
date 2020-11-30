@@ -27,11 +27,10 @@ import {
 import useInterval from 'use-interval';
 import ChatService from '../../services/chatService';
 import '../../styles/chat.css';
+import ChatPost from './ChatPost';
 
 export default function Chat(props) {
   const [chatList, setChatList] = useState([]);
-  const [comment, setComment] = useState('');
-  const chatInputRef = useRef();
 
   // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
   const getChat = async () => {
@@ -51,27 +50,12 @@ export default function Chat(props) {
     getChat();
   }, 30000);
 
-  const postComment = async () => {
-    const chatService = new ChatService();
-    const postChatRes = await chatService.postChat(
-      props.loginUser,
-      props.eventInfo.id,
-      comment,
-    );
-    console.log(chatInputRef.current);
-    if (postChatRes.status === 201) {
-      chatInputRef.current.value = 'test';
-      setComment('');
-      getChat();
-    }
-  };
   const back = () => {
     props.setChatMode(false);
   };
 
   return (
     <div>
-      <p>チャット画面</p>
       {chatList.map((data, idx) => (
         <Card className="chatCard" key={idx}>
           <Avatar
@@ -85,24 +69,14 @@ export default function Chat(props) {
           {data.comment}
         </Card>
       ))}
-      <TextField
-        label="Text"
-        className="my-3"
-        onChange={(e) => {
-          setComment(e.value);
-        }}
-        ref={chatInputRef}
+      <ChatPost
+        getChat={getChat}
+        loginUser={props.loginUser}
+        eventInfo={props.eventInfo}
       />
-      {/* <Card inset>
-        <input
-          onChange={(e) => {
-            setComment(e.value);
-          }}
-          ref={chatInputRef}
-        />
-      </Card> */}
-      <Button onClick={postComment}>投稿</Button>
-      <Button onClick={back}>戻る</Button>
+      <div>
+        <Button onClick={back}>←</Button>
+      </div>
     </div>
   );
 }
