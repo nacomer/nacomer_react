@@ -27,7 +27,7 @@ import {
 } from 'ui-neumorphism';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import InstagramIcon from '@material-ui/icons/Instagram';
+import EventIcon from '@material-ui/icons/Event';
 import EventService from '../../services/eventService';
 import Chat from './Chat';
 import EventOther from './EventOther';
@@ -107,7 +107,7 @@ export default function Event(props) {
     const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
     const hashtag = 'nacomer';
     const via = 'nacomer';
-    const uri =
+    const targetUri =
       'https://twitter.com/intent/tweet?text=' +
       text +
       '&url=' +
@@ -116,13 +116,28 @@ export default function Event(props) {
       hashtag +
       '&via=' +
       via;
-    location.href = uri;
+    location.href = targetUri;
   };
 
-  // const openFacebookLink = () => {
-  //      const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
+  const openFacebookLink = () => {
+    const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
+    const targetUri = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+    location.href = targetUri;
+  };
 
-  //  }
+  const openCalendar = () => {
+    const text = eventInfo.subject;
+    const dates =
+      start.format('YYYYMMDD[T]hhmmss') + '/' + end.format('YYYYMMDD[T]hhmmss');
+    const targetUri =
+      'https://www.google.com/calendar/render?action=TEMPLATE&text=' +
+      text +
+      '&dates=' +
+      dates +
+      '&location=' +
+      eventInfo.place;
+    location.href = targetUri;
+  };
 
   return (
     <Card elevation={1} style={{ height: 'fit-content' }}>
@@ -152,13 +167,17 @@ export default function Event(props) {
                         size="large"
                         onClick={openTwitterLink}
                       >
-                        <TwitterIcon className="inButton" />
+                        <TwitterIcon className="inButtonNormal" />
                       </IconButton>
-                      <IconButton rounded size="large">
-                        <FacebookIcon className="inButton" />
+                      <IconButton
+                        rounded
+                        size="large"
+                        onClick={openFacebookLink}
+                      >
+                        <FacebookIcon className="inButtonNormal" />
                       </IconButton>
-                      <IconButton rounded size="large">
-                        <InstagramIcon className="inButton" />
+                      <IconButton rounded size="large" onClick={openCalendar}>
+                        <EventIcon className="inButtonNormal" />
                       </IconButton>
                     </div>
                   </div>
