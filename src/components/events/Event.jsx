@@ -193,8 +193,12 @@ export default function Event(props) {
                       </>
                     ) : (
                       <>
-                        <Button onClick={quitParticipate}>参加取消</Button>
-                        <Button onClick={enterChat}>トーク画面</Button>
+                        <Button onClick={quitParticipate}>
+                          <p className="inButton">参加取消</p>
+                        </Button>
+                        <Button onClick={enterChat}>
+                          <p className="inButton">トーク画面</p>
+                        </Button>
                       </>
                     )}
                   </div>
