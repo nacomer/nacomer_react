@@ -26,8 +26,8 @@ import {
 } from 'ui-neumorphism';
 import useInterval from 'use-interval';
 import ChatService from '../../services/chatService';
-import '../../styles/chat.css';
 import ChatPost from './ChatPost';
+import '../../styles/chat.css';
 
 export default function Chat(props) {
   const [chatList, setChatList] = useState([]);
@@ -55,28 +55,33 @@ export default function Chat(props) {
   };
 
   return (
-    <div>
-      {chatList.map((data, idx) => (
-        <Card inset className="chatCard" key={idx}>
-          <Avatar
-            className="avatar"
-            alt="Avatar"
-            src={data.user.picture}
-            key={idx}
-          />
-          {data.user.name}
-          <br />
-          {data.comment}
-        </Card>
-      ))}
-      <ChatPost
-        getChat={getChat}
-        loginUser={props.loginUser}
-        eventInfo={props.eventInfo}
-      />
-      <div>
-        <Button onClick={back}>←</Button>
+    // <div style="overflow: 'scroll'">
+    <>
+      <div className="cardWrapper">
+        {chatList.map((data, idx) => (
+          <Card className="chatCard" key={idx}>
+            <Avatar
+              className="avatar"
+              alt="Avatar"
+              src={data.user.picture}
+              key={idx}
+            />
+            {data.user.name}
+            <br />
+            {data.comment}
+          </Card>
+        ))}
       </div>
-    </div>
+      <div>
+        <ChatPost
+          getChat={getChat}
+          loginUser={props.loginUser}
+          eventInfo={props.eventInfo}
+        />
+        <div>
+          <Button onClick={back}>←</Button>
+        </div>
+      </div>
+    </>
   );
 }

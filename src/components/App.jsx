@@ -22,6 +22,7 @@ import {
   H4,
 } from 'ui-neumorphism';
 // import { Card, Divider } from 'ui-neumorphism';
+import QueryString from 'query-string';
 import Header from './Header';
 import Footer from './Footer';
 import Event from './events/Event';
@@ -41,8 +42,13 @@ export default function App() {
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
   useEffect(() => {
-    // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
+    // sessionストレージにqueryパラメータを保存
+    const parsedQuery = QueryString.parse(window.location.search);
+    if (parsedQuery.eventid) {
+      sessionStorage.setItem('eventid', parsedQuery.eventid);
+    }
 
+    // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
     const checkLogin = async () => {
       const googleOAuth = new GoogleAuthService();
       if (cookies.loginUser) {
