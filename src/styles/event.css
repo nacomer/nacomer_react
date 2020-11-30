@@ -6,19 +6,44 @@
   float: left;
   display: block;
   /* margin-left: -20px; */
+  margin-right: 3px;
 }
 .avatarlist {
   display: flow-root;
   max-width: fit-content;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .participate {
   display: flex;
-  height: 100px;
+  /* height: 100px; */
+  height: 100%;
+  padding-top: 20px;
   align-items: flex-end;
+}
+
+.eventInfo {
+  height: max-content;
 }
 
 .inButtonNormal {
   background-color: #e4ebf5;
+}
+
+.inEventButton {
+  background-color: #e4ebf5;
+  color: mediumblue;
+  display: flex;
+}
+
+.inCancelButton {
+  background-color: #e4ebf5;
+  color: crimson;
+  display: flex;
+}
+
+.multiLineButton {
+  margin-top: 10px;
 }
 
 .eventTitle {
@@ -29,4 +54,30 @@
 
 .snsIcons {
   margin-left: auto;
+}
+
+.infoBox {
+  display: flex;
+  align-items: center;
+}
+
+.infoDetailBox {
+  width: 100%;
+}
+
+.infoDetail {
+  text-align: center;
+}
+
+.infoIcon {
+  padding-left: 10px;
+}
+
+.infoDivide {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.lastInfoBox {
+  padding-bottom: 10px;
 }
