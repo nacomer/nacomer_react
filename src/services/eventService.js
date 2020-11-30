@@ -13,6 +13,13 @@ export default class EventService {
     const eventInfoRes = await axios
       .get(`${process.env.REACT_APP_URL}/v1/events/${eventId}`, header)
       .catch('イベント情報の取得に失敗しました。');
+
+    const hobbyId = eventInfoRes.data.hobbyId;
+    const hobbyInfoRes = await axios
+    .get(`${process.env.REACT_APP_URL}/v1/hobbies/${hobbyId}`, header)
+    .catch('Hobby情報の取得に失敗しました。');
+    eventInfoRes.data.hobby = hobbyInfoRes.data
+
     return eventInfoRes;
   };
 

@@ -106,7 +106,7 @@ export default function Event(props) {
                   // }
                 />
                 <Card width={200} className="picture">
-                  <CardMedia src="images/beaches-2.jpg" />
+                  <CardMedia src={eventInfo.hobby.picture} />
                 </Card>
                 <CardAction>
                   <Card flat className="eventbox">
