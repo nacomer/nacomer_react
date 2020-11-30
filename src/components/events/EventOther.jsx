@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
 import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
 import 'moment/locale/ja';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 import {
   Alert,
@@ -26,7 +26,7 @@ import {
 } from 'ui-neumorphism';
 
 export default function EventOther(props) {
-  const start = moment(props.event.start);
+  const start = moment(props.event.start).tz('Asia/Tokyo');
 
   const clickDetails = () => {
     const url = '/?eventid=' + props.event.id;
@@ -42,7 +42,7 @@ export default function EventOther(props) {
               イベント名：
               {props.event.subject}
             </div>
-            <div>開始時間： {start.format('YYYY/MM/DD(dd) h:mm')}</div>
+            <div>開始時間： {start.format('YYYY/MM/DD(dd) HH:mm')}</div>
           </div>
         </Alert>
       </div>

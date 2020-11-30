@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
-import 'moment/locale/ja';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import {
   mdiDotsVertical,
   mdiShareVariant,
@@ -56,8 +55,8 @@ export default function Event(props) {
   const [participate, setParticipate] = useState(false);
   const [ownerName, setOwnerName] = useState('');
   const [chatMode, setChatMode] = useState(false);
-  const start = moment(eventInfo.start);
-  const end = moment(eventInfo.end);
+  const start = moment(eventInfo.start).tz('Asia/Tokyo');
+  const end = moment(eventInfo.end).tz('Asia/Tokyo');
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
     const getEvent = async () => {
@@ -153,7 +152,7 @@ export default function Event(props) {
   const openCalendar = () => {
     const text = eventInfo.subject;
     const dates =
-      start.format('YYYYMMDD[T]hhmmss') + '/' + end.format('YYYYMMDD[T]hhmmss');
+      start.format('YYYYMMDD[T]HHmmss') + '/' + end.format('YYYYMMDD[T]HHmmss');
     const targetUri =
       'https://www.google.com/calendar/render?action=TEMPLATE&text=' +
       text +
@@ -342,11 +341,11 @@ export default function Event(props) {
                         </div>
                         <div className="infoDetailBox">
                           <p className="infoDetail">
-                            {start.format('YYYY/MM/DD(dd) h:mm')}
+                            {start.format('YYYY/MM/DD(dd) HH:mm')}
                           </p>
                           <p className="infoDetail">～</p>
                           <p className="infoDetail">
-                            {end.format('YYYY/MM/DD(dd) h:mm')}
+                            {end.format('YYYY/MM/DD(dd) HH:mm')}
                           </p>
                         </div>
                       </div>
