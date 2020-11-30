@@ -13,7 +13,6 @@ export default class ChatService {
         'x-googleid': userData.googleId,
       },
     };
-    const content = {};
     const chatListRes = await axios
       .get(`${process.env.REACT_APP_URL}/v1/chatComments`, param)
       .catch('チャットの取得に失敗しました。');
