@@ -301,7 +301,6 @@ export default function Event(props) {
                                 eventInfo.maxpart - eventInfo.users.length,
                               ).keys(),
                             ].map((key) => {
-                              // console.log(key);
                               return (
                                 <Avatar
                                   className="avatar"
