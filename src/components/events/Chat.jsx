@@ -34,6 +34,14 @@ import '../../styles/chat.css';
 
 export default function Chat(props) {
   const [chatList, setChatList] = useState([]);
+  const chatWrapper = useRef();
+
+  const scrollToBottom = () => {
+    console.log('called!');
+    const scroll =
+      chatWrapper.current.scrollHeight - chatWrapper.current.clientHeight;
+    chatWrapper.current.scrollTo(0, scroll);
+  };
 
   // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
   const getChat = async () => {
@@ -42,8 +50,8 @@ export default function Chat(props) {
       props.loginUser,
       props.eventInfo.id,
     );
-    console.log(chatListRes);
     setChatList(chatListRes.data);
+    scrollToBottom();
   };
   useEffect(() => {
     getChat();
@@ -64,7 +72,7 @@ export default function Chat(props) {
           <ArrowBackIcon className="inButton" />
         </Button>
       </div>
-      <div className="cardWrapper">
+      <div className="cardWrapper" ref={chatWrapper}>
         {chatList.map((chat, idx) =>
           chat.user.googleId == props.loginUser.googleId ? (
             <MyChatBox key={idx} chat={chat} />
@@ -78,6 +86,7 @@ export default function Chat(props) {
           getChat={getChat}
           loginUser={props.loginUser}
           eventInfo={props.eventInfo}
+          scrollToBottom={scrollToBottom}
         />
       </div>
     </>

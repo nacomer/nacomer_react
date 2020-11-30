@@ -38,15 +38,11 @@ export default function ChatPost(props) {
       props.eventInfo.id,
       comment,
     );
-    console.log(chatInputRef);
     if (postChatRes.status === 201) {
       chatInputRef.current.value = '';
       setComment('');
       props.getChat();
     }
-  };
-  const back = () => {
-    props.setChatMode(false);
   };
 
   return (
@@ -66,11 +62,7 @@ export default function ChatPost(props) {
         ref={chatInputRef}
       />
       {comment ? (
-        <Button
-          rounded
-          className="chatInputButton"
-          onClick={postComment}
-        >
+        <Button rounded className="chatInputButton" onClick={postComment}>
           <SendIcon className="inButton" />
         </Button>
       ) : (
