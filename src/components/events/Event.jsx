@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
+import 'moment/locale/ja';
+import moment from 'moment';
 import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
 import {
   Alert,
@@ -31,13 +33,16 @@ export default function Event(props) {
   const [eventInfo, setEventInfo] = useState({});
   const [participate, setParticipate] = useState(false);
   const [chatMode, setChatMode] = useState(false);
+  const start = moment(eventInfo.start);
+  const end = moment(eventInfo.end);
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
     const getEvent = async () => {
       const eventService = new EventService();
       // TODO: 表示のテストのため、seedされたeventIdを直接指定しています。
       // ここは適宜変更をお願いします。
-      const eventId = '204e2643-515f-42fa-bd60-50f0c8f9fb7b';
+      const eventId = '4a08838e-2a8c-4901-b300-ad8cc1380abf';
+      // 4a08838e-2a8c-4901-b300-ad8cc1380abf
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
         eventId,
@@ -54,6 +59,7 @@ export default function Event(props) {
       }
     };
     getEvent();
+    console.log(eventInfo);
   }, []);
 
   const clickParticipate = () => {
@@ -138,10 +144,10 @@ export default function Event(props) {
                       </div>
                       <br />
                       開始時間：
-                      {eventInfo.start}
+                      {start.format('YYYY/MM/DD(dd) h:mm')}
                       <br />
                       終了時間：
-                      {eventInfo.end}
+                      {end.format('YYYY/MM/DD(dd) h:mm')}
                       <br />
                       <br />
                       {eventInfo.description}
