@@ -31,10 +31,6 @@ export default function Header(props) {
       <img src={logo} alt="logo" className="logo" />
       {props.loginUser ? (
         <div className="loginUserDiv">
-          <p className="loginUser">
-            ユーザ名:
-            {props.loginUser.userName}
-          </p>
           <Avatar alt="Avatar" src={props.loginUser.imageUrl} />
           <GoogleLogout
             clientId={props.CLIENT_ID}
