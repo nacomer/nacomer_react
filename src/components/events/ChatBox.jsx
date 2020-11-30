@@ -30,20 +30,20 @@ import '../../styles/chat.css';
 
 export default function ChatBox(props) {
   return (
-    <Card flat className="chatBox">
-      <Card flat className="avatarCard">
+    <div flat className="chatBox">
+      <div flat className="avatarCard">
         <Avatar className="avatar" alt="Avatar" src={props.chat.user.picture} />
-      </Card>
+      </div>
 
-      <Card flat className="contentCard">
-        <Card flat className="profileCard">
+      <div flat className="contentCard">
+        <div flat className="profileCard">
           <h5>{props.chat.user.name}</h5>
           <h6>{moment(props.chat.date).fromNow()}</h6>
-        </Card>
+        </div>
         <Card inset className="chatCard">
           {props.chat.comment}
         </Card>
-      </Card>
-    </Card>
+      </div>
+    </div>
   );
 }
