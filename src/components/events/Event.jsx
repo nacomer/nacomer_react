@@ -32,6 +32,7 @@ import '../../styles/event.css';
 export default function Event(props) {
   const [eventInfo, setEventInfo] = useState({});
   const [participate, setParticipate] = useState(false);
+  const [ownerName, setOwnerName] = useState('');
   const [chatMode, setChatMode] = useState(false);
   const start = moment(eventInfo.start);
   const end = moment(eventInfo.end);
@@ -48,6 +49,9 @@ export default function Event(props) {
         eventId,
       );
       setEventInfo(eventInfoRes.data);
+      // ownerNameの設定
+      const owner = eventInfoRes.data.users.filter((user) => user.id === eventInfoRes.data.ownerId);
+      setOwnerName(owner[0].name);
       // 既に参加済みの場合は参加済みstateをtrueに設定する。
       if (
         eventInfoRes.data.users &&
@@ -59,7 +63,6 @@ export default function Event(props) {
       }
     };
     getEvent();
-    console.log(eventInfo);
   }, []);
 
   const clickParticipate = () => {
@@ -119,7 +122,7 @@ export default function Event(props) {
                   <Card elevation={1} rounded>
                     <div className="padding">
                       主催者：
-                      {eventInfo.ownerId}
+                      {ownerName}
                       <br />
                       <div>
                         参加者：
