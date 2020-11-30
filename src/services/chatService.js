@@ -3,20 +3,19 @@ import axios from 'axios';
 export default class ChatService {
   // チャット一覧を取得するAPI
   getChatList = async (userData, eventId) => {
-    const header = {
+    const param = {
+      params: {
+        eventId,
+      },
       headers: {
         'Content-Type': 'application/json',
         'x-auth-token': userData.tokenId,
         'x-googleid': userData.googleId,
       },
     };
-    const param = {
-      params: {
-        eventId,
-      },
-    };
+    const content = {};
     const chatListRes = await axios
-      .get(`${process.env.REACT_APP_URL}/v1/chatComments`, param, header)
+      .get(`${process.env.REACT_APP_URL}/v1/chatComments`, param)
       .catch('チャットの取得に失敗しました。');
     return chatListRes;
   };
