@@ -25,9 +25,7 @@ This was created during my time as a student at [Code Chrysalis](https://codechr
 ## Requirement
 
 ### "nacomer_react" の動作確認 Nodejs のバージョン
-
-- v12.19
-- v14.15
+- v14.151
 
 ## Install
 
@@ -44,6 +42,7 @@ git clone https://github.com/nacomer/nacomer_react.git
 
 ```
 REACT_APP_URL=http://localhost:5000 ※nacomer_expressの設定に従い記載
+REACT_APP_GOOGLE_CLIENT_ID　※googleで発行したClientIdを記載
 ```
 
 - モジュールインストール（依存パッケージのインストール）
