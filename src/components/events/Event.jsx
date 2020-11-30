@@ -86,7 +86,11 @@ export default function Event(props) {
   return (
     <>
       {chatMode ? (
-        <Chat setChatMode={setChatMode} />
+        <Chat
+          setChatMode={setChatMode}
+          eventInfo={eventInfo}
+          loginUser={props.loginUser}
+        />
       ) : (
         <Card>
           {eventInfo && eventInfo.users ? (
@@ -122,7 +126,7 @@ export default function Event(props) {
                       <br />
                       <div>
                         参加者：
-                        {eventInfo.users.length}/{eventInfo.maxpart}
+                        {/* {eventInfo.users.length}/{eventInfo.maxpart} */}
                       </div>
                       <div>
                         {eventInfo.users.map((data, idx) => (
