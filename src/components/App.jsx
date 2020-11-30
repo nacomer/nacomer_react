@@ -39,7 +39,6 @@ export default function App() {
   const [loginUser, setLoginUser] = useState();
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['loginUser']);
-  const [eventId, setEventId] = useState('');
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
   useEffect(() => {
@@ -64,7 +63,7 @@ export default function App() {
       }
     };
     checkLogin();
-  }, [eventId]);
+  }, []);
 
   return (
     <Card className="app">

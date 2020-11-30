@@ -64,15 +64,6 @@ export default function Event(props) {
         eventId,
       );
       setEventInfo(eventInfoRes.data);
-
-      // // TODO: 表示のテストのため、1番目のeventIdを取得しています
-      // const ids = await eventService.getRandomEvent(props.loginUser);
-      // const eventId = ids.data[0].id;
-      // const eventInfoRes = await eventService.getEventInfo(
-      //   props.loginUser,
-      //   eventId,
-      // );
-      // setEventInfo(eventInfoRes.data);
       // ownerNameの設定
       const owner = eventInfoRes.data.users.filter(
         (user) => user.id === eventInfoRes.data.ownerId,
