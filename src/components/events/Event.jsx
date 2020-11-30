@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Icon from '@mdi/react';
+import Icon, { mdiInformationVariant } from '@mdi/react';
+import 'moment/locale/ja';
+import moment from 'moment';
 import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
 import {
   Alert,
@@ -23,32 +25,38 @@ import {
   H5,
   H4,
 } from 'ui-neumorphism';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
 import EventService from '../../services/eventService';
 import Chat from './Chat';
+import EventOther from './EventOther';
 import '../../styles/event.css';
 
 export default function Event(props) {
   const [eventInfo, setEventInfo] = useState({});
   const [participate, setParticipate] = useState(false);
+  const [ownerName, setOwnerName] = useState('');
   const [chatMode, setChatMode] = useState(false);
+  const start = moment(eventInfo.start);
+  const end = moment(eventInfo.end);
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
     const getEvent = async () => {
       const eventService = new EventService();
-      // TODO: 表示のテストのため、seedされたeventIdを直接指定しています。
-      // ここは適宜変更をお願いします。
-      // let eventId = 'a68bcf67-0e75-47bb-b636-d39597febd36';
-      const eventId = '1a040cac-dcef-4e3e-9983-7bb6fe7adc89';
-      const requestEventId = sessionStorage.getItem('eventid');
-      if (requestEventId) {
-        eventId = requestEventId;
-        sessionStorage.removeItem('eventid');
-      }
+      // TODO: 表示のテストのため、1番目のeventIdを取得しています
+      const ids = await eventService.getRandomEvent(props.loginUser);
+      const eventId = ids.data[0].id;
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
         eventId,
       );
       setEventInfo(eventInfoRes.data);
+      // ownerNameの設定
+      const owner = eventInfoRes.data.users.filter(
+        (user) => user.id === eventInfoRes.data.ownerId,
+      );
+      setOwnerName(owner[0].name);
       // 既に参加済みの場合は参加済みstateをtrueに設定する。
       if (
         eventInfoRes.data.users &&
@@ -60,7 +68,7 @@ export default function Event(props) {
       }
     };
     getEvent();
-  }, []);
+  }, [participate]);
 
   const clickParticipate = () => {
     const participateEvent = async () => {
@@ -77,15 +85,47 @@ export default function Event(props) {
   };
 
   const quitParticipate = () => {
-    // TODO:参加取り消しのAPIが必要
-    setParticipate(false);
+    const unparticipateEvent = async () => {
+      const eventService = new EventService();
+      const unparticipantsRes = await eventService.unparticipateEvent(
+        props.loginUser,
+        eventInfo.id,
+      );
+      if (unparticipantsRes.status === 204) {
+        setParticipate(false);
+      }
+    };
+    unparticipateEvent();
   };
+
   const enterChat = () => {
     setChatMode(true);
   };
 
+  const openTwitterLink = () => {
+    const text = eventInfo.subject + 'に参加しよう';
+    const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
+    const hashtag = 'nacomer';
+    const via = 'nacomer';
+    const uri =
+      'https://twitter.com/intent/tweet?text=' +
+      text +
+      '&url=' +
+      url +
+      '&hashtag=' +
+      hashtag +
+      '&via=' +
+      via;
+    location.href = uri;
+  };
+
+  // const openFacebookLink = () => {
+  //      const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
+
+  //  }
+
   return (
-    <>
+    <Card elevation={1} style={{ height: 'fit-content' }}>
       {chatMode ? (
         <Chat
           setChatMode={setChatMode}
@@ -93,43 +133,90 @@ export default function Event(props) {
           loginUser={props.loginUser}
         />
       ) : (
-        <Card>
+        <>
           {eventInfo && eventInfo.users ? (
             <>
               <div className="clearfix">
-                <CardHeader
-                  title={<H6>{eventInfo.subject}</H6>}
-                  // action={
-                  //   <IconButton>
-                  //     <Icon path={mdiDotsVertical} size={1} />
-                  //   </IconButton>
-                  // }
-                />
-                <Card width={200} className="picture">
-                  <CardMedia src={eventInfo.hobby.picture} />
-                </Card>
-                <CardAction>
-                  <Card flat className="eventbox">
-                    {eventInfo.properties.map((data, idx) => (
-                      <Chip className="propChip" key={idx}>
-                        {data.name}
-                      </Chip>
-                    ))}
+                {/* <CardHeader title={<H6>{eventInfo.subject}</H6>} /> */}
+                <Alert
+                  type="info"
+                  bordered
+                  icon={<Icon path={mdiInformationVariant} size={1} />}
+                  border="left"
+                >
+                  <div className="eventTitle">
+                    <p>{eventInfo.subject}</p>
+                    <div className="snsIcons">
+                      <IconButton
+                        rounded
+                        size="large"
+                        onClick={openTwitterLink}
+                      >
+                        <TwitterIcon className="inButton" />
+                      </IconButton>
+                      <IconButton rounded size="large">
+                        <FacebookIcon className="inButton" />
+                      </IconButton>
+                      <IconButton rounded size="large">
+                        <InstagramIcon className="inButton" />
+                      </IconButton>
+                    </div>
+                  </div>
+                </Alert>
+                <div>
+                  <Card width={200} maxHeight={160} className="picture">
+                    <CardMedia dark src="images/beaches-2.jpg" />
                   </Card>
-                </CardAction>
+                  <CardAction>
+                    <Card flat className="eventbox">
+                      {eventInfo.properties.map((data, idx) => (
+                        <Chip className="propChip" key={idx}>
+                          {data.name}
+                        </Chip>
+                      ))}
+                    </Card>
+                  </CardAction>
+                  <div className="participate">
+                    {!participate ? (
+                      <>
+                        {eventInfo.maxpart === eventInfo.users.length ? (
+                          <Button disabled>参加</Button>
+                        ) : (
+                          <Button
+                            bordered
+                            onClick={clickParticipate}
+                            className="partButton"
+                          >
+                            <p className="inButton">参加</p>
+                          </Button>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <Button onClick={quitParticipate}>参加取消</Button>
+                        <Button onClick={enterChat}>トーク画面</Button>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
               <div className="margin">
                 <CardAction className="more">
-                  <Card elevation={1} rounded>
+                  <Card
+                    inset
+                    elevation={1}
+                    rounded
+                    style={{ width: '-webkit-fill-available' }}
+                  >
                     <div className="padding">
                       主催者：
-                      {eventInfo.ownerId}
+                      {ownerName}
                       <br />
                       <div>
                         参加者：
-                        {/* {eventInfo.users.length}/{eventInfo.maxpart} */}
+                        {eventInfo.users.length}/{eventInfo.maxpart}
                       </div>
-                      <div>
+                      <div className="avatarlist">
                         {eventInfo.users.map((data, idx) => (
                           <Avatar
                             className="avatar"
@@ -139,44 +226,37 @@ export default function Event(props) {
                           />
                         ))}
                       </div>
-                      <br />
+                      <Divider />
                       <div>
                         集合場所：
                         {eventInfo.place}
                       </div>
                       <br />
                       開始時間：
-                      {eventInfo.start}
+                      {start.format('YYYY/MM/DD(dd) h:mm')}
                       <br />
                       終了時間：
-                      {eventInfo.end}
+                      {end.format('YYYY/MM/DD(dd) h:mm')}
                       <br />
                       <br />
                       {eventInfo.description}
                     </div>
                   </Card>
                 </CardAction>
-                {!participate ? (
-                  <>
-                    {eventInfo.maxpart === eventInfo.users.length ? (
-                      <Button disabled>参加</Button>
-                    ) : (
-                      <Button onClick={clickParticipate}>参加</Button>
-                    )}
-                  </>
+              </div>
+              <div>
+                {eventInfo.maxpart === eventInfo.users.length ? (
+                  <EventOther />
                 ) : (
-                  <>
-                    <Button onClick={quitParticipate}>参加を取り消す</Button>
-                    <Button onClick={enterChat}>チャットに参加する</Button>
-                  </>
+                  <EventOther />
                 )}
               </div>
             </>
           ) : (
             <></>
           )}
-        </Card>
+        </>
       )}
-    </>
+    </Card>
   );
 }
