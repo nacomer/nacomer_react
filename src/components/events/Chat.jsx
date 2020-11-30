@@ -46,9 +46,10 @@ export default function Chat(props) {
   useEffect(() => {
     getChat();
   }, []);
+  // 30秒に1回チャットの情報を取得する。
   useInterval(() => {
     getChat();
-  }, 10000);
+  }, 30000);
 
   const postComment = async () => {
     const chatService = new ChatService();
@@ -61,6 +62,7 @@ export default function Chat(props) {
     if (postChatRes.status === 201) {
       chatInputRef.current.value = 'test';
       setComment('');
+      getChat();
     }
   };
   const back = () => {
