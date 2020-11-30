@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
 import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
+import 'moment/locale/ja';
+import moment from 'moment';
+import { BsBoxArrowUpRight } from 'react-icons/bs';
 import {
   Alert,
   CardContent,
@@ -21,21 +24,28 @@ import {
   H5,
   H4,
 } from 'ui-neumorphism';
-import EventService from '../../services/eventService';
 
 export default function EventOther(props) {
+  const start = moment(props.event.start);
+
+  const clickDetails = () => {
+    const url = '/?eventid=' + props.event.id;
+    window.location.href = url;
+  };
+
   return (
-    <>
-      <Divider />
-      <h4>他にも下記のイベントがあります</h4>
-      <Card elevation={1} rounded style={{ width: '-webkit-fill-available' }}>
-        <div className="padding">
-          <div>イベント名：</div>
-          <div>参加者：</div>
-          <div>集合場所：</div>
-          <div>開始時間：</div>
-        </div>
-      </Card>
-    </>
+    <Card elevation={2}>
+      <div onClick={clickDetails}>
+        <Alert type="info" bordered icon={<BsBoxArrowUpRight />} border="left">
+          <div>
+            <div>
+              イベント名：
+              {props.event.subject}
+            </div>
+            <div>開始時間： {start.format('YYYY/MM/DD(dd) h:mm')}</div>
+          </div>
+        </Alert>
+      </div>
+    </Card>
   );
 }

@@ -48,7 +48,7 @@ import EventService from '../../services/eventService';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import PeopleIcon from '@material-ui/icons/People';
 import Chat from './Chat';
-import EventOther from './EventOther';
+import EventOthers from './EventOthers';
 import '../../styles/event.css';
 
 export default function Event(props) {
@@ -62,6 +62,7 @@ export default function Event(props) {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
     const getEvent = async () => {
       const eventService = new EventService();
+
       // TODO: 表示のテストのため、1番目のeventIdを取得しています
       const sessionSavedId = sessionStorage.getItem('eventid');
       let eventId;
@@ -368,9 +369,11 @@ export default function Event(props) {
               </div>
               <div>
                 {eventInfo.maxpart === eventInfo.users.length ? (
-                  <EventOther />
+                  <EventOthers eventInfo={eventInfo} />
+                ) : eventInfo != {} ? (
+                  <></>
                 ) : (
-                  <EventOther />
+                  <></>
                 )}
               </div>
             </>

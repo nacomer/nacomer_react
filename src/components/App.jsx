@@ -79,9 +79,6 @@ export default function App() {
       {loginSuccess ? (
         <>
           <Event loginUser={loginUser} />
-          {/* {viewMode === 'Detail' && (
-            <Detail hobbyId={hobbyId} loginUser={loginUser} />
-          )} */}
           <br />
         </>
       ) : (
