@@ -30,7 +30,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import EventService from '../../services/eventService';
 import Chat from './Chat';
-import EventOther from './EventOther';
+import EventOthers from './EventOthers';
 import '../../styles/event.css';
 
 export default function Event(props) {
@@ -44,14 +44,30 @@ export default function Event(props) {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
     const getEvent = async () => {
       const eventService = new EventService();
+
       // TODO: 表示のテストのため、1番目のeventIdを取得しています
-      const ids = await eventService.getRandomEvent(props.loginUser);
-      const eventId = ids.data[0].id;
+      const sessionSavedId = sessionStorage.getItem('eventid');
+      let eventId;
+      if (sessionSavedId) {
+        eventId = sessionSavedId;
+      } else {
+        const ids = await eventService.getRandomEvent(props.loginUser);
+        eventId = ids.data[0].id;
+      }
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
         eventId,
       );
       setEventInfo(eventInfoRes.data);
+
+      // // TODO: 表示のテストのため、1番目のeventIdを取得しています
+      // const ids = await eventService.getRandomEvent(props.loginUser);
+      // const eventId = ids.data[0].id;
+      // const eventInfoRes = await eventService.getEventInfo(
+      //   props.loginUser,
+      //   eventId,
+      // );
+      // setEventInfo(eventInfoRes.data);
       // ownerNameの設定
       const owner = eventInfoRes.data.users.filter(
         (user) => user.id === eventInfoRes.data.ownerId,
@@ -246,9 +262,11 @@ export default function Event(props) {
               </div>
               <div>
                 {eventInfo.maxpart === eventInfo.users.length ? (
-                  <EventOther />
+                  <EventOthers eventInfo={eventInfo} />
+                ) : eventInfo != {} ? (
+                  <EventOthers eventInfo={eventInfo} />
                 ) : (
-                  <EventOther />
+                  <></>
                 )}
               </div>
             </>
