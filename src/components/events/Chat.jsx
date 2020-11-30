@@ -28,6 +28,7 @@ import useInterval from 'use-interval';
 import ChatService from '../../services/chatService';
 import ChatPost from './ChatPost';
 import ChatBox from './ChatBox';
+import MyChatBox from './MyChatBox';
 import '../../styles/chat.css';
 
 export default function Chat(props) {
@@ -59,8 +60,10 @@ export default function Chat(props) {
     // <div style="overflow: 'scroll'">
     <>
       <div className="cardWrapper">
-        {chatList.map((chat, idx) => (
-          <ChatBox key={idx} chat={chat} />
+        {chatList.map((chat, idx) => (          
+            chat.user.googleId == props.loginUser.googleId
+          ?  ( <MyChatBox key={idx} chat={chat} /> )
+          :  ( <ChatBox key={idx} chat={chat} /> )
         ))}
       </div>
       <div>
