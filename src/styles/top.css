@@ -9,9 +9,6 @@
   left: 0em;
   filter: blur(4px);
 }
-body {
-  font-family: cormorant-garamond, serif;
-}
 
 .topCatchCopy {
   position: absolute;
