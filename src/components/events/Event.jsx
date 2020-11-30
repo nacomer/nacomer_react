@@ -199,8 +199,8 @@ export default function Event(props) {
               <div className="clearfix">
                 {/* <CardHeader title={<H6>{eventInfo.subject}</H6>} /> */}
                 <div className="eventInfo">
-                  <Card width={200} maxHeight={160} className="picture">
-                    <CardMedia dark src="images/beaches-2.jpg" />
+                  <Card width={200} className="picture">
+                    <CardMedia src={eventInfo.hobby.picture} />
                   </Card>
                   <CardAction>
                     <Card flat className="eventbox">
