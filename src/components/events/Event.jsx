@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Icon, { mdiInformationVariant } from '@mdi/react';
+import Icon from '@mdi/react';
 import 'moment/locale/ja';
 import moment from 'moment';
-import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
+import {
+  mdiDotsVertical,
+  mdiShareVariant,
+  mdiHeart,
+  mdiInformationVariant,
+} from '@mdi/js';
 import {
   Alert,
   Avatar,
@@ -162,21 +167,13 @@ export default function Event(props) {
                   <div className="eventTitle">
                     <p>{eventInfo.subject}</p>
                     <div className="snsIcons">
-                      <IconButton
-                        rounded
-                        size="large"
-                        onClick={openTwitterLink}
-                      >
+                      <IconButton rounded onClick={openTwitterLink}>
                         <TwitterIcon className="inButtonNormal" />
                       </IconButton>
-                      <IconButton
-                        rounded
-                        size="large"
-                        onClick={openFacebookLink}
-                      >
+                      <IconButton rounded onClick={openFacebookLink}>
                         <FacebookIcon className="inButtonNormal" />
                       </IconButton>
-                      <IconButton rounded size="large" onClick={openCalendar}>
+                      <IconButton rounded onClick={openCalendar}>
                         <EventIcon className="inButtonNormal" />
                       </IconButton>
                     </div>
