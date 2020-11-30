@@ -1,21 +1,45 @@
-.chatCard {
-  margin: 5px;
-  color: blue;
-}
 .chatInput {
   display: flex;
   margin: 8px;
   padding: 8px;
 }
 .chatInputText {
-  padding: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: none;
+  width: 100%;
+  background-color: #e4ebf5;
+}
+.chatInputText:focus {
+  outline: none;
+  border: none;
 }
 .chatInputButton {
   float: left;
-  margin: auto;
+  margin-left: auto;
+}
+.inButton {
+  background-color: #e4ebf5;
+  color: blue;
 }
 
 .cardWrapper {
   overflow-y: scroll;
   height: 500px;
+}
+.chatBox {
+  display: flex;
+  margin: 8px;
+  padding: 8px;
+}
+.avatar {
+  float: right;
+  display: block;
+  margin-left: -20px;
+}
+.chatCard {
+  margin: 8px;
+  padding: 8px;
+  width: 100%;
+  color: blue;
 }

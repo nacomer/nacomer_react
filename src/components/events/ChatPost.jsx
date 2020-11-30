@@ -51,19 +51,10 @@ export default function ChatPost(props) {
 
   return (
     <Card className="chatInput">
-      {/* <TextField
-        rounded
-        className="chatInputText"
-        placeholder="Type something"
-        onChange={(e) => {
-          setComment(e.value);
-        }}
-        ref={chatInputRef}
-      /> */}
       <input
         type="text"
         className="chatInputText"
-        placeholder="Type something"
+        placeholder="メッセージを入力..."
         onChange={(e) => {
           setComment(e.target.value);
         }}
@@ -71,15 +62,11 @@ export default function ChatPost(props) {
       />
       {comment ? (
         <Button rounded className="chatInputButton" onClick={postComment}>
-          <SendIcon />
+          <SendIcon className="inButton" />
         </Button>
       ) : (
-        <Button
-          disabled
-          rounded
-          className="chatInputButton"
-        >
-          <SendIcon />
+        <Button disabled rounded className="chatInputButton">
+          <SendIcon className="inButton" />
         </Button>
       )}
     </Card>
