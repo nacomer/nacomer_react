@@ -1,29 +1,18 @@
 .header {
-  background-color: lightblue;
+  background-color: #e4ebf5;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.catchCopy {
-  display: inline-block;
-  font-size: 20px;
-  margin: 10px;
-  vertical-align: middle;
+.logo {
+  width: 150px;
+  height: auto;
 }
-
 .loginUserDiv {
-  display: inline-block;
-  float: right;
-  margin-right: 30px;
+  position: absolute;
+  right: 10px;
 }
-
-.loginUser {
-  margin-bottom: 10px;
-}
-
-.logout {
-  margin-top: 0%;
-  width: 100px;
-  height: 30px;
-  font-size: small;
-  border-radius: 10px;
+.inCardAvatar {
+  padding: 3px;
 }

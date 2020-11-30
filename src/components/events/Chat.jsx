@@ -60,11 +60,13 @@ export default function Chat(props) {
     // <div style="overflow: 'scroll'">
     <>
       <div className="cardWrapper">
-        {chatList.map((chat, idx) => (          
-            chat.user.googleId == props.loginUser.googleId
-          ?  ( <MyChatBox key={idx} chat={chat} /> )
-          :  ( <ChatBox key={idx} chat={chat} /> )
-        ))}
+        {chatList.map((chat, idx) =>
+          chat.user.googleId == props.loginUser.googleId ? (
+            <MyChatBox key={idx} chat={chat} />
+          ) : (
+            <ChatBox key={idx} chat={chat} />
+          ),
+        )}
       </div>
       <div>
         <ChatPost
