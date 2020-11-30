@@ -37,7 +37,8 @@ export default function Event(props) {
       const eventService = new EventService();
       // TODO: 表示のテストのため、seedされたeventIdを直接指定しています。
       // ここは適宜変更をお願いします。
-      let eventId = 'a68bcf67-0e75-47bb-b636-d39597febd36';
+      // let eventId = 'a68bcf67-0e75-47bb-b636-d39597febd36';
+      const eventId = 'a6d0ae7d-3d51-46e4-8b98-72438e76b43e';
       const requestEventId = sessionStorage.getItem('eventid');
       if (requestEventId) {
         eventId = requestEventId;
