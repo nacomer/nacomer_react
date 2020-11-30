@@ -27,6 +27,7 @@ import {
 import useInterval from 'use-interval';
 import ChatService from '../../services/chatService';
 import ChatPost from './ChatPost';
+import ChatBox from './ChatBox';
 import '../../styles/chat.css';
 
 export default function Chat(props) {
@@ -58,18 +59,8 @@ export default function Chat(props) {
     // <div style="overflow: 'scroll'">
     <>
       <div className="cardWrapper">
-        {chatList.map((data, idx) => (
-          <Card className="chatCard" key={idx}>
-            <Avatar
-              className="avatar"
-              alt="Avatar"
-              src={data.user.picture}
-              key={idx}
-            />
-            {data.user.name}
-            <br />
-            {data.comment}
-          </Card>
+        {chatList.map((chat, idx) => (
+          <ChatBox key={idx} chat={chat} />
         ))}
       </div>
       <div>
