@@ -3,7 +3,20 @@
   color: blue;
 }
 .avatar {
-  float: right;
+  float: left;
   display: block;
-  margin-left: -20px;
+  /* margin-left: -20px; */
+}
+.avatarlist {
+  display: flow-root;
+  max-width: fit-content;
+}
+.participate {
+  display: flex;
+  height: 100px;
+  align-items: flex-end;
+}
+
+.inButton {
+  background-color: #E4EBF5;
 }

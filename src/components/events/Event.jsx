@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Icon from '@mdi/react';
+import Icon, { mdiInformationVariant } from '@mdi/react';
 import 'moment/locale/ja';
 import moment from 'moment';
 import { mdiDotsVertical, mdiShareVariant, mdiHeart } from '@mdi/js';
@@ -40,15 +40,9 @@ export default function Event(props) {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
     const getEvent = async () => {
       const eventService = new EventService();
-      // TODO: 表示のテストのため、seedされたeventIdを直接指定しています。
-      // ここは適宜変更をお願いします。
-      // const eventId = '012258a3-217e-4335-b587-6360704b3c51';
-      const ids = await eventService.getRandomEvent(
-        props.loginUser,
-      );
+      // TODO: 表示のテストのため、1番目のeventIdを取得しています
+      const ids = await eventService.getRandomEvent(props.loginUser);
       const eventId = ids.data[0].id;
-      console.log(ids);
-      // 4a08838e-2a8c-4901-b300-ad8cc1380abf
       const eventInfoRes = await eventService.getEventInfo(
         props.loginUser,
         eventId,
@@ -105,17 +99,25 @@ export default function Event(props) {
   };
 
   return (
-    <>
+    <Card elevation={1} style={{ height: 'fit-content' }}>
       {chatMode ? (
         <Chat setChatMode={setChatMode} />
       ) : (
-        <Card>
+        <>
           {eventInfo && eventInfo.users ? (
             <>
               <div className="clearfix">
-                <CardHeader title={<H6>{eventInfo.subject}</H6>} />
+                {/* <CardHeader title={<H6>{eventInfo.subject}</H6>} /> */}
+                <Alert
+                  type="info"
+                  bordered
+                  icon={<Icon path={mdiInformationVariant} size={1} />}
+                  border="left"
+                >
+                  {eventInfo.subject}
+                </Alert>
                 <div>
-                  <Card width={200} className="picture">
+                  <Card width={200} maxHeight={160} className="picture">
                     <CardMedia dark src="images/beaches-2.jpg" />
                   </Card>
                   <CardAction>
@@ -127,16 +129,19 @@ export default function Event(props) {
                       ))}
                     </Card>
                   </CardAction>
-                  <Card
-                    className="participate"
-                    style={({ paddingbottom: 0 })}
-                  >
+                  <div className="participate">
                     {!participate ? (
                       <>
                         {eventInfo.maxpart === eventInfo.users.length ? (
                           <Button disabled>参加</Button>
                         ) : (
-                          <Button onClick={clickParticipate}>参加</Button>
+                          <Button
+                            bordered
+                            onClick={clickParticipate}
+                            className="partButton"
+                          >
+                            <p className="inButton">参加</p>
+                          </Button>
                         )}
                       </>
                     ) : (
@@ -145,12 +150,17 @@ export default function Event(props) {
                         <Button onClick={enterChat}>トーク画面</Button>
                       </>
                     )}
-                  </Card>
+                  </div>
                 </div>
               </div>
               <div className="margin">
                 <CardAction className="more">
-                  <Card elevation={1} rounded>
+                  <Card
+                    inset
+                    elevation={1}
+                    rounded
+                    style={{ width: '-webkit-fill-available' }}
+                  >
                     <div className="padding">
                       主催者：
                       {ownerName}
@@ -161,7 +171,7 @@ export default function Event(props) {
                         /
                         {eventInfo.maxpart}
                       </div>
-                      <div>
+                      <div className="avatarlist">
                         {eventInfo.users.map((data, idx) => (
                           <Avatar
                             className="avatar"
@@ -171,7 +181,7 @@ export default function Event(props) {
                           />
                         ))}
                       </div>
-                      <br />
+                      <Divider />
                       <div>
                         集合場所：
                         {eventInfo.place}
@@ -188,27 +198,13 @@ export default function Event(props) {
                     </div>
                   </Card>
                 </CardAction>
-                {!participate ? (
-                  <>
-                    {eventInfo.maxpart === eventInfo.users.length ? (
-                      <Button disabled>参加</Button>
-                    ) : (
-                      <Button onClick={clickParticipate}>参加</Button>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <Button onClick={quitParticipate}>参加を取り消す</Button>
-                    <Button onClick={enterChat}>チャットに参加する</Button>
-                  </>
-                )}
               </div>
             </>
           ) : (
             <></>
           )}
-        </Card>
+        </>
       )}
-    </>
+    </Card>
   );
 }

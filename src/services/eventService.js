@@ -37,19 +37,18 @@ export default class EventService {
 
   // イベント参加辞退APIへのリクエスト
   unparticipateEvent = async (userData, eventId) => {
-    const header = {
+    const content = {
       headers: {
         'Content-Type': 'application/json',
         'x-auth-token': userData.tokenId,
         'x-googleid': userData.googleId,
       },
+      data: {
+        eventId,
+      },
     };
-    const body = {
-      eventId,
-    };
-    console.log(header);
     const res = await axios
-      .delete(`${process.env.REACT_APP_URL}/v1/participant`, body, header)
+      .delete(`${process.env.REACT_APP_URL}/v1/participant`, content)
       .catch('イベントの参加辞退に失敗しました。');
     return res;
   };
