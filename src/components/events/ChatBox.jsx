@@ -32,7 +32,15 @@ export default function ChatBox(props) {
   return (
     <div flat className="chatBox">
       <div flat className="avatarCard">
-        <Avatar className="avatar" alt="Avatar" src={props.chat.user.picture} />
+        <Card rounded elevation={2}>
+          <div className="inCardAvatar">
+            <Avatar
+              className="chatAvatar"
+              alt="Avatar"
+              src={props.chat.user.picture}
+            />
+          </div>
+        </Card>
       </div>
 
       <div flat className="contentCard">

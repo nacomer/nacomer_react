@@ -9,24 +9,7 @@ import '../styles/footer.css';
 export default function Footer() {
   return (
     <Card elevation={1} className="footer">
-      <IconButton rounded size="large">
-        <TwitterIcon
-          className="inButton"
-          style={({ backgroundColor: '#e4ebf5' }, { fontSize: 30 })}
-        />
-      </IconButton>
-      <IconButton rounded size="large">
-        <FacebookIcon
-          className="inButton"
-          style={({ backgroundColor: '#e4ebf5' }, { fontSize: 30 })}
-        />
-      </IconButton>
-      <IconButton rounded size="large">
-        <InstagramIcon
-          className="inButton"
-          style={({ backgroundColor: '#e4ebf5' }, { fontSize: 30 })}
-        />
-      </IconButton>
+      <p>&copy; Team Nacomer 2020 All rights reserved.</p>
     </Card>
   );
 }

@@ -17,15 +17,17 @@
   align-items: flex-end;
 }
 
-.inButton {
+.inButtonNormal {
   background-color: #e4ebf5;
 }
 
 .eventTitle {
   display: flex;
   align-items: center;
+  width: 82vw;
+  font-weight: 700;
 }
 
 .snsIcons {
-  float: right;
+  margin-left: auto;
 }

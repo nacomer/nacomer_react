@@ -32,19 +32,12 @@
   margin: 8px;
   padding: 8px;
 }
-.avatar {
-  display: block;
-  margin-left: -20px;
-}
 .chatCard {
   margin: 8px;
   padding: 8px;
 }
 .contentCard {
   width: 100%;
-}
-.avatarCard {
-  width: 40px;
 }
 .profileCard {
   margin-right: 8px;

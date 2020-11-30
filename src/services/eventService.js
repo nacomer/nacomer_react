@@ -69,11 +69,8 @@ export default class EventService {
         'x-googleid': userData.googleId,
       },
     };
-    const body = {
-      // eventId,
-    };
     const res = await axios
-      .get(`${process.env.REACT_APP_URL}/v1/events`, body, header)
+      .get(`${process.env.REACT_APP_URL}/v1/events`, header)
       .catch('イベントIDの取得に失敗しました。');
     return res;
   };
