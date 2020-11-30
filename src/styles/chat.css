@@ -4,6 +4,8 @@
 }
 .chatInput {
   display: flex;
+  margin: 8px;
+  padding: 8px;
 }
 .chatInputText {
   padding: auto;

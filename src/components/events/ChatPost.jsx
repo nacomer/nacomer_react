@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useCookies } from 'react-cookie';
-import Icon from '@mdi/react';
-import { mdiSend } from '@mdi/js';
+import SendIcon from '@material-ui/icons/Send';
 import {
   Alert,
   Avatar,
@@ -51,7 +50,7 @@ export default function ChatPost(props) {
   };
 
   return (
-    <div className="chatInput">
+    <Card className="chatInput">
       {/* <TextField
         rounded
         className="chatInputText"
@@ -62,16 +61,27 @@ export default function ChatPost(props) {
         ref={chatInputRef}
       /> */}
       <input
+        type="text"
         className="chatInputText"
         placeholder="Type something"
         onChange={(e) => {
-          setComment(e.value);
+          setComment(e.target.value);
         }}
         ref={chatInputRef}
       />
-      <Button rounded className="chatInputButton" onClick={postComment}>
-        投稿
-      </Button>
-    </div>
+      {comment ? (
+        <Button rounded className="chatInputButton" onClick={postComment}>
+          <SendIcon />
+        </Button>
+      ) : (
+        <Button
+          disabled
+          rounded
+          className="chatInputButton"
+        >
+          <SendIcon />
+        </Button>
+      )}
+    </Card>
   );
 }
