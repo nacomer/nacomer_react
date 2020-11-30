@@ -45,6 +45,7 @@ export default function Chat(props) {
 
   // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
   const getChat = async () => {
+    console.log(props.eventInfo);
     const chatService = new ChatService();
     const chatListRes = await chatService.getChatList(
       props.loginUser,
