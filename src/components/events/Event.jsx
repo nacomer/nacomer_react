@@ -219,7 +219,7 @@ export default function Event(props) {
           </div>
         </div>
       </Alert>
-      {props.viewMode === ViewModeList.user ? (
+      {props.viewMode === ViewModeList.member ? (
         <UserList info={eventInfo}/>
       ) : (
         props.viewMode === ViewModeList.chat ? (
