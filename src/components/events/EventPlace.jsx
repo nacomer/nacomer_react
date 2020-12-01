@@ -29,10 +29,7 @@ export default function EventPlace(props) {
             onClick={openGoogleMap}
             className="snsButton"
           >
-            <MapIcon
-              size="small"
-              className="inButtonNormal"
-            />
+            <MapIcon fontSize="small" className="mapIcon" />
           </IconButton>
           <p className="smallCardTitleText">場所</p>
         </div>
