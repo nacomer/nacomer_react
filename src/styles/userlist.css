@@ -15,6 +15,11 @@
   display: flex;
 }
 
+.userCardWrapper {
+  overflow-y: scroll;
+  height: 65vh;
+}
+
 .userAvatar {
   margin-left: 15px;
 }
