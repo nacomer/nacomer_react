@@ -16,6 +16,7 @@ import {
   mdiAccountMinus,
   mdiChat,
   mdiLeadPencil,
+  mdiMapMarkerRadiusOutline
 } from '@mdi/js';
 import {
   Alert,
@@ -168,6 +169,10 @@ export default function Event(props) {
       '&location=' +
       eventInfo.place;
     location.href = targetUri;
+  };
+
+  const openGoogleMap = () => {
+    location.href = "https://www.google.com/maps/search/?api=1&query="+eventInfo.place;
   };
 
   return (
@@ -337,8 +342,19 @@ export default function Event(props) {
                             場所
                           </Chip>
                         </div>
-                        <div className="infoDetailBox">
-                          <p className="infoDetail">{eventInfo.place}</p>
+                        <div className="infoDetailBox">     
+                          <p className="infoDetail">                     
+                            {eventInfo.place}
+                            <IconButton
+                              rounded
+                              size="small"
+                              text={false}
+                              onClick={openGoogleMap}
+                              className="snsButton"
+                            >
+                              <Icon path={mdiMapMarkerRadiusOutline} size={1.0} className="inButtonNormal"/>
+                            </IconButton>
+                          </p>
                         </div>
                       </div>
                       <br />
