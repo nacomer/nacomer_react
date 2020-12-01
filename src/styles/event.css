@@ -132,11 +132,12 @@
   width: calc(50% - 10px) !important;
 }
 
-.dateData {
+.smallCardData {
   margin: 10px;
 }
 
 .smallCardTitle {
+  margin-bottom: 10px;
   font-weight: 700;
   display: flex;
   align-items: center;

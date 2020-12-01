@@ -205,7 +205,7 @@ export default function Event(props) {
                 <div className="eventInfo">
                   <div className="dateAndPlace">
                     <EventDate eventInfo={eventInfo} />
-                    <EventPlace />
+                    <EventPlace eventInfo={eventInfo} />
                   </div>
                   <div className="eventDetail">
                     <EventDetail />

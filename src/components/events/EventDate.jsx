@@ -24,9 +24,14 @@ export default function EventDate(props) {
     }
   }, []);
 
+  const openGoogleMap = () => {
+    location.href =
+      'https://www.google.com/maps/search/?api=1&query=' + eventInfo.place;
+  };
+
   return (
     <Card elevation={2} className="eventDateCard">
-      <div className="dateData">
+      <div className="smallCardData">
         <div className="smallCardTitle">
           <Icon path={mdiClockOutline} size={1.2} color="blue" />
           <p className="smallCardTitleText">日時</p>
@@ -40,9 +45,14 @@ export default function EventDate(props) {
           </div>
         ) : (
           <div className="smallCardInfo">
-            <p className="timeText">{startDate}{startTime}</p>
             <p className="timeText">
-              {"  - "}{endDate}{endTime}
+              {startDate}
+              {startTime}
+            </p>
+            <p className="timeText">
+              {'  - '}
+              {endDate}
+              {endTime}
             </p>
           </div>
         )}
