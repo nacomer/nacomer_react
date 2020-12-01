@@ -9,15 +9,15 @@
   margin-top: 10px;
 }
 .username {
-  display:flex-inline;
-  margin-left:15px;
-  margin-top:8px
+  display: flex-inline;
+  margin-left: 15px;
+  margin-top: 8px;
 }
 .inCardUserAvatar {
-  display:flex;
+  display: flex;
 }
 
 .userListMessage {
-  margin-top:20px;
+  margin-top: 20px;
   font-family: 'M PLUS Rounded 1c';
 }

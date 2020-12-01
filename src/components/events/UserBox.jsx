@@ -39,9 +39,7 @@ export default function UserBox(props) {
               alt="Avatar"
               src={props.user.picture}
             />
-            <div className="username">
-              {props.user.name}
-            </div>
+            <div className="username">{props.user.name}</div>
           </div>
         </Card>
       </div>
