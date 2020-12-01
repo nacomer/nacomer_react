@@ -78,7 +78,11 @@ export default function App() {
             setLoginSuccess={setLoginSuccess}
             removeCookie={removeCookie}
           />
-          <Event loginUser={loginUser} viewMode={viewMode} />
+          <Event
+            loginUser={loginUser}
+            viewMode={viewMode}
+            setChatEnable={setChatEnable}
+          />
           <Footer setViewMode={setViewMode} chatEnable={chatEnable} />
         </>
       ) : (

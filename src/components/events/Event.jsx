@@ -119,6 +119,7 @@ export default function Event(props) {
       );
       if (participantsRes.status === 201) {
         setParticipate(true);
+        props.setChatEnable(true);
         getEvent();
       }
     };
@@ -134,6 +135,7 @@ export default function Event(props) {
       );
       if (unparticipantsRes.status === 204) {
         setParticipate(false);
+        props.setChatEnable(false);
         getEvent();
       }
     };
