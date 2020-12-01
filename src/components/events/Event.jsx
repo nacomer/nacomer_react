@@ -161,8 +161,12 @@ export default function Event(props) {
         <div className="eventWrapper">
           {eventInfo && eventInfo.users ? (
             <>
-              <CardMedia dark src={eventInfo.hobby.picture} />
-              <CardContent className="eventContent">
+              <CardMedia
+                dark
+                src={eventInfo.hobby.picture}
+                style={{ 'background-size': 'contain' }}
+              />
+              <CardContent className="EventContent">
                 <div className="eventTitle">
                   <EventTitle
                     eventInfo={eventInfo}
