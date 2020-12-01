@@ -39,7 +39,7 @@ export default function UserList(props) {
       {props.info.users ? (
         <div className="userCardWrapper">
           {props.info.users.map((user, idx) => (
-            <UserBox key={idx} user={user} />
+            <UserBox key={user.id} user={user} />
           ))}
           {(() => {
             let ret = [];
