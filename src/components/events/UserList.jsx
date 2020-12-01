@@ -27,6 +27,7 @@ import {
 import useInterval from 'use-interval';
 import ChatService from '../../services/chatService';
 import UserBox from './UserBox';
+import UserBoxBlank from './UserBoxBlank';
 import MyChatBox from './MyChatBox';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import '../../styles/chat.css';
@@ -40,6 +41,13 @@ export default function UserList(props) {
           {props.info.users.map((user, idx) => (
             <UserBox key={idx} user={user} />
           ))}
+          {(() => {
+            let ret = [];
+            for (let i = 0; i < props.info.maxpart-props.info.users.length; i++) {
+              ret.push(<UserBoxBlank key={i} clickParticipate={props.clickParticipate} participate={props.participate}/>)
+            }
+          return (<div>{ret}</div>);
+          })()}
         </div>
       ) : (
         <></>
