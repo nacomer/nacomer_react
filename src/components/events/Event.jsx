@@ -210,7 +210,7 @@ export default function Event(props) {
                     <EventPlace />
                   </div>
                   <div className="eventDetail">
-                    <EventDetail />
+                    <EventDetail eventInfo={eventInfo} />
                   </div>
                 </div>
               </CardContent>
