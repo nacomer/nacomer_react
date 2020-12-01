@@ -1,8 +1,11 @@
 import React from 'react';
-import { Card, Divider } from 'ui-neumorphism';
+import { Card, Button } from 'ui-neumorphism';
 import { GoogleLogin } from 'react-google-login';
+import Icon from '@mdi/react';
+import { mdiGoogle } from '@mdi/js';
 import GoogleAuthService from '../../services/googleAuthService';
 import '../../styles/top.css';
+import logo from '../../image/logo.png';
 import Footer from '../Footer';
 
 export default function Top(props) {
@@ -29,18 +32,33 @@ export default function Top(props) {
   const handleLoginFailure = (response) => {};
 
   return (
-    <Card>
-      <Card style={{ backgroundColor: 'white' }}>
+    <Card elevation={3} className="topPage">
+      <div className="topContent">
+        <img src={logo} alt="logo" className="topLogo" />
+        <div className="topText">be NAtural as a new COMER!</div>
         <GoogleLogin
-          className="login"
           clientId={props.CLIENT_ID}
-          buttonText="Login"
+          render={(renderProps) => (
+            <Button
+              rounded
+              elevation={4}
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+            >
+              <div className="googleLogin">
+                <div className="topButton">
+                  <Icon path={mdiGoogle} size={1.0} />
+                  <p className="topButtonText">ログイン</p>
+                </div>
+              </div>
+            </Button>
+          )}
           onSuccess={login}
           onFailure={handleLoginFailure}
           cookiePolicy="single_host_origin"
           responseType="code,token"
         />
-      </Card>
+      </div>
     </Card>
   );
 }

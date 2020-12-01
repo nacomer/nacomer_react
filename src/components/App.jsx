@@ -66,20 +66,21 @@ export default function App() {
   }, []);
 
   return (
-    <Card className="app">
-      <Header
-        CLIENT_ID={CLIENT_ID}
-        loginUser={loginUser}
-        setViewMode={setViewMode}
-        setLoginUser={setLoginUser}
-        setLoginSuccess={setLoginSuccess}
-        removeCookie={removeCookie}
-      />
-      <Divider elavated />
+    <div className="app">
       {loginSuccess ? (
         <>
+          <Header
+            CLIENT_ID={CLIENT_ID}
+            loginUser={loginUser}
+            setViewMode={setViewMode}
+            setLoginUser={setLoginUser}
+            setLoginSuccess={setLoginSuccess}
+            removeCookie={removeCookie}
+          />
+          <Divider elavated />
           <Event loginUser={loginUser} />
           <br />
+          <Footer />
         </>
       ) : (
         <>
@@ -91,7 +92,6 @@ export default function App() {
           />
         </>
       )}
-      <Footer />
-    </Card>
+    </div>
   );
 }
