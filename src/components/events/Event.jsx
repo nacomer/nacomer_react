@@ -166,7 +166,7 @@ export default function Event(props) {
                 src={eventInfo.hobby.picture}
                 style={{ 'background-size': 'contain' }}
               />
-              <CardContent className="EventContent">
+              <CardContent className="eventContent">
                 <div className="eventTitle">
                   <EventTitle
                     eventInfo={eventInfo}
