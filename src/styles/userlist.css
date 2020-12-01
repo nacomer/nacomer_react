@@ -15,9 +15,16 @@
   display: flex;
 }
 
+@media (min-height: 850px) {
+  .userCardWrapper {
+    overflow-y: scroll;
+    height: 65vh;
+  }
+}
+
 .userCardWrapper {
   overflow-y: scroll;
-  height: 65vh;
+  height: 80vh;
 }
 
 .userAvatar {
