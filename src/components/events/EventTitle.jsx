@@ -62,7 +62,7 @@ export default function EventTitle(props) {
       <div className="eventProps">
         {props.eventInfo.properties.map((data, idx) => (
           <Chip active className="propChip" key={idx}>
-            {data.name}
+            <p className="chipText">{data.name}</p>
           </Chip>
         ))}
       </div>
