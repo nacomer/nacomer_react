@@ -41,9 +41,7 @@ import {
   H5,
   H4,
 } from 'ui-neumorphism';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import EventIcon from '@material-ui/icons/Event';
+
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PlaceIcon from '@material-ui/icons/Place';
 import EventService from '../../services/eventService';
@@ -52,6 +50,11 @@ import PeopleIcon from '@material-ui/icons/People';
 import Chat from './Chat';
 import UserList from './UserList';
 import EventOthers from './EventOthers';
+import EventTitle from './EventTitle';
+import EventDate from './EventDate';
+import EventPlace from './EventPlace';
+import EventDetail from './EventDetail';
+
 import '../../styles/event.css';
 
 export default function Event(props) {
@@ -141,46 +144,9 @@ export default function Event(props) {
     setChatMode(true);
   };
 
-  const openTwitterLink = () => {
-    const text = eventInfo.subject + 'に参加しよう';
-    const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
-    const hashtag = 'nacomer';
-    const via = 'nacomer';
-    const targetUri =
-      'https://twitter.com/intent/tweet?text=' +
-      text +
-      '&url=' +
-      url +
-      '&hashtag=' +
-      hashtag +
-      '&via=' +
-      via;
-    location.href = targetUri;
-  };
-
-  const openFacebookLink = () => {
-    const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
-    const targetUri = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
-    location.href = targetUri;
-  };
-
-  const openCalendar = () => {
-    const text = eventInfo.subject;
-    const dates =
-      start.format('YYYYMMDD[T]HHmmss') + '/' + end.format('YYYYMMDD[T]HHmmss');
-    const targetUri =
-      'https://www.google.com/calendar/render?action=TEMPLATE&text=' +
-      text +
-      '&dates=' +
-      dates +
-      '&location=' +
-      eventInfo.place;
-    location.href = targetUri;
-  };
-
   return (
-    <Card elevation={1} style={{ height: 'fit-content' }}>
-      <Alert
+    <Card rounded elevation={4} className="eventCard">
+      {/* <Alert
         type="info"
         bordered
         icon={<Icon path={mdiInformationVariant} size={1} />}
@@ -405,7 +371,6 @@ export default function Event(props) {
         )
         )      
       }
-      
     </Card>
   );
 }
