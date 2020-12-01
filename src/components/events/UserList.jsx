@@ -35,7 +35,6 @@ import '../../styles/userlist.css';
 export default function UserList(props) {
   return (
     <div className="userListWrapper">
-      <div className="userListMessage">参加者</div>
       {props.info.users ? (
         <div className="cardWrapper">
           {props.info.users.map((user, idx) => (
