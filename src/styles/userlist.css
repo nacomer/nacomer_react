@@ -5,11 +5,9 @@
   display: flex;
   margin-left: 8px;
   margin-right: 8px;
-  width: 100%;
   margin-top: 10px;
 }
 .username {
-  display: flex-inline;
   margin-left: 15px;
   margin-top: 8px;
 }
@@ -17,7 +15,12 @@
   display: flex;
 }
 
+.userAvatar {
+  margin-left: 15px;
+}
+
 .userListMessage {
+  margin-left: 15px;
   margin-top: 20px;
   font-family: 'M PLUS Rounded 1c';
 }

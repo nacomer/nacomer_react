@@ -30,12 +30,12 @@ import '../../styles/userlist.css';
 
 export default function UserBox(props) {
   return (
-    <div flat className="userBox">
-      <div flat className="userCard">
-        <Card rounded elevation={2}>
+    <div className="userBox">
+      <div className="userCard">
+        <Card elevation={2}>
           <div className="inCardUserAvatar">
             <Avatar
-              className="chatAvatar"
+              className="userAvatar"
               alt="Avatar"
               src={props.user.picture}
             />
