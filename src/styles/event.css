@@ -131,3 +131,28 @@
 .eventPlaceCard {
   width: calc(50% - 10px) !important;
 }
+
+.dateData {
+  margin: 10px;
+}
+
+.smallCardTitle {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.smallCardInfo {
+  margin-left: 10px;
+}
+
+.smallCardTitleText {
+  margin-left: 5px;
+}
+
+.dateText {
+  font-size: 15px;
+}
+
+.timeText {
+  font-size: 13px;
+}
