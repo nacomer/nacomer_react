@@ -63,7 +63,7 @@ export default function EventTitle(props) {
   };
 
   return (
-    <div>
+    <div class="eventTitleBlock">
       <div className="subjectBlock">
         <p>{props.eventInfo.subject}</p>
       </div>
@@ -127,7 +127,6 @@ export default function EventTitle(props) {
           </IconButton>
         </div>
       </div>
-      
     </div>
   );
 }
