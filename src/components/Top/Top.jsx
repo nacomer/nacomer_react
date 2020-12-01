@@ -35,7 +35,7 @@ export default function Top(props) {
     <Card elevation={3} className="topPage">
       <div className="topContent">
         <img src={logo} alt="logo" className="topLogo" />
-        <div className="topText">be NAtural as a new COMER!</div>
+        <div className="topText">be NAtural as a newCOMER!</div>
         <GoogleLogin
           clientId={props.CLIENT_ID}
           render={(renderProps) => (
