@@ -21,7 +21,9 @@
   padding-top: 20px;
   align-items: flex-end;
 }
-
+.snsButton {
+  margin: 2px;
+}
 .eventInfo {
   height: max-content;
 }
@@ -68,14 +70,23 @@
 
 .infoDetailBox {
   width: 100%;
+  display: grid;
+  justify-content: space-around;
 }
 
 .infoDetail {
   text-align: center;
+  width: 100%;
+}
+
+.eventWrapper {
+  overflow-y: scroll;
+  height: 65vh;
 }
 
 .infoIcon {
-  padding-left: 10px;
+  padding-left: 20px;
+  padding-top: 10px;
 }
 
 .infoDivide {

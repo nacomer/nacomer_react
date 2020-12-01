@@ -8,6 +8,7 @@ import {
   mdiHeart,
   mdiInformationVariant,
   mdiAccount,
+  mdiAccountVoice,
   mdiAccountGroup,
   mdiMapMarker,
   mdiClockOutline,
@@ -181,14 +182,32 @@ export default function Event(props) {
         <div className="eventTitle">
           <p className="eventSubject">{eventInfo.subject}</p>
           <div className="snsIcons">
-            <IconButton rounded onClick={openTwitterLink}>
-              <TwitterIcon className="inButtonNormal" />
+            <IconButton
+              rounded
+              size="small"
+              text={false}
+              onClick={openTwitterLink}
+              className="snsButton"
+            >
+              <TwitterIcon fontSize="small" className="inButtonNormal" />
             </IconButton>
-            <IconButton rounded onClick={openFacebookLink}>
-              <FacebookIcon className="inButtonNormal" />
+            <IconButton
+              rounded
+              size="small"
+              text={false}
+              onClick={openFacebookLink}
+              className="snsButton"
+            >
+              <FacebookIcon fontSize="small" className="inButtonNormal" />
             </IconButton>
-            <IconButton rounded onClick={openCalendar}>
-              <EventIcon className="inButtonNormal" />
+            <IconButton
+              rounded
+              size="small"
+              text={false}
+              onClick={openCalendar}
+              className="snsButton"
+            >
+              <EventIcon fontSize="small" className="inButtonNormal" />
             </IconButton>
           </div>
         </div>
@@ -200,7 +219,7 @@ export default function Event(props) {
           loginUser={props.loginUser}
         />
       ) : (
-        <>
+        <div className="eventWrapper">
           {eventInfo && eventInfo.users ? (
             <>
               <div className="clearfix">
@@ -212,7 +231,7 @@ export default function Event(props) {
                   <CardAction>
                     <Card flat className="eventbox">
                       {eventInfo.properties.map((data, idx) => (
-                        <Chip className="propChip" key={idx}>
+                        <Chip active className="propChip" key={idx}>
                           {data.name}
                         </Chip>
                       ))}
@@ -275,9 +294,7 @@ export default function Event(props) {
                     <div className="padding">
                       <div className="infoBox">
                         <div className="infoIcon">
-                          <Chip prepend={<Icon path={mdiAccount} size={1.0} />}>
-                            主催者
-                          </Chip>
+                          <Icon path={mdiAccountVoice} size={1.0} />
                         </div>
                         <div className="infoDetailBox">
                           <p className="infoDetail">{ownerName}</p>
@@ -286,11 +303,7 @@ export default function Event(props) {
                       <br />
                       <div className="infoBox">
                         <div className="infoIcon">
-                          <Chip
-                            prepend={<Icon path={mdiAccountGroup} size={1.0} />}
-                          >
-                            参加者
-                          </Chip>
+                          <Icon path={mdiAccountGroup} size={1.0} />
                         </div>
                         <div className="infoDetailBox">
                           {/* {eventInfo.users.length}/{eventInfo.maxpart} */}
@@ -331,11 +344,7 @@ export default function Event(props) {
                       <Divider className="infoDivide" />
                       <div className="infoBox">
                         <div className="infoIcon">
-                          <Chip
-                            prepend={<Icon path={mdiMapMarker} size={1.0} />}
-                          >
-                            場所
-                          </Chip>
+                          <Icon path={mdiMapMarker} size={1.0} />
                         </div>
                         <div className="infoDetailBox">
                           <p className="infoDetail">{eventInfo.place}</p>
@@ -344,30 +353,22 @@ export default function Event(props) {
                       <br />
                       <div className="infoBox">
                         <div className="infoIcon">
-                          <Chip
-                            prepend={<Icon path={mdiClockOutline} size={1.0} />}
-                          >
-                            時間
-                          </Chip>
+                          <Icon path={mdiClockOutline} size={1.0} />
                         </div>
                         <div className="infoDetailBox">
-                          <p className="infoDetail">
+                          <div className="infoDetail">
                             {start.format('YYYY/MM/DD(dd) HH:mm')}
-                          </p>
-                          <p className="infoDetail">～</p>
-                          <p className="infoDetail">
+                          </div>
+                          <div className="infoDetail">～</div>
+                          <div className="infoDetail">
                             {end.format('YYYY/MM/DD(dd) HH:mm')}
-                          </p>
+                          </div>
                         </div>
                       </div>
                       <Divider className="infoDivide" />
                       <div className="infoBox lastInfoBox">
                         <div className="infoIcon">
-                          <Chip
-                            prepend={<Icon path={mdiLeadPencil} size={1.0} />}
-                          >
-                            詳細
-                          </Chip>
+                          <Icon path={mdiLeadPencil} size={1.0} />
                         </div>
                         <div className="infoDetailBox">
                           <p className="infoDetail">{eventInfo.description}</p>
@@ -390,7 +391,7 @@ export default function Event(props) {
           ) : (
             <></>
           )}
-        </>
+        </div>
       )}
     </Card>
   );
