@@ -25,8 +25,13 @@
   height: 100%;
   align-items: flex-end;
 }
-.snsButton {
+
+.eventButton {
   margin: 2px;
+}
+
+.snsButton {
+  margin-right: 15px;
 }
 .eventInfo {
   height: max-content;
@@ -167,4 +172,8 @@
 .eventIcon {
   color: mediumblue;
   background-color: #e4ebf5;
+}
+
+.eventTitleBlock {
+  width: 100%;
 }

@@ -52,7 +52,7 @@ export default function EventDate(props) {
             size="small"
             text={false}
             onClick={openCalendar}
-            className="snsButton"
+            className="eventButton"
           >
             <EventIcon fontSize="small" className="eventIcon" />
           </IconButton>

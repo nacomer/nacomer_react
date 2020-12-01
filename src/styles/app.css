@@ -51,4 +51,5 @@ body {
 
 .buttonSnsBlock {
   display: flex;
+  width: 90%;
 }
