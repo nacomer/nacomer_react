@@ -162,9 +162,14 @@ export default function Event(props) {
           {eventInfo && eventInfo.users ? (
             <>
               <CardMedia dark src={eventInfo.hobby.picture} />
-              <CardContent className="EventContent">
+              <CardContent className="eventContent">
                 <div className="eventTitle">
-                  <EventTitle eventInfo={eventInfo} clickParticipate={clickParticipate} quitParticipate={quitParticipate} participate={participate}/>
+                  <EventTitle
+                    eventInfo={eventInfo}
+                    clickParticipate={clickParticipate}
+                    quitParticipate={quitParticipate}
+                    participate={participate}
+                  />
                 </div>
                 <div className="eventInfo">
                   <div className="dateAndPlace">
@@ -174,6 +179,14 @@ export default function Event(props) {
                   <div className="eventDetail">
                     <EventDetail eventInfo={eventInfo} />
                   </div>
+                  {!participate &&
+                  eventInfo.maxpart === eventInfo.users.length ? (
+                    <div>
+                      <EventOthers eventInfo={eventInfo} />
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </CardContent>
             </>
