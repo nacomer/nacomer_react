@@ -86,3 +86,9 @@
 .lastInfoBox {
   padding-bottom: 10px;
 }
+
+.infoDetailPlace {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
