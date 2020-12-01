@@ -48,3 +48,7 @@ body {
   display: block;
   clear: both;
 }
+
+.buttonSnsBlock {
+  display: flex;
+}

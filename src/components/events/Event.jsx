@@ -148,45 +148,6 @@ export default function Event(props) {
 
   return (
     <Card rounded elevation={4} className="eventCard">
-      {/* <Alert
-        type="info"
-        bordered
-        icon={<Icon path={mdiInformationVariant} size={1} />}
-        border="left"
-      >
-        <div className="eventTitle">
-          <p className="eventSubject">{eventInfo.subject}</p>
-          <div className="snsIcons">
-            <IconButton
-              rounded
-              size="small"
-              text={false}
-              onClick={openTwitterLink}
-              className="snsButton"
-            >
-              <TwitterIcon fontSize="small" className="inButtonNormal" />
-            </IconButton>
-            <IconButton
-              rounded
-              size="small"
-              text={false}
-              onClick={openFacebookLink}
-              className="snsButton"
-            >
-              <FacebookIcon fontSize="small" className="inButtonNormal" />
-            </IconButton>
-            <IconButton
-              rounded
-              size="small"
-              text={false}
-              onClick={openCalendar}
-              className="snsButton"
-            >
-              <EventIcon fontSize="small" className="inButtonNormal" />
-            </IconButton>
-          </div>
-        </div>
-      </Alert> */}
       {props.viewMode === ViewModeList.member ? (
         <UserList info={eventInfo} />
       ) : props.viewMode === ViewModeList.chat ? (
@@ -202,7 +163,7 @@ export default function Event(props) {
               <CardMedia dark src={eventInfo.hobby.picture} />
               <CardContent className="EventContent">
                 <div className="eventTitle">
-                  <EventTitle eventInfo={eventInfo} />
+                  <EventTitle eventInfo={eventInfo} clickParticipate={clickParticipate} quitParticipate={quitParticipate} participate={participate}/>
                 </div>
                 <div className="eventInfo">
                   <div className="dateAndPlace">
