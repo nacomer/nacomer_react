@@ -157,3 +157,18 @@
 .timeText {
   font-size: 13px;
 }
+
+.eventDetailHeader {
+  display: flex;
+  padding-left: 15px;
+  padding-top: 10px;
+  font-weight: 700;
+}
+.eventDetailBody {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.eventIcon {
+  color: mediumblue;
+}

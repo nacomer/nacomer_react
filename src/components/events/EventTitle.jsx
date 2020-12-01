@@ -20,7 +20,6 @@ import {
 } from 'ui-neumorphism';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import EventIcon from '@material-ui/icons/Event';
 
 export default function EventTitle(props) {
   const openTwitterLink = () => {
@@ -46,20 +45,6 @@ export default function EventTitle(props) {
     location.href = targetUri;
   };
 
-  const openCalendar = () => {
-    const text = props.eventInfo.subject;
-    const dates =
-      start.format('YYYYMMDD[T]HHmmss') + '/' + end.format('YYYYMMDD[T]HHmmss');
-    const targetUri =
-      'https://www.google.com/calendar/render?action=TEMPLATE&text=' +
-      text +
-      '&dates=' +
-      dates +
-      '&location=' +
-      props.eventInfo.place;
-    location.href = targetUri;
-  };
-
   return (
     <div>
       <p>{props.eventInfo.subject}</p>
@@ -82,15 +67,6 @@ export default function EventTitle(props) {
           className="snsButton"
         >
           <FacebookIcon fontSize="small" className="inButtonNormal" />
-        </IconButton>
-        <IconButton
-          rounded
-          size="small"
-          text={false}
-          onClick={openCalendar}
-          className="snsButton"
-        >
-          <EventIcon fontSize="small" className="inButtonNormal" />
         </IconButton>
       </div>
     </div>
