@@ -28,7 +28,7 @@ import {
 } from 'ui-neumorphism';
 import '../../styles/userlist.css';
 
-export default function ChatBox(props) {
+export default function UserBox(props) {
   return (
     <div flat className="userBox">
       <div flat className="userCard">

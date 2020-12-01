@@ -32,7 +32,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import '../../styles/chat.css';
 import '../../styles/userlist.css';
 
-export default function Chat(props) {
+export default function UserList(props) {
 
   return (
     <div className="userListWrapper">
