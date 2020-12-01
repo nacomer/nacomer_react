@@ -3,10 +3,6 @@
   height: calc(100vh - 110px - 75px);
 }
 
-.propChip {
-  margin: 5px;
-  color: blue;
-}
 .avatar {
   float: left;
   /* margin-left: -20px; */
@@ -176,6 +172,7 @@
 }
 
 .eventTitleBlock {
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -183,4 +180,18 @@
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: calc(100% - 200px);
+}
+
+.subjectBlock {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.eventProps {
+  margin-bottom: 30px;
+}
+
+.propChip {
+  margin: 5px;
+  color: blue;
 }

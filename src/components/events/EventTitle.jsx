@@ -30,6 +30,7 @@ import {
   Button,
   Body2,
   Card,
+  Chip,
   Fab,
   H6,
   H5,
@@ -67,8 +68,13 @@ export default function EventTitle(props) {
       <div className="subjectBlock">
         <p>{props.eventInfo.subject}</p>
       </div>
-      <p>Properties</p>
-
+        <Card flat className="eventProps">
+          {props.eventInfo.properties.map((data, idx) => (
+            <Chip active className="propChip" key={idx}>
+              {data.name}
+            </Chip>
+          ))}
+        </Card>
       <div className="buttonSnsBlock">
         <div className="participate">
           {!props.participate ? (
