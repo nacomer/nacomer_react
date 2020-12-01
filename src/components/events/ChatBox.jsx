@@ -45,8 +45,12 @@ export default function ChatBox(props) {
 
       <div flat className="contentCard">
         <div flat className="profileCard">
-          <h5>{props.chat.user.name}</h5>
-          <h6>{moment(props.chat.date).fromNow()}</h6>
+          <p>
+            <span className="userNameText">{props.chat.user.name}</span>
+            <span className="uploadDateText">
+              {moment(props.chat.date).fromNow()}
+            </span>
+          </p>
         </div>
         <Card inset className="chatCard">
           {props.chat.comment}
