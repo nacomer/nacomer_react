@@ -67,6 +67,7 @@ export default function Event(props) {
       let eventId;
       if (sessionSavedId) {
         eventId = sessionSavedId;
+        sessionStorage.removeItem('eventid');
       } else {
         const ids = await eventService.getRandomEvent(props.loginUser);
         eventId = ids.data[0].id;
