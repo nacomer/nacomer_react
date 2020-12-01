@@ -1,21 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Icon from '@mdi/react';
-import {
-  mdiDotsVertical,
-  mdiShareVariant,
-  mdiHeart,
-  mdiInformationVariant,
-  mdiAccount,
-  mdiAccountVoice,
-  mdiAccountGroup,
-  mdiMapMarker,
-  mdiClockOutline,
-  mdiAccountPlus,
-  mdiAccountPlusOutline,
-  mdiAccountMinus,
-  mdiChat,
-  mdiLeadPencil,
-} from '@mdi/js';
+import { mdiTrophyAward, mdiAccountPlus, mdiAccountMinus } from '@mdi/js';
 import {
   Alert,
   CardContent,
@@ -30,6 +15,7 @@ import {
   Button,
   Body2,
   Card,
+  Chip,
   Fab,
   H6,
   H5,
@@ -65,10 +51,21 @@ export default function EventTitle(props) {
   return (
     <div class="eventTitleBlock">
       <div className="subjectBlock">
+        <Icon
+          path={mdiTrophyAward}
+          size={1.2}
+          color="orange"
+          className="titleIcon"
+        />
         <p>{props.eventInfo.subject}</p>
       </div>
-      <p>Properties</p>
-
+      <div className="eventProps">
+        {props.eventInfo.properties.map((data, idx) => (
+          <Chip active className="propChip" key={idx}>
+            {data.name}
+          </Chip>
+        ))}
+      </div>
       <div className="buttonSnsBlock">
         <div className="participate">
           {!props.participate ? (

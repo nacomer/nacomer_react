@@ -3,10 +3,6 @@
   height: calc(100vh - 110px - 75px);
 }
 
-.propChip {
-  margin: 5px;
-  color: blue;
-}
 .avatar {
   float: left;
   /* margin-left: -20px; */
@@ -57,15 +53,11 @@
   display: flex;
 }
 
-.multiLineButton {
-}
-
 .eventTitle {
   display: flex;
   align-items: center;
-  width: 82vw;
+  /* width: 82vw; */
   font-weight: 700;
-  margin-left: 15px;
 }
 
 .snsIcons {
@@ -176,6 +168,7 @@
 }
 
 .eventTitleBlock {
+  margin: 0px 10px 10px;
   width: 100%;
 }
 
@@ -183,4 +176,20 @@
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: calc(100% - 200px);
+}
+
+.subjectBlock {
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.eventProps {
+  margin: 20px 0px 20px;
+}
+
+.propChip {
+  margin: 5px;
+  color: blue;
 }
