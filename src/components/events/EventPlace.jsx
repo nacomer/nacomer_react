@@ -25,7 +25,7 @@ export default function EventPlace(props) {
             size="small"
             text={false}
             onClick={openGoogleMap}
-            className="snsButton"
+            className="eventButton"
           >
             <MapIcon fontSize="small" className="eventIcon" />
           </IconButton>
