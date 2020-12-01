@@ -41,6 +41,7 @@ export default function App() {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['loginUser']);
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  const [chatEnable, setChatEnable] = useState(false);
 
   useEffect(() => {
     // sessionストレージにqueryパラメータを保存
@@ -78,7 +79,7 @@ export default function App() {
             removeCookie={removeCookie}
           />
           <Event loginUser={loginUser} viewMode={viewMode} />
-          <Footer setViewMode={setViewMode} />
+          <Footer setViewMode={setViewMode} chatEnable={chatEnable} />
         </>
       ) : (
         <>

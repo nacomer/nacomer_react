@@ -32,9 +32,15 @@ export default function Footer(props) {
         <IconButton text={false} onClick={clickMemberIcon}>
           <Icon path={mdiAccountGroup} size={1.0} className="footerButton" />
         </IconButton>
-        <IconButton text={false} onClick={clickChatIcon}>
-          <Icon path={mdiChat} size={1.0} className="footerButton" />
-        </IconButton>
+        {props.chatEnable ? (
+          <IconButton text={false} onClick={clickChatIcon}>
+            <Icon path={mdiChat} size={1.0} className="footerButton" />
+          </IconButton>
+        ) : (
+          <IconButton disabled>
+            <Icon path={mdiChat} size={1.0} className="footerButton" />
+          </IconButton>
+        )}
       </div>
       {/* <p>&copy; Team Nacomer 2020 All rights reserved.</p> */}
     </Card>
