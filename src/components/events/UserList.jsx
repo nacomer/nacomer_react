@@ -36,7 +36,7 @@ export default function UserList(props) {
   return (
     <div className="userListWrapper">
       {props.info.users ? (
-        <div className="cardWrapper">
+        <div className="userCardWrapper">
           {props.info.users.map((user, idx) => (
             <UserBox key={idx} user={user} />
           ))}
