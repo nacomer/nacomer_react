@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { mdiClockOutline } from '@mdi/js';
-import { Card } from 'ui-neumorphism';
+import { Card, IconButton } from 'ui-neumorphism';
+import EventIcon from '@material-ui/icons/Event';
 import Icon from '@mdi/react';
 import moment from 'moment-timezone';
 
@@ -24,11 +25,37 @@ export default function EventDate(props) {
     }
   }, []);
 
+  const openCalendar = () => {
+    const text = props.eventInfo.subject;
+    const dates =
+      moment(props.eventInfo.start)
+        .tz('Asia/Tokyo')
+        .format('YYYYMMDD[T]HHmmss') +
+      '/' +
+      moment(props.eventInfo.end).tz('Asia/Tokyo').format('YYYYMMDD[T]HHmmss');
+    const targetUri =
+      'https://www.google.com/calendar/render?action=TEMPLATE&text=' +
+      text +
+      '&dates=' +
+      dates +
+      '&location=' +
+      props.eventInfo.place;
+    location.href = targetUri;
+  };
+
   return (
     <Card elevation={2} className="eventDateCard">
       <div className="dateData">
         <div className="smallCardTitle">
-          <Icon path={mdiClockOutline} size={1.2} color="blue" />
+          <IconButton
+            rounded
+            size="small"
+            text={false}
+            onClick={openCalendar}
+            className="snsButton"
+          >
+            <EventIcon fontSize="small" className="eventIcon" />
+          </IconButton>
           <p className="smallCardTitleText">日時</p>
         </div>
         {startDate === endDate ? (
@@ -40,9 +67,14 @@ export default function EventDate(props) {
           </div>
         ) : (
           <div className="smallCardInfo">
-            <p className="timeText">{startDate}{startTime}</p>
             <p className="timeText">
-              {"  - "}{endDate}{endTime}
+              {startDate}
+              {startTime}
+            </p>
+            <p className="timeText">
+              {'  - '}
+              {endDate}
+              {endTime}
             </p>
           </div>
         )}
