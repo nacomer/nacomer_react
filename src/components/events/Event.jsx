@@ -55,45 +55,49 @@ export default function Event(props) {
   const [participate, setParticipate] = useState(false);
   const [ownerName, setOwnerName] = useState('');
   const [chatMode, setChatMode] = useState(false);
+  const [eventId, setEventId] = useState('');
   const start = moment(eventInfo.start).tz('Asia/Tokyo');
   const end = moment(eventInfo.end).tz('Asia/Tokyo');
+
+  const getEvent = async () => {
+    const eventService = new EventService();
+
+    // TODO: 表示のテストのため、1番目のeventIdを取得しています
+    const sessionSavedId = sessionStorage.getItem('eventid');
+    let eid;
+    if (sessionSavedId) {
+      eid = sessionSavedId;
+      sessionStorage.removeItem('eventid');
+    } else {
+      eid = eventId;
+      if (!eid) {
+        const ids = await eventService.getRandomEvent(props.loginUser);
+        eid = ids.data[0].id;
+      }
+    }
+    setEventId(eid);
+    const eventInfoRes = await eventService.getEventInfo(props.loginUser, eid);
+    setEventInfo(eventInfoRes.data);
+    // ownerNameの設定
+    const owner = eventInfoRes.data.users.filter(
+      (user) => user.id === eventInfoRes.data.ownerId,
+    );
+    setOwnerName(owner[0].name);
+    // 既に参加済みの場合は参加済みstateをtrueに設定する。
+    if (
+      eventInfoRes.data.users &&
+      eventInfoRes.data.users.find(
+        (user) => user.googleId === props.loginUser.googleId,
+      )
+    ) {
+      setParticipate(true);
+    }
+  };
+
   useEffect(() => {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
-    const getEvent = async () => {
-      const eventService = new EventService();
-
-      // TODO: 表示のテストのため、1番目のeventIdを取得しています
-      const sessionSavedId = sessionStorage.getItem('eventid');
-      let eventId;
-      if (sessionSavedId) {
-        eventId = sessionSavedId;
-        sessionStorage.removeItem('eventid');
-      } else {
-        const ids = await eventService.getRandomEvent(props.loginUser);
-        eventId = ids.data[0].id;
-      }
-      const eventInfoRes = await eventService.getEventInfo(
-        props.loginUser,
-        eventId,
-      );
-      setEventInfo(eventInfoRes.data);
-      // ownerNameの設定
-      const owner = eventInfoRes.data.users.filter(
-        (user) => user.id === eventInfoRes.data.ownerId,
-      );
-      setOwnerName(owner[0].name);
-      // 既に参加済みの場合は参加済みstateをtrueに設定する。
-      if (
-        eventInfoRes.data.users &&
-        eventInfoRes.data.users.find(
-          (user) => user.googleId === props.loginUser.googleId,
-        )
-      ) {
-        setParticipate(true);
-      }
-    };
     getEvent();
-  }, [participate]);
+  }, []);
 
   const clickParticipate = () => {
     const participateEvent = async () => {
@@ -104,6 +108,7 @@ export default function Event(props) {
       );
       if (participantsRes.status === 201) {
         setParticipate(true);
+        getEvent();
       }
     };
     participateEvent();
@@ -118,6 +123,7 @@ export default function Event(props) {
       );
       if (unparticipantsRes.status === 204) {
         setParticipate(false);
+        getEvent();
       }
     };
     unparticipateEvent();
