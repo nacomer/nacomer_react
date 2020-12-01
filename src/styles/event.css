@@ -1,3 +1,7 @@
+.eventCard {
+  margin: 20px;
+}
+
 .propChip {
   margin: 5px;
   color: blue;
@@ -96,4 +100,33 @@
 
 .lastInfoBox {
   padding-bottom: 10px;
+}
+
+.eventTitle {
+  display: flex;
+  justify-content: center;
+}
+.eventInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dateAndPlace {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.eventDetail {
+  margin: 10px;
+}
+
+.eventDateCard {
+  width:calc(50% - 10px);
+}
+
+.eventPlaceCard {
+  width: calc(50% - 10px);
 }
