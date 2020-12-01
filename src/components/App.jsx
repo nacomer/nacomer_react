@@ -30,16 +30,12 @@ import List from './list/List';
 import Detail from './detail/Detail';
 import Top from './Top/Top';
 import '../styles/app.css';
+import { ViewModeList } from './utils/Viewmode';
 
 import GoogleAuthService from '../services/googleAuthService';
 
 export default function App() {
-  const viewModeList = {
-    info: 'info',
-    member: 'member',
-    chat: 'chat',
-  };
-  const [viewMode, setViewMode] = useState(viewModeList.info);
+  const [viewMode, setViewMode] = useState(ViewModeList.info);
   const [hobbyId, setHobbyId] = useState();
   const [loginUser, setLoginUser] = useState();
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -77,12 +73,11 @@ export default function App() {
           <Header
             CLIENT_ID={CLIENT_ID}
             loginUser={loginUser}
-            setViewMode={setViewMode}
             setLoginUser={setLoginUser}
             setLoginSuccess={setLoginSuccess}
             removeCookie={removeCookie}
           />
-          <Event loginUser={loginUser} />
+          <Event loginUser={loginUser} viewMode={viewMode} />
           <Footer setViewMode={setViewMode} />
         </>
       ) : (

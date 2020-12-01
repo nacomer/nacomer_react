@@ -38,7 +38,3 @@ export default function Header(props) {
     </div>
   );
 }
-
-Header.propTypes = {
-  setViewMode: PropTypes.func.isRequired,
-};

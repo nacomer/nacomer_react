@@ -6,39 +6,33 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import { mdiInformationVariant, mdiAccountGroup, mdiChat } from '@mdi/js';
 import '../styles/footer.css';
+import { ViewModeList } from './utils/Viewmode';
 
 export default function Footer(props) {
-  const viewModeList = {
-    info: 'info',
-    member: 'member',
-    chat: 'chat',
+  const clickInfoIcon = () => {
+    props.setViewMode(ViewModeList.info);
   };
+  const clickMemberIcon = () => {
+    props.setViewMode(ViewModeList.member);
+  };
+  const clickChatIcon = () => {
+    props.setViewMode(ViewModeList.chat);
+  };
+
   return (
     <Card elevation={1} className="footer">
       <div className="footerButtons">
-        <IconButton
-          size="big"
-          text={false}
-          onClick={props.setViewMode(viewModeList.info)}
-        >
+        <IconButton size="big" text={false} onClick={clickInfoIcon}>
           <Icon
             path={mdiInformationVariant}
             size={1.0}
             className="footerButton"
           />
         </IconButton>
-        <IconButton
-          size="big"
-          text={false}
-          onClick={props.setViewMode(viewModeList.member)}
-        >
+        <IconButton size="big" text={false} onClick={clickMemberIcon}>
           <Icon path={mdiAccountGroup} size={1.0} className="footerButton" />
         </IconButton>
-        <IconButton
-          size="big"
-          text={false}
-          onClick={props.setViewMode(viewModeList.chat)}
-        >
+        <IconButton size="big" text={false} onClick={clickChatIcon}>
           <Icon path={mdiChat} size={1.0} className="footerButton" />
         </IconButton>
       </div>
