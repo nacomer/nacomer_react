@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { mdiMapMarker, mdiMapMarkerRadiusOutline } from '@mdi/js';
 import MapIcon from '@material-ui/icons/Map';
-import { Card, IconButton} from 'ui-neumorphism';
+import { Card, IconButton } from 'ui-neumorphism';
 import Icon from '@mdi/react';
 
 export default function EventPlace(props) {
@@ -13,10 +13,8 @@ export default function EventPlace(props) {
   }, []);
 
   const openGoogleMap = () => {
-    location.href =
-      'https://www.google.com/maps/search/?api=1&query=' + place;
+    location.href = 'https://www.google.com/maps/search/?api=1&query=' + place;
   };
-
 
   return (
     <Card elevation={2} className="eventPlaceCard">
@@ -29,7 +27,7 @@ export default function EventPlace(props) {
             onClick={openGoogleMap}
             className="snsButton"
           >
-            <MapIcon fontSize="small" className="mapIcon" />
+            <MapIcon fontSize="small" className="eventIcon" />
           </IconButton>
           <p className="smallCardTitleText">場所</p>
         </div>
