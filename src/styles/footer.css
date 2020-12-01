@@ -5,19 +5,26 @@
 } */
 
 .footer {
-  /* display: flex; */
-  left: 10px;
+  display: flex;
+  left: 0px;
   bottom: -8px;
   margin: 8px 0px;
   padding: 16px 24px;
   box-shadow: var(--box-shadow);
   background: var(--bg-color);
-  justify-content: space-between;
   position: fixed;
   height: 55px;
   z-index: 10;
+  min-width: 100%;
 }
-.inButton {
+.footerButton {
   background-color: #e4ebf5;
-  color: blue;
+}
+
+.footerButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -8px;
 }

@@ -34,7 +34,12 @@ import '../styles/app.css';
 import GoogleAuthService from '../services/googleAuthService';
 
 export default function App() {
-  const [viewMode, setViewMode] = useState('List');
+  const viewModeList = {
+    info: 'info',
+    member: 'member',
+    chat: 'chat',
+  };
+  const [viewMode, setViewMode] = useState(viewModeList.info);
   const [hobbyId, setHobbyId] = useState();
   const [loginUser, setLoginUser] = useState();
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -78,7 +83,7 @@ export default function App() {
             removeCookie={removeCookie}
           />
           <Event loginUser={loginUser} />
-          <Footer />
+          <Footer setViewMode={setViewMode} />
         </>
       ) : (
         <>
