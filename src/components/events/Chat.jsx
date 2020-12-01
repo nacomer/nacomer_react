@@ -68,12 +68,7 @@ export default function Chat(props) {
 
   return (
     <>
-      <div>
-        <Button onClick={back}>
-          <ArrowBackIcon className="inButton" />
-        </Button>
-      </div>
-      <div className="cardWrapper" ref={chatWrapper}>
+      <div className="chatWrapper" ref={chatWrapper}>
         {chatList.map((chat, idx) =>
           chat.user.googleId == props.loginUser.googleId ? (
             <MyChatBox key={idx} chat={chat} />
