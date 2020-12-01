@@ -53,15 +53,11 @@
   display: flex;
 }
 
-.multiLineButton {
-}
-
 .eventTitle {
   display: flex;
   align-items: center;
-  width: 82vw;
+  /* width: 82vw; */
   font-weight: 700;
-  margin-left: 15px;
 }
 
 .snsIcons {
@@ -172,7 +168,7 @@
 }
 
 .eventTitleBlock {
-  margin-bottom: 10px;
+  margin: 0px 10px 10px;
   width: 100%;
 }
 
@@ -183,8 +179,11 @@
 }
 
 .subjectBlock {
-  font-size: 23px;
+  font-size: 20px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .eventProps {
