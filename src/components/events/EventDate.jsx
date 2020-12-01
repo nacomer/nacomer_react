@@ -1,31 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Alert,
-  CardContent,
-  IconButton,
-  CardHeader,
-  CardAction,
-  CardMedia,
-  Subtitle1,
-  Subtitle2,
-  Divider,
-  Spacer,
-  Button,
-  Body2,
-  Card,
-  Fab,
-  H6,
-  H5,
-  H4,
-} from 'ui-neumorphism';
+import { mdiClockOutline } from '@mdi/js';
+import { Card } from 'ui-neumorphism';
+import Icon from '@mdi/react';
+import moment from 'moment-timezone';
 
 export default function EventDate(props) {
+  const [startDate, setStartDate] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [endTime, setEndTime] = useState('');
+  useEffect(() => {
+    if (props.eventInfo.start && props.eventInfo.end) {
+      setStartDate(
+        moment(props.eventInfo.start).tz('Asia/Tokyo').format('MM/DD(dd)'),
+      );
+      setEndDate(
+        moment(props.eventInfo.end).tz('Asia/Tokyo').format('MM/DD(dd)'),
+      );
+      setStartTime(
+        moment(props.eventInfo.start).tz('Asia/Tokyo').format('HH:mm'),
+      );
+      setEndTime(moment(props.eventInfo.end).tz('Asia/Tokyo').format('HH:mm'));
+    }
+  }, []);
+
   return (
     <Card elevation={2} className="eventDateCard">
-      <p>EventDatePage</p>
-      <br />
-      <p>showEventDate</p>
-      <br />
+      <div className="dateData">
+        <div className="smallCardTitle">
+          <Icon path={mdiClockOutline} size={1.2} color="blue" />
+          <p className="smallCardTitleText">日時</p>
+        </div>
+        {startDate === endDate ? (
+          <div className="smallCardInfo">
+            <p className="dateText">{startDate}</p>
+            <p className="timeText">
+              {startTime} - {endTime}
+            </p>
+          </div>
+        ) : (
+          <div className="smallCardInfo">
+            <p className="timeText">{startDate}{startTime}</p>
+            <p className="timeText">
+              {"  - "}{endDate}{endTime}
+            </p>
+          </div>
+        )}
+      </div>
     </Card>
   );
 }
