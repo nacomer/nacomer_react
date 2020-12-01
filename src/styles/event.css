@@ -1,5 +1,6 @@
 .eventCard {
-  margin: 20px;
+  margin: 110px 20px 20px;
+  height: calc(100vh - 110px - 75px);
 }
 
 .propChip {
@@ -124,9 +125,9 @@
 }
 
 .eventDateCard {
-  width:calc(50% - 10px);
+  width: calc(50% - 10px) !important;
 }
 
 .eventPlaceCard {
-  width: calc(50% - 10px);
+  width: calc(50% - 10px) !important;
 }

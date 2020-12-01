@@ -39,9 +39,7 @@ import {
   H5,
   H4,
 } from 'ui-neumorphism';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import EventIcon from '@material-ui/icons/Event';
+
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PlaceIcon from '@material-ui/icons/Place';
 import EventService from '../../services/eventService';
@@ -139,43 +137,6 @@ export default function Event(props) {
     setChatMode(true);
   };
 
-  const openTwitterLink = () => {
-    const text = eventInfo.subject + 'に参加しよう';
-    const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
-    const hashtag = 'nacomer';
-    const via = 'nacomer';
-    const targetUri =
-      'https://twitter.com/intent/tweet?text=' +
-      text +
-      '&url=' +
-      url +
-      '&hashtag=' +
-      hashtag +
-      '&via=' +
-      via;
-    location.href = targetUri;
-  };
-
-  const openFacebookLink = () => {
-    const url = 'http://www.nacomer.tk/?eventid=' + eventInfo.id;
-    const targetUri = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
-    location.href = targetUri;
-  };
-
-  const openCalendar = () => {
-    const text = eventInfo.subject;
-    const dates =
-      start.format('YYYYMMDD[T]HHmmss') + '/' + end.format('YYYYMMDD[T]HHmmss');
-    const targetUri =
-      'https://www.google.com/calendar/render?action=TEMPLATE&text=' +
-      text +
-      '&dates=' +
-      dates +
-      '&location=' +
-      eventInfo.place;
-    location.href = targetUri;
-  };
-
   return (
     <Card rounded elevation={4} className="eventCard">
       {/* <Alert
@@ -186,36 +147,7 @@ export default function Event(props) {
       >
         <div className="eventTitle">
           <p className="eventSubject">{eventInfo.subject}</p>
-          <div className="snsIcons">
-            <IconButton
-              rounded
-              size="small"
-              text={false}
-              onClick={openTwitterLink}
-              className="snsButton"
-            >
-              <TwitterIcon fontSize="small" className="inButtonNormal" />
-            </IconButton>
-            <IconButton
-              rounded
-              size="small"
-              text={false}
-              onClick={openFacebookLink}
-              className="snsButton"
-            >
-              <FacebookIcon fontSize="small" className="inButtonNormal" />
-            </IconButton>
-            <IconButton
-              rounded
-              size="small"
-              text={false}
-              onClick={openCalendar}
-              className="snsButton"
-            >
-              <EventIcon fontSize="small" className="inButtonNormal" />
-            </IconButton>
-          </div>
-        </div>
+        </di¥v>
       </Alert> */}
       {chatMode ? (
         <Chat
@@ -230,7 +162,7 @@ export default function Event(props) {
               <CardMedia dark src={eventInfo.hobby.picture} />
               <CardContent className="EventContent">
                 <div className="eventTitle">
-                  <EventTitle />
+                  <EventTitle eventInfo={eventInfo} />
                 </div>
                 <div className="eventInfo">
                   <div className="dateAndPlace">
