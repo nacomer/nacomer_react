@@ -4,7 +4,6 @@
 }
 .avatar {
   float: left;
-  display: block;
   /* margin-left: -20px; */
   margin-right: 3px;
 }
