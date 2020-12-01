@@ -183,6 +183,14 @@ export default function Event(props) {
                   <div className="eventDetail">
                     <EventDetail eventInfo={eventInfo} />
                   </div>
+                  {!participate &&
+                  eventInfo.maxpart === eventInfo.users.length ? (
+                    <div>
+                      <EventOthers eventInfo={eventInfo} />
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </CardContent>
             </>
