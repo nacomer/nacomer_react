@@ -69,11 +69,11 @@ export default function Chat(props) {
   return (
     <>
       <div className="chatWrapper" ref={chatWrapper}>
-        {chatList.map((chat, idx) =>
+        {chatList.map((chat) =>
           chat.user.googleId == props.loginUser.googleId ? (
-            <MyChatBox key={idx} chat={chat} />
+            <MyChatBox key={chat.id} chat={chat} />
           ) : (
-            <ChatBox key={idx} chat={chat} />
+            <ChatBox key={chat.id} chat={chat} />
           ),
         )}
       </div>
