@@ -42,6 +42,7 @@ export default function ChatPost(props) {
       chatInputRef.current.value = '';
       setComment('');
       props.getChat();
+      props.scrollToBottom();
     }
   };
 
