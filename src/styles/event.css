@@ -4,9 +4,9 @@
 }
 .avatar {
   float: left;
-  display: block;
   /* margin-left: -20px; */
   margin-right: 3px;
+  margin-top: 2px;
 }
 .avatarlist {
   display: flow-root;
