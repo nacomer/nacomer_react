@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
 import moment from 'moment-timezone';
+import useInterval from 'use-interval';
 import {
   mdiDotsVertical,
   mdiShareVariant,
@@ -48,6 +49,7 @@ import EventService from '../../services/eventService';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import PeopleIcon from '@material-ui/icons/People';
 import Chat from './Chat';
+import UserList from './UserList';
 import EventOthers from './EventOthers';
 import '../../styles/event.css';
 
@@ -56,6 +58,7 @@ export default function Event(props) {
   const [participate, setParticipate] = useState(false);
   const [ownerName, setOwnerName] = useState('');
   const [chatMode, setChatMode] = useState(false);
+  const [userListMode, setUserListMode] = useState(true); //TODO modify
   const [eventId, setEventId] = useState('');
   const start = moment(eventInfo.start).tz('Asia/Tokyo');
   const end = moment(eventInfo.end).tz('Asia/Tokyo');
@@ -99,6 +102,10 @@ export default function Event(props) {
     // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
     getEvent();
   }, []);
+
+  useInterval(() => {
+    getEvent();
+  }, 30000);
 
   const clickParticipate = () => {
     const participateEvent = async () => {
@@ -212,187 +219,193 @@ export default function Event(props) {
           </div>
         </div>
       </Alert>
-      {chatMode ? (
-        <Chat
-          setChatMode={setChatMode}
-          eventInfo={eventInfo}
-          loginUser={props.loginUser}
-        />
+      {userListMode ? (
+        <UserList info={eventInfo}/>
       ) : (
-        <div className="eventWrapper">
-          {eventInfo && eventInfo.users ? (
-            <>
-              <div className="clearfix">
-                {/* <CardHeader title={<H6>{eventInfo.subject}</H6>} /> */}
-                <div className="eventInfo">
-                  <Card width={200} maxHeight={160} className="picture">
-                    <CardMedia src={eventInfo.hobby.picture} />
-                  </Card>
-                  <CardAction>
-                    <Card flat className="eventbox">
-                      {eventInfo.properties.map((data, idx) => (
-                        <Chip active className="propChip" key={idx}>
-                          {data.name}
-                        </Chip>
-                      ))}
+        chatMode ? (
+          <Chat
+            setChatMode={setChatMode}
+            eventInfo={eventInfo}
+            loginUser={props.loginUser}
+          />
+        ) : (
+          <div className="eventWrapper">
+            {eventInfo && eventInfo.users ? (
+              <>
+                <div className="clearfix">
+                  {/* <CardHeader title={<H6>{eventInfo.subject}</H6>} /> */}
+                  <div className="eventInfo">
+                    <Card width={200} maxHeight={160} className="picture">
+                      <CardMedia src={eventInfo.hobby.picture} />
                     </Card>
-                  </CardAction>
-                  <div className="participate">
-                    {!participate ? (
-                      <>
-                        {eventInfo.maxpart === eventInfo.users.length ? (
-                          <Button disabled>
-                            <div className="inEventButton">
-                              <Icon path={mdiAccountPlus} size={1.0} />
-                              <p>参加</p>
-                            </div>
-                          </Button>
-                        ) : (
-                          <Button
-                            bordered
-                            onClick={clickParticipate}
-                            className="partButton"
-                          >
-                            <div className="inEventButton">
-                              <Icon path={mdiAccountPlus} size={1.0} />
-                              <p>参加</p>
-                            </div>
-                          </Button>
-                        )}
-                      </>
-                    ) : (
-                      <div>
-                        <div className="multiLineButton">
-                          <Button onClick={quitParticipate}>
-                            <div className="inCancelButton">
-                              <Icon path={mdiAccountMinus} size={0.8} />
-                              <p>参加取消</p>
-                            </div>
-                          </Button>
+                    <CardAction>
+                      <Card flat className="eventbox">
+                        {eventInfo.properties.map((data, idx) => (
+                          <Chip active className="propChip" key={idx}>
+                            {data.name}
+                          </Chip>
+                        ))}
+                      </Card>
+                    </CardAction>
+                    <div className="participate">
+                      {!participate ? (
+                        <>
+                          {eventInfo.maxpart === eventInfo.users.length ? (
+                            <Button disabled>
+                              <div className="inEventButton">
+                                <Icon path={mdiAccountPlus} size={1.0} />
+                                <p>参加</p>
+                              </div>
+                            </Button>
+                          ) : (
+                            <Button
+                              bordered
+                              onClick={clickParticipate}
+                              className="partButton"
+                            >
+                              <div className="inEventButton">
+                                <Icon path={mdiAccountPlus} size={1.0} />
+                                <p>参加</p>
+                              </div>
+                            </Button>
+                          )}
+                        </>
+                      ) : (
+                        <div>
+                          <div className="multiLineButton">
+                            <Button onClick={quitParticipate}>
+                              <div className="inCancelButton">
+                                <Icon path={mdiAccountMinus} size={0.8} />
+                                <p>参加取消</p>
+                              </div>
+                            </Button>
+                          </div>
+                          <div className="multiLineButton">
+                            <Button onClick={enterChat}>
+                              <div className="inEventButton">
+                                <Icon path={mdiChat} size={0.8} />
+                                <p>トーク画面</p>
+                              </div>
+                            </Button>
+                          </div>
                         </div>
-                        <div className="multiLineButton">
-                          <Button onClick={enterChat}>
-                            <div className="inEventButton">
-                              <Icon path={mdiChat} size={0.8} />
-                              <p>トーク画面</p>
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="margin">
-                <CardAction className="more">
-                  <Card
-                    inset
-                    elevation={1}
-                    rounded
-                    style={{ width: '-webkit-fill-available' }}
-                  >
-                    <div className="padding">
-                      <div className="infoBox">
-                        <div className="infoIcon">
-                          <Icon path={mdiAccountVoice} size={1.0} />
+                <div className="margin">
+                  <CardAction className="more">
+                    <Card
+                      inset
+                      elevation={1}
+                      rounded
+                      style={{ width: '-webkit-fill-available' }}
+                    >
+                      <div className="padding">
+                        <div className="infoBox">
+                          <div className="infoIcon">
+                            <Icon path={mdiAccountVoice} size={1.0} />
+                          </div>
+                          <div className="infoDetailBox">
+                            <p className="infoDetail">{ownerName}</p>
+                          </div>
                         </div>
-                        <div className="infoDetailBox">
-                          <p className="infoDetail">{ownerName}</p>
+                        <br />
+                        <div className="infoBox">
+                          <div className="infoIcon">
+                            <Icon path={mdiAccountGroup} size={1.0} />
+                          </div>
+                          <div className="infoDetailBox">
+                            {/* {eventInfo.users.length}/{eventInfo.maxpart} */}
+                            <div className="avatarlist">
+                              {eventInfo.users.map((data, idx) => (
+                                <Avatar
+                                  className="avatar"
+                                  alt="Avatar"
+                                  src={data.picture}
+                                  key={idx}
+                                />
+                              ))}
+                              {eventInfo.maxpart - eventInfo.users.length > 0 ? (
+                                [
+                                  ...Array(
+                                    eventInfo.maxpart - eventInfo.users.length,
+                                  ).keys(),
+                                ].map((key) => {
+                                  return (
+                                    <Avatar
+                                      className="avatar"
+                                      bgColor="var(--warning)"
+                                    >
+                                      <Icon
+                                        key={key}
+                                        path={mdiAccountPlusOutline}
+                                        size={1.0}
+                                      />
+                                    </Avatar>
+                                  );
+                                })
+                              ) : (
+                                <></>
+                              )}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <br />
-                      <div className="infoBox">
-                        <div className="infoIcon">
-                          <Icon path={mdiAccountGroup} size={1.0} />
+                        <Divider className="infoDivide" />
+                        <div className="infoBox">
+                          <div className="infoIcon">
+                            <Icon path={mdiMapMarker} size={1.0} />
+                          </div>
+                          <div className="infoDetailBox">
+                            <p className="infoDetail">{eventInfo.place}</p>
+                          </div>
                         </div>
-                        <div className="infoDetailBox">
-                          {/* {eventInfo.users.length}/{eventInfo.maxpart} */}
-                          <div className="avatarlist">
-                            {eventInfo.users.map((data, idx) => (
-                              <Avatar
-                                className="avatar"
-                                alt="Avatar"
-                                src={data.picture}
-                                key={idx}
-                              />
-                            ))}
-                            {eventInfo.maxpart - eventInfo.users.length > 0 ? (
-                              [
-                                ...Array(
-                                  eventInfo.maxpart - eventInfo.users.length,
-                                ).keys(),
-                              ].map((key) => {
-                                return (
-                                  <Avatar
-                                    className="avatar"
-                                    bgColor="var(--warning)"
-                                  >
-                                    <Icon
-                                      key={key}
-                                      path={mdiAccountPlusOutline}
-                                      size={1.0}
-                                    />
-                                  </Avatar>
-                                );
-                              })
-                            ) : (
-                              <></>
-                            )}
+                        <br />
+                        <div className="infoBox">
+                          <div className="infoIcon">
+                            <Icon path={mdiClockOutline} size={1.0} />
+                          </div>
+                          <div className="infoDetailBox">
+                            <div className="infoDetail">
+                              {start.format('YYYY/MM/DD(dd) HH:mm')}
+                            </div>
+                            <div className="infoDetail">～</div>
+                            <div className="infoDetail">
+                              {end.format('YYYY/MM/DD(dd) HH:mm')}
+                            </div>
+                          </div>
+                        </div>
+                        <Divider className="infoDivide" />
+                        <div className="infoBox lastInfoBox">
+                          <div className="infoIcon">
+                            <Icon path={mdiLeadPencil} size={1.0} />
+                          </div>
+                          <div className="infoDetailBox">
+                            <p className="infoDetail">{eventInfo.description}</p>
                           </div>
                         </div>
                       </div>
-                      <Divider className="infoDivide" />
-                      <div className="infoBox">
-                        <div className="infoIcon">
-                          <Icon path={mdiMapMarker} size={1.0} />
-                        </div>
-                        <div className="infoDetailBox">
-                          <p className="infoDetail">{eventInfo.place}</p>
-                        </div>
-                      </div>
-                      <br />
-                      <div className="infoBox">
-                        <div className="infoIcon">
-                          <Icon path={mdiClockOutline} size={1.0} />
-                        </div>
-                        <div className="infoDetailBox">
-                          <div className="infoDetail">
-                            {start.format('YYYY/MM/DD(dd) HH:mm')}
-                          </div>
-                          <div className="infoDetail">～</div>
-                          <div className="infoDetail">
-                            {end.format('YYYY/MM/DD(dd) HH:mm')}
-                          </div>
-                        </div>
-                      </div>
-                      <Divider className="infoDivide" />
-                      <div className="infoBox lastInfoBox">
-                        <div className="infoIcon">
-                          <Icon path={mdiLeadPencil} size={1.0} />
-                        </div>
-                        <div className="infoDetailBox">
-                          <p className="infoDetail">{eventInfo.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                </CardAction>
-              </div>
-              <div>
-                {eventInfo.maxpart === eventInfo.users.length ? (
-                  <EventOthers eventInfo={eventInfo} />
-                ) : eventInfo != {} ? (
-                  <></>
-                ) : (
-                  <></>
-                )}
-              </div>
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
-      )}
+                    </Card>
+                  </CardAction>
+                </div>
+                <div>
+                  {eventInfo.maxpart === eventInfo.users.length ? (
+                    <EventOthers eventInfo={eventInfo} />
+                  ) : eventInfo != {} ? (
+                    <></>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+        )
+        )      
+      }
+      
     </Card>
   );
 }
