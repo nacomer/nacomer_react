@@ -23,6 +23,7 @@ import {
 } from 'ui-neumorphism';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
+import { colors } from '@material-ui/core';
 
 export default function EventTitle(props) {
   const openTwitterLink = () => {
@@ -73,8 +74,8 @@ export default function EventTitle(props) {
               {props.eventInfo.maxpart === props.eventInfo.users.length ? (
                 <Button disabled>
                   <div className="inEventButton">
-                    <Icon path={mdiAccountPlus} size={1.0} />
-                    <p>参加</p>
+                    <Icon path={mdiAccountPlus} size={1.0} color="lightblue"/>
+                    <p className="disabledColor">参加</p>
                   </div>
                 </Button>
               ) : (
