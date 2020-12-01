@@ -2,10 +2,18 @@
   width: 100%;
   margin: 0 auto;
   font-family: 'M PLUS Rounded 1c';
+  height: 100%;
 }
 
 body {
   background-color: #e4ebf5;
+}
+
+.event {
+  overflow: auto;
+  padding-top: 100px;
+  padding-bottom: 55px;
+  margin: 0 auto;
 }
 
 .eventbox {

@@ -41,8 +41,8 @@ export default function ChatPost(props) {
     if (postChatRes.status === 201) {
       chatInputRef.current.value = '';
       setComment('');
-      props.getChat();
-      props.scrollToBottom();
+      await props.getChat();
+      await props.scrollToBottom();
     }
   };
 

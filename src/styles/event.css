@@ -84,8 +84,8 @@
 }
 
 .eventWrapper {
-  overflow-y: scroll;
-  height: 65vh;
+  /* overflow-y: scroll;
+  height: 65vh; */
 }
 
 .infoIcon {
