@@ -5,7 +5,7 @@
 } */
 
 .footer {
-  display: flex;
+  /* display: flex; */
   left: 10px;
   bottom: -8px;
   margin: 8px 0px;
@@ -13,6 +13,9 @@
   box-shadow: var(--box-shadow);
   background: var(--bg-color);
   justify-content: space-between;
+  position: fixed;
+  height: 55px;
+  z-index: 10;
 }
 .inButton {
   background-color: #e4ebf5;

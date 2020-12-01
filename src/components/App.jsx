@@ -77,9 +77,7 @@ export default function App() {
             setLoginSuccess={setLoginSuccess}
             removeCookie={removeCookie}
           />
-          <Divider elavated />
           <Event loginUser={loginUser} />
-          <br />
           <Footer />
         </>
       ) : (
