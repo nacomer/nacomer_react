@@ -3,6 +3,7 @@ import { useCookies } from 'react-cookie';
 import Icon from '@mdi/react';
 import moment from 'moment-timezone';
 import useInterval from 'use-interval';
+import { ViewModeList } from '../utils/Viewmode';
 import {
   mdiDotsVertical,
   mdiShareVariant,
@@ -58,7 +59,6 @@ export default function Event(props) {
   const [participate, setParticipate] = useState(false);
   const [ownerName, setOwnerName] = useState('');
   const [chatMode, setChatMode] = useState(false);
-  const [userListMode, setUserListMode] = useState(true); //TODO modify
   const [eventId, setEventId] = useState('');
   const start = moment(eventInfo.start).tz('Asia/Tokyo');
   const end = moment(eventInfo.end).tz('Asia/Tokyo');
@@ -219,10 +219,10 @@ export default function Event(props) {
           </div>
         </div>
       </Alert>
-      {props.viewMode === 'member'  ? (
+      {props.viewMode === ViewModeList.info ? (
         <UserList info={eventInfo}/>
       ) : (
-        props.viewMode === 'chat' ? (
+        props.viewMode === ViewModeList.chat ? (
           <Chat
             setChatMode={setChatMode}
             eventInfo={eventInfo}
