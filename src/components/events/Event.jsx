@@ -296,24 +296,28 @@ export default function Event(props) {
                                 key={idx}
                               />
                             ))}
-                            {[
-                              ...Array(
-                                eventInfo.maxpart - eventInfo.users.length,
-                              ).keys(),
-                            ].map((key) => {
-                              return (
-                                <Avatar
-                                  className="avatar"
-                                  bgColor="var(--warning)"
-                                >
-                                  <Icon
-                                    key={key}
-                                    path={mdiAccountPlusOutline}
-                                    size={1.0}
-                                  />
-                                </Avatar>
-                              );
-                            })}
+                            {eventInfo.maxpart - eventInfo.users.length > 0 ? (
+                              [
+                                ...Array(
+                                  eventInfo.maxpart - eventInfo.users.length,
+                                ).keys(),
+                              ].map((key) => {
+                                return (
+                                  <Avatar
+                                    className="avatar"
+                                    bgColor="var(--warning)"
+                                  >
+                                    <Icon
+                                      key={key}
+                                      path={mdiAccountPlusOutline}
+                                      size={1.0}
+                                    />
+                                  </Avatar>
+                                );
+                              })
+                            ) : (
+                              <></>
+                            )}
                           </div>
                         </div>
                       </div>
