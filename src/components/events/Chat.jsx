@@ -52,10 +52,10 @@ export default function Chat(props) {
       props.eventInfo.id,
     );
     setChatList(chatListRes.data);
-    scrollToBottom();
   };
   useEffect(() => {
     getChat();
+    scrollToBottom();
   }, []);
   // 30秒に1回チャットの情報を取得する。
   useInterval(() => {
