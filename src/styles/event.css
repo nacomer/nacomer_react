@@ -195,3 +195,6 @@
 .chipText {
   color: rgb(100, 100, 100);
 }
+.disabledColor {
+  color: lightblue;
+}
