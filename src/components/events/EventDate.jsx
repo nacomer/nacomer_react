@@ -45,7 +45,7 @@ export default function EventDate(props) {
 
   return (
     <Card elevation={2} className="eventDateCard">
-      <div className="dateData">
+      <div className="smallCardData">
         <div className="smallCardTitle">
           <IconButton
             rounded
