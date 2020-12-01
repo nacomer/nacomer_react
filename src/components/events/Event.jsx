@@ -150,7 +150,7 @@ export default function Event(props) {
   return (
     <Card rounded elevation={4} className="eventCard">
       {props.viewMode === ViewModeList.member ? (
-        <UserList info={eventInfo} />
+        <UserList info={eventInfo} clickParticipate={clickParticipate} participate={participate}/>
       ) : props.viewMode === ViewModeList.chat ? (
         <Chat
           setChatMode={setChatMode}
