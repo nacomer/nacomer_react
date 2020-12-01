@@ -191,5 +191,7 @@
 
 .propChip {
   margin: 5px;
-  color: blue;
+}
+.chipText {
+  color: rgb(100, 100, 100);
 }
