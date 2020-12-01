@@ -60,7 +60,7 @@ export default function Chat(props) {
   // 30秒に1回チャットの情報を取得する。
   useInterval(() => {
     getChat();
-  }, 30000);
+  }, 5000);
 
   const back = () => {
     props.setChatMode(false);
