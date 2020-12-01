@@ -98,6 +98,7 @@ export default function Event(props) {
       )
     ) {
       setParticipate(true);
+      props.setChatEnable(true);
     }
   };
 
