@@ -53,3 +53,14 @@ body {
   display: flex;
   width: 90%;
 }
+
+@media (max-height: 600px) {
+  .header {
+    display: none;
+  }
+
+  .eventCard {
+    margin: 10px 20px 20px;
+    height: calc(100vh - 85px);
+  }
+}
