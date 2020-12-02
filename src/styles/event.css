@@ -173,7 +173,7 @@
 }
 
 .eventContent {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   max-height: calc(100% - 200px);
 }
