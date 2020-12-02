@@ -37,7 +37,6 @@ export default function Chat(props) {
   const chatWrapper = useRef();
 
   const scrollToBottom = () => {
-    console.log('called!');
     const scroll =
       chatWrapper.current.scrollHeight - chatWrapper.current.clientHeight;
     chatWrapper.current.scrollTo(0, scroll);
@@ -45,7 +44,6 @@ export default function Chat(props) {
 
   // cookieに保存されているtokenIdが有効な場合はcookieに含まれる情報をstateにセットする
   const getChat = async () => {
-    console.log(props.eventInfo);
     const chatService = new ChatService();
     const chatListRes = await chatService.getChatList(
       props.loginUser,
