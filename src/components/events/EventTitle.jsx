@@ -30,16 +30,13 @@ export default function EventTitle(props) {
     const text = props.eventInfo.subject + 'に参加しよう';
     const url = 'http://www.nacomer.tk/?eventid=' + props.eventInfo.id;
     const hashtag = 'nacomer';
-    const via = 'nacomer';
     const targetUri =
       'https://twitter.com/intent/tweet?text=' +
       text +
       '&url=' +
       url +
       '&hashtag=' +
-      hashtag +
-      '&via=' +
-      via;
+      hashtag;
     location.href = targetUri;
   };
 
@@ -74,7 +71,7 @@ export default function EventTitle(props) {
               {props.eventInfo.maxpart === props.eventInfo.users.length ? (
                 <Button disabled>
                   <div className="inEventButton">
-                    <Icon path={mdiAccountPlus} size={1.0} color="lightblue"/>
+                    <Icon path={mdiAccountPlus} size={1.0} color="lightblue" />
                     <p className="disabledColor">参加</p>
                   </div>
                 </Button>
