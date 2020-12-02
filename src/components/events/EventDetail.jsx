@@ -22,7 +22,6 @@ import Icon from '@mdi/react';
 import { mdiLeadPencil } from '@mdi/js';
 
 export default function EventDetail(props) {
-  console.log(props);
   return (
     <Card elevation={2} className="eventDetailCard">
       <div class="eventDetailHeader">

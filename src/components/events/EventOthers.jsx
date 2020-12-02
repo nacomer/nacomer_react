@@ -32,7 +32,6 @@ export default function EventOthers(props) {
       (event) => event.id !== props.eventInfo.id,
     );
     setOtherEvent(other);
-    console.log(other);
   }, []);
 
   return (
