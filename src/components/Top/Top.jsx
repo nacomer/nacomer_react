@@ -25,6 +25,7 @@ export default function Top(props) {
         props.setLoginSuccess(true);
         // save cookie
         props.setCookie('loginUser', JSON.stringify(resLoginUser));
+        location.reload();
       }
     }
   };

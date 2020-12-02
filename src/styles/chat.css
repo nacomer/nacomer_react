@@ -1,5 +1,5 @@
 .chatWrapper {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100% - 90px);
   padding-top: 20px;
 }
@@ -30,7 +30,7 @@
 }
 
 .cardWrapper {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 52vh;
 }
 .chatBox {
